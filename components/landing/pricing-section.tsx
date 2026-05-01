@@ -112,7 +112,7 @@ export function PricingSection() {
     setError("")
 
     try {
-      const response = await fetch("https://cardapio.wzapflow.com.br/api/checkout/create", {
+      const response = await fetch("/api/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

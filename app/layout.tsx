@@ -7,25 +7,13 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+  title: 'ZapFlow - Sistema de Delivery | Venda Mais com Cardápio Digital',
+  description: 'Transforme seu delivery com o ZapFlow. Cardápio digital profissional, pedidos pelo WhatsApp, gestão completa. Aumente suas vendas em até 300%.',
+  keywords: 'delivery, cardápio digital, pizzaria, restaurante, pedidos online, whatsapp',
+  openGraph: {
+    title: 'ZapFlow - Sistema de Delivery',
+    description: 'Transforme seu delivery com o ZapFlow. Venda mais com cardápio digital profissional.',
+    type: 'website',
   },
 }
 
@@ -35,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR" className="bg-background">
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

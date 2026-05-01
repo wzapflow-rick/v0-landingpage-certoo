@@ -8,8 +8,8 @@ const plans = [
   {
     name: "START",
     price: "79,90",
-    mascot: "/mascote-start.png",
-    mascotPosition: "sitting", // sentado no topo do card
+    mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_01_26-removebg-preview-rgYCkgksm8UH2pqWKyMMK6mUcCwiYt.png",
+    mascotPosition: "sitting",
     description: "Pra começar a lucrar",
     icon: Zap,
     features: [
@@ -27,8 +27,8 @@ const plans = [
   {
     name: "PRO",
     price: "149,90",
-    mascot: "/mascote-pro.png",
-    mascotPosition: "pointing", // apontando para o card
+    mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_03_18-removebg-preview-ITRILTSSlT4vzBTip4SW1zBmtGFdhT.png",
+    mascotPosition: "pointing",
     description: "O favorito dos campeões",
     icon: Rocket,
     features: [
@@ -47,8 +47,8 @@ const plans = [
   {
     name: "ELITE",
     price: "297,90",
-    mascot: "/mascote-elite.png",
-    mascotPosition: "relaxed", // deitado, relaxado
+    mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_05_23-removebg-preview-kXIqEweXc607FWu020AJ8L2e1pfwUT.png",
+    mascotPosition: "relaxed",
     description: "Pra quem quer dominar",
     icon: Crown,
     features: [

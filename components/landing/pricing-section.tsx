@@ -8,7 +8,7 @@ const plans = [
   {
     name: "START",
     price: "79,90",
-    mascot: "/mascote-start.jpg",
+    mascot: "/mascote-start.png",
     mascotPosition: "sitting", // sentado no topo do card
     description: "Pra começar a lucrar",
     icon: Zap,
@@ -27,7 +27,7 @@ const plans = [
   {
     name: "PRO",
     price: "149,90",
-    mascot: "/mascote-pro.jpg",
+    mascot: "/mascote-pro.png",
     mascotPosition: "pointing", // apontando para o card
     description: "O favorito dos campeões",
     icon: Rocket,
@@ -47,7 +47,7 @@ const plans = [
   {
     name: "ELITE",
     price: "297,90",
-    mascot: "/mascote-elite.jpg",
+    mascot: "/mascote-elite.png",
     mascotPosition: "relaxed", // deitado, relaxado
     description: "Pra quem quer dominar",
     icon: Crown,

@@ -19,13 +19,13 @@ const benefits = [
   {
     icon: TrendingUp,
     title: "Vendas Explodem",
-    description: "Nossos clientes faturam até 300% mais. Cardápio bonito vende mais.",
+    description: "Nossos clientes faturam até 100% mais. Cardápio bonito vende mais.",
     color: "from-green-500 to-emerald-600"
   },
   {
     icon: Clock,
-    title: "Nunca Fecha",
-    description: "Seu cardápio trabalha 24h. Enquanto você dorme, ele recebe pedidos.",
+    title: "Relatórios Completos",
+    description: "Dados de vendas, produtos mais pedidos e faturamento em segundos.",
     color: "from-blue-500 to-cyan-600"
   },
   {
@@ -36,8 +36,8 @@ const benefits = [
   },
   {
     icon: Sparkles,
-    title: "Fideliza Automático",
-    description: "Sistema de pontos e cashback que faz o cliente voltar sempre.",
+    title: "Gerenciamento de Mesas",
+    description: "Controle completo das mesas do seu estabelecimento em tempo real.",
     color: "from-amber-500 to-orange-600"
   }
 ]

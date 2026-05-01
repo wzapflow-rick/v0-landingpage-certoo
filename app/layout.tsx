@@ -1,20 +1,28 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: '--font-inter'
+});
 
 export const metadata: Metadata = {
-  title: 'ZapFlow - Sistema de Delivery | Venda Mais com Cardápio Digital',
-  description: 'Transforme seu delivery com o ZapFlow. Cardápio digital profissional, pedidos pelo WhatsApp, gestão completa. Aumente suas vendas em até 300%.',
-  keywords: 'delivery, cardápio digital, pizzaria, restaurante, pedidos online, whatsapp',
+  title: 'ZapFlow - Venda Mais com Cardápio Digital | Sistema de Delivery',
+  description: 'Transforme seu delivery em uma máquina de vendas. Cardápio digital que dá água na boca, pedidos em segundos, zero taxa por pedido. +500 estabelecimentos já usam.',
+  keywords: 'delivery, cardápio digital, pizzaria, restaurante, pedidos online, whatsapp, sistema delivery, cardapio online',
   openGraph: {
-    title: 'ZapFlow - Sistema de Delivery',
-    description: 'Transforme seu delivery com o ZapFlow. Venda mais com cardápio digital profissional.',
+    title: 'ZapFlow - Venda Mais com Cardápio Digital',
+    description: 'Transforme seu delivery em uma máquina de vendas. Cardápio digital profissional, zero taxa por pedido.',
     type: 'website',
+    images: ['https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1-QjuWS8KUURVn8hym7gCPJcjjaxqxC0.png']
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ZapFlow - Venda Mais com Cardápio Digital',
+    description: 'Transforme seu delivery em uma máquina de vendas.',
+  }
 }
 
 export default function RootLayout({
@@ -24,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="bg-background">
-      <body className="font-sans antialiased">
+      <body className={`${inter.className} antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

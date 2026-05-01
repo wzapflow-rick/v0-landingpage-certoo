@@ -6,67 +6,67 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { HelpCircle } from "lucide-react"
 
 const faqs = [
   {
-    question: "Preciso saber programar para usar o ZapFlow?",
-    answer: "De jeito nenhum! O ZapFlow foi feito para ser simples. Você cadastra seus produtos, coloca as fotos e pronto. Em 5 minutos seu cardápio está no ar."
+    question: "Quanto tempo leva pra começar a usar?",
+    answer: "Em menos de 15 minutos você já tem seu cardápio no ar. É só cadastrar seus produtos com fotos e pronto. Nosso time ajuda você em todo o processo."
   },
   {
-    question: "Quanto tempo leva para configurar?",
-    answer: "A maioria dos nossos clientes configura o cardápio completo em menos de 1 hora. Se você já tiver as fotos dos produtos, pode ser ainda mais rápido."
+    question: "Preciso de conhecimento técnico?",
+    answer: "Zero! Se você sabe usar WhatsApp, sabe usar o ZapFlow. A gente criou pensando em quem não tem tempo pra complicação."
   },
   {
-    question: "Vocês cobram taxa por pedido?",
-    answer: "NÃO! Diferente dos apps de delivery, nós não cobramos nenhuma taxa por pedido. Você paga apenas a mensalidade fixa do plano escolhido."
+    question: "Tem taxa por pedido como o iFood?",
+    answer: "Não! Essa é a melhor parte. Você paga apenas a mensalidade fixa. Pode vender R$10 mil ou R$100 mil por mês - o valor é o mesmo. O lucro é 100% seu."
   },
   {
-    question: "Como funciona o pedido pelo WhatsApp?",
-    answer: "O cliente escolhe os produtos no seu cardápio digital e clica em fazer pedido. Automaticamente, uma mensagem formatada é enviada para seu WhatsApp com todos os itens, valores e dados do cliente."
+    question: "Funciona em qualquer cidade?",
+    answer: "Sim! O ZapFlow funciona em todo o Brasil. Seja em capital ou interior, você consegue usar sem problemas."
   },
   {
-    question: "Posso testar antes de assinar?",
-    answer: "Sim! Oferecemos 7 dias de garantia. Se não gostar ou não for o que esperava, devolvemos 100% do seu dinheiro sem perguntas."
+    question: "E se eu não gostar?",
+    answer: "Tranquilo! Você tem 7 dias de garantia. Se não curtir, devolvemos cada centavo. Sem perguntas, sem burocracia."
   },
   {
-    question: "Funciona para qualquer tipo de restaurante?",
-    answer: "Sim! Pizzarias, hamburguerias, marmitarias, açaiterias, lanchonetes, bares, confeitarias... O ZapFlow se adapta a qualquer tipo de estabelecimento de alimentação."
-  },
-  {
-    question: "Posso mudar de plano depois?",
-    answer: "Claro! Você pode fazer upgrade ou downgrade do seu plano a qualquer momento, sem multas ou burocracia."
+    question: "Posso cancelar quando quiser?",
+    answer: "Claro! Não tem fidelidade nem multa. Você fica porque quer, não porque é obrigado. Mas pode confiar: depois que começar a vender mais, você não vai querer parar."
   }
 ]
 
 export function FaqSection() {
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4 max-w-3xl">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Perguntas Frequentes
-          </h2>
-          <p className="text-gray-400 text-lg">
-            Tire suas dúvidas sobre o ZapFlow
-          </p>
+    <section className="py-24 bg-gradient-to-b from-background to-card/30">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-muted text-gray-300 px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <HelpCircle className="w-4 h-4" />
+              Tire suas dúvidas
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black mb-4 text-balance">
+              Perguntas <span className="text-gradient-orange">frequentes</span>
+            </h2>
+          </div>
+          
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem 
+                key={index} 
+                value={`item-${index}`}
+                className="bg-card/50 border border-border/50 rounded-2xl px-6 overflow-hidden"
+              >
+                <AccordionTrigger className="text-left text-lg font-bold text-white hover:text-orange-400 transition-colors py-5 [&>svg]:text-orange-500">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-400 pb-5 leading-relaxed">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
-        
-        <Accordion type="single" collapsible className="space-y-4">
-          {faqs.map((faq, index) => (
-            <AccordionItem 
-              key={index} 
-              value={`item-${index}`}
-              className="bg-card border border-border rounded-xl px-6"
-            >
-              <AccordionTrigger className="text-left text-lg font-medium hover:no-underline hover:text-green-400 py-5">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-400 pb-5">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
       </div>
     </section>
   )

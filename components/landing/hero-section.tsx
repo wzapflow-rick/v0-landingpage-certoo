@@ -83,7 +83,7 @@ export function HeroSection() {
               </div>
               <div className="w-px h-10 bg-gray-700 hidden sm:block" />
               <div className="flex flex-col items-center lg:items-start">
-                <div className="text-3xl font-black text-orange-400">+300%</div>
+                <div className="text-3xl font-black text-orange-400">+100%</div>
                 <div className="text-sm text-gray-400">em vendas</div>
               </div>
             </div>
@@ -118,7 +118,7 @@ export function HeroSection() {
               
               {/* Badge flutuante */}
               <div className="absolute -left-4 lg:-left-8 top-1/3 bg-card/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-green-500/30 badge-animated">
-                <div className="text-2xl font-black text-green-400">+300%</div>
+                <div className="text-2xl font-black text-green-400">+100%</div>
                 <div className="text-xs text-gray-400">em vendas</div>
               </div>
               

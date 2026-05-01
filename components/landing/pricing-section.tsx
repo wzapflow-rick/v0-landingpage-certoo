@@ -176,7 +176,11 @@ export function PricingSection() {
                       }`}
                       asChild
                     >
-                      <a href="https://wa.me/5579999999999?text=Quero%20assinar%20o%20plano%20ZapFlow" target="_blank" rel="noopener noreferrer">
+                      <a 
+                        href={`https://wa.me/5579998841252?text=${encodeURIComponent(`Olá! Quero assinar o plano ${plan.name} do ZapFlow por R$${plan.price}/mês`)}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
                         {plan.cta}
                       </a>
                     </Button>

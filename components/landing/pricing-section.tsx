@@ -1,13 +1,16 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Check, Star, Crown, Zap, Rocket } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Check, Star, Crown, Zap, Rocket, X, Loader2 } from "lucide-react"
 
 const plans = [
   {
     name: "START",
     price: "79,90",
+    planId: "start" as const,
     mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_01_26-removebg-preview-rgYCkgksm8UH2pqWKyMMK6mUcCwiYt.png",
     mascotPosition: "sitting",
     description: "Pra começar a lucrar",
@@ -27,6 +30,7 @@ const plans = [
   {
     name: "PRO",
     price: "149,90",
+    planId: "pro" as const,
     mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_03_18-removebg-preview-ITRILTSSlT4vzBTip4SW1zBmtGFdhT.png",
     mascotPosition: "pointing",
     description: "O favorito dos campeões",
@@ -47,6 +51,7 @@ const plans = [
   {
     name: "ELITE",
     price: "297,90",
+    planId: "elite" as const,
     mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_05_23-removebg-preview-kXIqEweXc607FWu020AJ8L2e1pfwUT.png",
     mascotPosition: "relaxed",
     description: "Pra quem quer dominar",
@@ -67,7 +72,83 @@ const plans = [
   }
 ]
 
+type PlanId = "start" | "pro" | "elite"
+
 export function PricingSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedPlan, setSelectedPlan] = useState<typeof plans[0] | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    telefone: ""
+  })
+  const [metodoPagamento, setMetodoPagamento] = useState<"cartao" | "pix">("cartao")
+  const [error, setError] = useState("")
+
+  const openModal = (plan: typeof plans[0]) => {
+    setSelectedPlan(plan)
+    setIsModalOpen(true)
+    setError("")
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedPlan(null)
+    setFormData({ nome: "", email: "", telefone: "" })
+    setError("")
+  }
+
+  const handleCheckout = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!formData.nome || !formData.email || !formData.telefone) {
+      setError("Preencha todos os campos")
+      return
+    }
+
+    if (!selectedPlan) return
+
+    setIsLoading(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: formData.nome,
+          email: formData.email,
+          telefone: formData.telefone,
+          plano: selectedPlan.planId,
+          tipo: metodoPagamento,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (data.success && data.initPoint) {
+        window.location.href = data.initPoint
+      } else {
+        setError(data.error || "Erro ao criar checkout. Tente novamente.")
+      }
+    } catch (err) {
+      console.error("Erro:", err)
+      setError("Erro ao processar. Tente novamente.")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const formatPhone = (value: string) => {
+    const numbers = value.replace(/\D/g, "")
+    if (numbers.length <= 2) return numbers
+    if (numbers.length <= 7) return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`
+    return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`
+  }
+
   return (
     <section id="planos" className="py-24 relative overflow-hidden">
       {/* Background */}
@@ -166,25 +247,17 @@ export function PricingSection() {
                     ))}
                   </ul>
                   
-                  {/* CTA Buttons */}
-                  <div className="space-y-3">
-                    <Button 
-                      className={`w-full py-6 font-bold text-lg rounded-xl transition-all duration-300 ${
-                        plan.popular 
-                          ? "bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white shadow-lg shadow-green-500/30 hover:scale-105" 
-                          : `bg-gradient-to-r ${plan.gradient} hover:opacity-90 text-white`
-                      }`}
-                      asChild
-                    >
-                      <a 
-                        href={`https://wa.me/5579998841252?text=${encodeURIComponent(`Olá! Quero assinar o plano ${plan.name} do ZapFlow por R$${plan.price}/mês`)}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                      >
-                        {plan.cta}
-                      </a>
-                    </Button>
-                  </div>
+                  {/* CTA Button */}
+                  <Button 
+                    onClick={() => openModal(plan)}
+                    className={`w-full py-6 font-bold text-lg rounded-xl transition-all duration-300 ${
+                      plan.popular 
+                        ? "bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white shadow-lg shadow-green-500/30 hover:scale-105" 
+                        : `bg-gradient-to-r ${plan.gradient} hover:opacity-90 text-white`
+                    }`}
+                  >
+                    {plan.cta}
+                  </Button>
                 </div>
               </div>
             </div>
@@ -204,6 +277,154 @@ export function PricingSection() {
           </div>
         </div>
       </div>
+
+      {/* Modal de Checkout */}
+      {isModalOpen && selectedPlan && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Overlay */}
+          <div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={closeModal}
+          />
+          
+          {/* Modal */}
+          <div className="relative bg-card border border-border/50 rounded-3xl p-8 max-w-md w-full shadow-2xl">
+            {/* Close button */}
+            <button 
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Mascot */}
+            <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24">
+              <Image
+                src={selectedPlan.mascot}
+                alt={`Mascote ${selectedPlan.name}`}
+                fill
+                className="object-contain drop-shadow-2xl"
+              />
+            </div>
+
+            <div className="mt-8">
+              {/* Plan info */}
+              <div className="text-center mb-6">
+                <h3 className={`text-2xl font-black bg-gradient-to-r ${selectedPlan.gradient} bg-clip-text text-transparent`}>
+                  Plano {selectedPlan.name}
+                </h3>
+                <p className="text-gray-400">
+                  R$ <span className="text-3xl font-black text-white">{selectedPlan.price}</span>/mês
+                </p>
+              </div>
+
+              {/* Form */}
+              <form onSubmit={handleCheckout} className="space-y-4">
+                <div>
+                  <label className="text-sm text-gray-400 mb-1 block">Nome completo</label>
+                  <Input
+                    type="text"
+                    placeholder="Seu nome"
+                    value={formData.nome}
+                    onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+                    className="bg-background/50 border-border/50 text-white placeholder:text-gray-500 rounded-xl py-6"
+                    disabled={isLoading}
+                  />
+                </div>
+                
+                <div>
+                  <label className="text-sm text-gray-400 mb-1 block">E-mail</label>
+                  <Input
+                    type="email"
+                    placeholder="seu@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="bg-background/50 border-border/50 text-white placeholder:text-gray-500 rounded-xl py-6"
+                    disabled={isLoading}
+                  />
+                </div>
+                
+                <div>
+                  <label className="text-sm text-gray-400 mb-1 block">WhatsApp</label>
+                  <Input
+                    type="tel"
+                    placeholder="(99) 99999-9999"
+                    value={formData.telefone}
+                    onChange={(e) => setFormData({ ...formData, telefone: formatPhone(e.target.value) })}
+                    className="bg-background/50 border-border/50 text-white placeholder:text-gray-500 rounded-xl py-6"
+                    maxLength={15}
+                    disabled={isLoading}
+                  />
+                </div>
+
+                {/* Seleção de método de pagamento */}
+                <div>
+                  <label className="text-sm text-gray-400 mb-2 block">Forma de pagamento</label>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setMetodoPagamento("cartao")}
+                      disabled={isLoading}
+                      className={`p-4 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2 ${
+                        metodoPagamento === "cartao"
+                          ? "border-green-500 bg-green-500/10"
+                          : "border-border/50 bg-background/50 hover:border-gray-500"
+                      }`}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <rect x="2" y="5" width="20" height="14" rx="2" />
+                        <line x1="2" y1="10" x2="22" y2="10" />
+                      </svg>
+                      <span className="text-sm font-semibold text-white">Cartao</span>
+                      <span className="text-xs text-gray-400">Cobranca automatica</span>
+                    </button>
+                    
+                    <button
+                      type="button"
+                      onClick={() => setMetodoPagamento("pix")}
+                      disabled={isLoading}
+                      className={`p-4 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2 ${
+                        metodoPagamento === "pix"
+                          ? "border-green-500 bg-green-500/10"
+                          : "border-border/50 bg-background/50 hover:border-gray-500"
+                      }`}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.253 7.746c-.405 0-.81.154-1.12.463l-3.07 3.07a1.5 1.5 0 01-2.126 0l-3.07-3.07a1.586 1.586 0 00-2.24 0L3.16 10.677a1.586 1.586 0 000 2.24l2.467 2.467a1.586 1.586 0 002.24 0l3.07-3.07a1.5 1.5 0 012.126 0l3.07 3.07a1.586 1.586 0 002.24 0l2.467-2.467a1.586 1.586 0 000-2.24l-2.467-2.468a1.583 1.583 0 00-1.12-.463z"/>
+                      </svg>
+                      <span className="text-sm font-semibold text-white">PIX</span>
+                      <span className="text-xs text-gray-400">Pagamento mensal</span>
+                    </button>
+                  </div>
+                </div>
+
+                {error && (
+                  <p className="text-red-400 text-sm text-center">{error}</p>
+                )}
+
+                <Button 
+                  type="submit"
+                  disabled={isLoading}
+                  className={`w-full py-6 font-bold text-lg rounded-xl transition-all duration-300 bg-gradient-to-r ${selectedPlan.gradient} hover:opacity-90 text-white mt-4`}
+                >
+                  {isLoading ? (
+                    <span className="flex items-center gap-2">
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Processando...
+                    </span>
+                  ) : (
+                    "Ir para pagamento"
+                  )}
+                </Button>
+
+                <p className="text-xs text-gray-500 text-center mt-4">
+                  Pagamento seguro via Mercado Pago
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

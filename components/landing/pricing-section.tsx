@@ -83,6 +83,7 @@ export function PricingSection() {
     email: "",
     telefone: ""
   })
+  const [metodoPagamento, setMetodoPagamento] = useState<"cartao" | "pix">("cartao")
   const [error, setError] = useState("")
 
   const openModal = (plan: typeof plans[0]) => {
@@ -122,6 +123,7 @@ export function PricingSection() {
           email: formData.email,
           telefone: formData.telefone,
           plano: selectedPlan.planId,
+          tipo: metodoPagamento,
         }),
       })
 
@@ -353,6 +355,47 @@ export function PricingSection() {
                     maxLength={15}
                     disabled={isLoading}
                   />
+                </div>
+
+                {/* Seleção de método de pagamento */}
+                <div>
+                  <label className="text-sm text-gray-400 mb-2 block">Forma de pagamento</label>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setMetodoPagamento("cartao")}
+                      disabled={isLoading}
+                      className={`p-4 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2 ${
+                        metodoPagamento === "cartao"
+                          ? "border-green-500 bg-green-500/10"
+                          : "border-border/50 bg-background/50 hover:border-gray-500"
+                      }`}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <rect x="2" y="5" width="20" height="14" rx="2" />
+                        <line x1="2" y1="10" x2="22" y2="10" />
+                      </svg>
+                      <span className="text-sm font-semibold text-white">Cartao</span>
+                      <span className="text-xs text-gray-400">Cobranca automatica</span>
+                    </button>
+                    
+                    <button
+                      type="button"
+                      onClick={() => setMetodoPagamento("pix")}
+                      disabled={isLoading}
+                      className={`p-4 rounded-xl border-2 transition-all duration-200 flex flex-col items-center gap-2 ${
+                        metodoPagamento === "pix"
+                          ? "border-green-500 bg-green-500/10"
+                          : "border-border/50 bg-background/50 hover:border-gray-500"
+                      }`}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.253 7.746c-.405 0-.81.154-1.12.463l-3.07 3.07a1.5 1.5 0 01-2.126 0l-3.07-3.07a1.586 1.586 0 00-2.24 0L3.16 10.677a1.586 1.586 0 000 2.24l2.467 2.467a1.586 1.586 0 002.24 0l3.07-3.07a1.5 1.5 0 012.126 0l3.07 3.07a1.586 1.586 0 002.24 0l2.467-2.467a1.586 1.586 0 000-2.24l-2.467-2.468a1.583 1.583 0 00-1.12-.463z"/>
+                      </svg>
+                      <span className="text-sm font-semibold text-white">PIX</span>
+                      <span className="text-xs text-gray-400">Pagamento mensal</span>
+                    </button>
+                  </div>
                 </div>
 
                 {error && (

@@ -2,9 +2,33 @@
 
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Check, Star, Crown, Zap, Rocket } from "lucide-react"
+import { Check, Star, Crown, Zap, Rocket, Gift } from "lucide-react"
 
 const plans = [
+  {
+    name: "PARCERIA",
+    price: "GRÁTIS",
+    priceAfter: "29,90",
+    mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_01_26-removebg-preview-rgYCkgksm8UH2pqWKyMMK6mUcCwiYt.png",
+    mascotPosition: "sitting",
+    description: "7 dias grátis com acesso total!",
+    icon: Gift,
+    features: [
+      "Cardápio digital (Link + QrCode)",
+      "Painel Kanban com notificação WhatsApp",
+      "Pix + Cartões (pagamento online)",
+      "Taxa de entregas pelo Google Maps",
+      "Agente de IA no WhatsApp",
+      "Cupons de desconto",
+      "Acesso total a todas as funções"
+    ],
+    cta: "Testar 7 Dias Grátis",
+    popular: true,
+    isTrial: true,
+    gradient: "from-purple-500 to-pink-500",
+    bgGlow: "bg-purple-500/20",
+    signupUrl: "https://zapflow.com.br/signup?plano=parceria"
+  },
   {
     name: "START",
     price: "79,90",
@@ -40,7 +64,7 @@ const plans = [
       "Suporte prioritário"
     ],
     cta: "Escolher PRO",
-    popular: true,
+    popular: false,
     gradient: "from-green-500 to-emerald-500",
     bgGlow: "bg-green-500/20"
   },
@@ -88,7 +112,7 @@ export function PricingSection() {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-end">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 max-w-7xl mx-auto items-end">
           {plans.map((plan, index) => (
             <div 
               key={index}
@@ -116,9 +140,13 @@ export function PricingSection() {
               
               {/* Popular badge */}
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-black px-6 py-2 rounded-full flex items-center gap-2 shadow-xl shadow-green-500/30 z-10">
+                <div className={`absolute -top-4 left-1/2 -translate-x-1/2 text-white text-sm font-black px-6 py-2 rounded-full flex items-center gap-2 shadow-xl z-10 ${
+                  plan.isTrial 
+                    ? "bg-gradient-to-r from-purple-500 to-pink-500 shadow-purple-500/30" 
+                    : "bg-gradient-to-r from-green-500 to-emerald-500 shadow-green-500/30"
+                }`}>
                   <Star className="w-4 h-4 fill-current" />
-                  MAIS ESCOLHIDO
+                  {plan.isTrial ? "RECOMENDADO" : "MAIS ESCOLHIDO"}
                 </div>
               )}
               
@@ -147,11 +175,26 @@ export function PricingSection() {
                   
                   {/* Price */}
                   <div className="mb-6">
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-gray-400 text-lg">R$</span>
-                      <span className="text-5xl font-black text-white">{plan.price}</span>
-                      <span className="text-gray-400">/mês</span>
-                    </div>
+                    {plan.isTrial ? (
+                      <div>
+                        <div className="flex items-baseline gap-1">
+                          <span className="text-4xl font-black text-white">{plan.price}</span>
+                          <span className="text-gray-400">por 7 dias</span>
+                        </div>
+                        <p className="text-gray-400 text-sm mt-1">
+                          Depois R$ {plan.priceAfter}/mês
+                        </p>
+                        <p className="text-green-400 text-xs mt-2 font-medium">
+                          Sem cartão de crédito • Cancele quando quiser
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-gray-400 text-lg">R$</span>
+                        <span className="text-5xl font-black text-white">{plan.price}</span>
+                        <span className="text-gray-400">/mês</span>
+                      </div>
+                    )}
                   </div>
                   
                   {/* Features */}
@@ -170,14 +213,16 @@ export function PricingSection() {
                   <div className="space-y-3">
                     <Button 
                       className={`w-full py-6 font-bold text-lg rounded-xl transition-all duration-300 ${
-                        plan.popular 
-                          ? "bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white shadow-lg shadow-green-500/30 hover:scale-105" 
-                          : `bg-gradient-to-r ${plan.gradient} hover:opacity-90 text-white`
+                        plan.isTrial
+                          ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white shadow-lg shadow-purple-500/30 hover:scale-105"
+                          : plan.popular 
+                            ? "bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white shadow-lg shadow-green-500/30 hover:scale-105" 
+                            : `bg-gradient-to-r ${plan.gradient} hover:opacity-90 text-white`
                       }`}
                       asChild
                     >
                       <a 
-                        href={`https://wa.me/5579998841252?text=${encodeURIComponent(`Olá! Quero assinar o plano ${plan.name} do ZapFlow por R$${plan.price}/mês`)}`} 
+                        href={plan.signupUrl || `https://wa.me/5579998841252?text=${encodeURIComponent(`Olá! Quero assinar o plano ${plan.name} do ZapFlow por R$${plan.price}/mês`)}`} 
                         target="_blank" 
                         rel="noopener noreferrer"
                       >

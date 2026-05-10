@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   title: 'ZapFlow - Venda Mais com Cardápio Digital | Sistema de Delivery',
   description: 'Transforme seu delivery em uma máquina de vendas. Cardápio digital que dá água na boca, pedidos em segundos, zero taxa por pedido. +500 estabelecimentos já usam.',
   keywords: 'delivery, cardápio digital, pizzaria, restaurante, pedidos online, whatsapp, sistema delivery, cardapio online',
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     title: 'ZapFlow - Venda Mais com Cardápio Digital',
     description: 'Transforme seu delivery em uma máquina de vendas. Cardápio digital profissional, zero taxa por pedido.',

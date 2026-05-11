@@ -27,7 +27,7 @@ const plans = [
     isTrial: true,
     gradient: "from-purple-500 to-pink-500",
     bgGlow: "bg-purple-500/20",
-    signupUrl: "https://zapflow.com.br/signup?plano=parceria"
+    signupUrl: "https://cardapio.wzapflow.com.br/signup?plano=parceria"
   },
   {
     name: "START",
@@ -46,7 +46,8 @@ const plans = [
     cta: "Começar Agora",
     popular: false,
     gradient: "from-blue-500 to-cyan-500",
-    bgGlow: "bg-blue-500/10"
+    bgGlow: "bg-blue-500/10",
+    signupUrl: "https://cardapio.wzapflow.com.br/signup?plano=start"
   },
   {
     name: "PRO",
@@ -66,7 +67,8 @@ const plans = [
     cta: "Escolher PRO",
     popular: false,
     gradient: "from-green-500 to-emerald-500",
-    bgGlow: "bg-green-500/20"
+    bgGlow: "bg-green-500/20",
+    signupUrl: "https://cardapio.wzapflow.com.br/signup?plano=pro"
   },
   {
     name: "ELITE",
@@ -87,7 +89,8 @@ const plans = [
     cta: "Ser ELITE",
     popular: false,
     gradient: "from-orange-500 to-red-500",
-    bgGlow: "bg-orange-500/10"
+    bgGlow: "bg-orange-500/10",
+    signupUrl: "https://cardapio.wzapflow.com.br/signup?plano=elite"
   }
 ]
 
@@ -222,7 +225,7 @@ export function PricingSection() {
                       asChild
                     >
                       <a 
-                        href={plan.signupUrl || `https://wa.me/5579998841252?text=${encodeURIComponent(`Olá! Quero assinar o plano ${plan.name} do ZapFlow por R$${plan.price}/mês`)}`} 
+                        href={plan.signupUrl} 
                         target="_blank" 
                         rel="noopener noreferrer"
                       >

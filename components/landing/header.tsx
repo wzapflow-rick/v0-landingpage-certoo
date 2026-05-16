@@ -51,7 +51,7 @@ export function Header() {
               className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white font-bold rounded-xl px-6"
               asChild
             >
-              <a href="#planos">Quero Vender Mais</a>
+              <a href="https://cardapio.wzapflow.com.br/signup?plano=parceria">Quero Vender Mais</a>
             </Button>
           </div>
           
@@ -82,7 +82,7 @@ export function Header() {
                 className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white font-bold rounded-xl mt-2"
                 asChild
               >
-                <a href="#planos">Quero Vender Mais</a>
+                <a href="https://cardapio.wzapflow.com.br/signup?plano=parceria">Quero Vender Mais</a>
               </Button>
             </nav>
           </div>

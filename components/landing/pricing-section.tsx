@@ -7,6 +7,7 @@ import { Check, Star, Crown, Zap, Rocket } from "lucide-react"
 const plans = [
   {
     name: "START",
+    slug: "start",
     price: "79,90",
     mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_01_26-removebg-preview-rgYCkgksm8UH2pqWKyMMK6mUcCwiYt.png",
     mascotPosition: "sitting",
@@ -26,6 +27,7 @@ const plans = [
   },
   {
     name: "PRO",
+    slug: "pro",
     price: "149,90",
     mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_03_18-removebg-preview-ITRILTSSlT4vzBTip4SW1zBmtGFdhT.png",
     mascotPosition: "pointing",
@@ -46,6 +48,7 @@ const plans = [
   },
   {
     name: "ELITE",
+    slug: "elite",
     price: "297,90",
     mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_05_23-removebg-preview-kXIqEweXc607FWu020AJ8L2e1pfwUT.png",
     mascotPosition: "relaxed",
@@ -177,9 +180,7 @@ export function PricingSection() {
                       asChild
                     >
                       <a 
-                        href={`https://wa.me/5579998841252?text=${encodeURIComponent(`Olá! Quero assinar o plano ${plan.name} do ZapFlow por R$${plan.price}/mês`)}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
+                        href={`https://cardapio.wzapflow.com.br/signup?plano=${plan.slug}`}
                       >
                         {plan.cta}
                       </a>

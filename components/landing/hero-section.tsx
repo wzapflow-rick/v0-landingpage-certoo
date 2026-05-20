@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { CheeseEffect } from "./cheese-effect"
+import { MetaEvents } from "@/components/meta-pixel"
 
 export function HeroSection() {
   return (
@@ -63,6 +64,7 @@ export function HeroSection() {
                 size="lg" 
                 className="btn-cheese-explosion bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-black text-lg px-10 py-7 rounded-2xl shadow-2xl animate-pulse-glow transition-all duration-300 hover:scale-105"
                 asChild
+                onClick={() => MetaEvents.startTrial()}
               >
                 <a href="https://cardapio.wzapflow.com.br/signup?plano=parceria">
                   Quero Vender Mais

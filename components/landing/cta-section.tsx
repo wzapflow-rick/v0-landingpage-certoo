@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ChevronRight, Flame } from "lucide-react"
+import { MetaEvents } from "@/components/meta-pixel"
 
 export function CtaSection() {
   return (
@@ -51,6 +52,7 @@ export function CtaSection() {
               size="lg"
               className="btn-cheese-explosion bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 hover:from-orange-400 hover:via-red-400 hover:to-orange-500 text-white font-black text-xl px-12 py-8 rounded-2xl shadow-2xl shadow-orange-500/30 animate-pulse-glow-orange transition-all duration-300 hover:scale-105 group"
               asChild
+              onClick={() => MetaEvents.lead()}
             >
               <a href="#planos">
                 Quero Dominar Meu Delivery

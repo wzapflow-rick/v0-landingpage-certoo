@@ -1,255 +1,113 @@
-"use client"
+import { ArrowUpRightIcon, CheckIcon, ShieldCheckIcon } from "lucide-react"
 
-import Image from "next/image"
+import { Reveal } from "@/components/landing/motion-primitives"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Check, Star, Crown, Zap, Rocket, Gift } from "lucide-react"
-
-const plans = [
-  {
-    name: "PARCERIA",
-    price: "GRÁTIS",
-    priceAfter: "29,90",
-    mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_01_26-removebg-preview-rgYCkgksm8UH2pqWKyMMK6mUcCwiYt.png",
-    mascotPosition: "sitting",
-    description: "7 dias grátis com acesso total!",
-    icon: Gift,
-    features: [
-      "Cardápio digital (Link + QrCode)",
-      "Painel Kanban com notificação WhatsApp",
-      "Pix + Cartões (pagamento online)",
-      "Taxa de entregas pelo Google Maps",
-      "Agente de IA no WhatsApp",
-      "Cupons de desconto",
-      "Acesso total a todas as funções"
-    ],
-    cta: "Testar 7 Dias Grátis",
-    popular: true,
-    isTrial: true,
-    gradient: "from-purple-500 to-pink-500",
-    bgGlow: "bg-purple-500/20",
-    signupUrl: "https://cardapio.wzapflow.com.br/signup?plano=parceria"
-  },
-  {
-    name: "START",
-    price: "79,90",
-    mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_01_26-removebg-preview-rgYCkgksm8UH2pqWKyMMK6mUcCwiYt.png",
-    mascotPosition: "sitting",
-    description: "Pra começar a lucrar",
-    icon: Zap,
-    features: [
-      "Cardápio digital (Link + QrCode)",
-      "Painel Kanban básico",
-      "Pix + Cartões",
-      "Taxa Fixa por bairro",
-      "Suporte por email"
-    ],
-    cta: "Começar Agora",
-    popular: false,
-    gradient: "from-blue-500 to-cyan-500",
-    bgGlow: "bg-blue-500/10",
-    signupUrl: "https://cardapio.wzapflow.com.br/signup?plano=start"
-  },
-  {
-    name: "PRO",
-    price: "149,90",
-    mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_03_18-removebg-preview-ITRILTSSlT4vzBTip4SW1zBmtGFdhT.png",
-    mascotPosition: "pointing",
-    description: "O favorito dos campeões",
-    icon: Rocket,
-    features: [
-      "Tudo do Start +",
-      "Painel com notificação WhatsApp",
-      "Taxa por Google Maps",
-      "Agente de IA no WhatsApp",
-      "Cupons de desconto",
-      "Suporte prioritário"
-    ],
-    cta: "Escolher PRO",
-    popular: false,
-    gradient: "from-green-500 to-emerald-500",
-    bgGlow: "bg-green-500/20",
-    signupUrl: "https://cardapio.wzapflow.com.br/signup?plano=pro"
-  },
-  {
-    name: "ELITE",
-    price: "297,90",
-    mascot: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_05_23-removebg-preview-kXIqEweXc607FWu020AJ8L2e1pfwUT.png",
-    mascotPosition: "relaxed",
-    description: "Pra quem quer dominar",
-    icon: Crown,
-    features: [
-      "Tudo do PRO +",
-      "Customização Total",
-      "App para entregadores",
-      "Programa de pontos",
-      "Relatórios avançados",
-      "Onboarding VIP",
-      "Gerente de conta"
-    ],
-    cta: "Ser ELITE",
-    popular: false,
-    gradient: "from-orange-500 to-red-500",
-    bgGlow: "bg-orange-500/10",
-    signupUrl: "https://cardapio.wzapflow.com.br/signup?plano=elite"
-  }
-]
+import { plans } from "@/lib/landing-content"
+import { cn } from "@/lib/utils"
 
 export function PricingSection() {
   return (
-    <section id="planos" className="py-24 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
-      
-      {/* Decorative blurs */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-green-500/5 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-orange-500/5 rounded-full blur-[120px]" />
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 text-balance">
-            Escolha seu plano e{" "}
-            <span className="text-gradient-orange">comece a lucrar</span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Sem taxa por pedido. Sem surpresas. Cancele quando quiser.
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 max-w-7xl mx-auto items-end">
-          {plans.map((plan, index) => (
-            <div 
-              key={index}
-              className={`relative pricing-card ${
-                plan.popular 
-                  ? "md:-mt-8" 
-                  : ""
-              }`}
+    <section id="planos" aria-labelledby="pricing-heading" className="scroll-mt-24 bg-background text-foreground">
+      <div className="mx-auto max-w-[100rem] px-5 py-24 sm:px-8 sm:py-32">
+        <Reveal>
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+              04 — Um plano para cada momento
+            </p>
+            <h2
+              id="pricing-heading"
+              className="mt-6 text-balance text-4xl font-extrabold leading-[1.02] tracking-[-0.055em] sm:text-6xl lg:text-7xl"
             >
-              {/* Mascot */}
-              <div className={`absolute -top-16 z-20 ${
-                plan.mascotPosition === "sitting" 
-                  ? "left-4 w-24 h-24" 
-                  : plan.mascotPosition === "pointing" 
-                    ? "right-0 w-28 h-28 -rotate-6" 
-                    : "right-2 w-28 h-24 rotate-6"
-              }`}>
-                <Image
-                  src={plan.mascot}
-                  alt={`Mascote ${plan.name}`}
-                  fill
-                  className="object-contain mascot-image drop-shadow-2xl"
-                />
-              </div>
-              
-              {/* Popular badge */}
-              {plan.popular && (
-                <div className={`absolute -top-4 left-1/2 -translate-x-1/2 text-white text-sm font-black px-6 py-2 rounded-full flex items-center gap-2 shadow-xl z-10 ${
-                  plan.isTrial 
-                    ? "bg-gradient-to-r from-purple-500 to-pink-500 shadow-purple-500/30" 
-                    : "bg-gradient-to-r from-green-500 to-emerald-500 shadow-green-500/30"
-                }`}>
-                  <Star className="w-4 h-4 fill-current" />
-                  {plan.isTrial ? "RECOMENDADO" : "MAIS ESCOLHIDO"}
-                </div>
-              )}
-              
-              {/* Card */}
-              <div className={`relative bg-card border rounded-3xl p-6 lg:p-8 overflow-hidden ${
-                plan.popular 
-                  ? "border-green-500/50 shadow-2xl shadow-green-500/20" 
-                  : "border-border/50"
-              }`}>
-                {/* Background glow */}
-                <div className={`absolute inset-0 ${plan.bgGlow} opacity-50`} />
-                
-                <div className="relative">
-                  {/* Plan icon & name */}
-                  <div className="flex items-center gap-3 mb-4 mt-8">
-                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${plan.gradient} flex items-center justify-center`}>
-                      <plan.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className={`text-2xl font-black bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent`}>
-                        {plan.name}
-                      </h3>
-                      <p className="text-gray-400 text-sm">{plan.description}</p>
-                    </div>
+              Comece simples. Evolua sem desmontar o fluxo.
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
+              Valores e recursos sincronizados com o cadastro ativo do ZapFlow.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="relative mt-16 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div aria-hidden="true" className="absolute left-[12.5%] right-[12.5%] top-6 hidden h-px bg-border xl:block" />
+          {plans.map((plan, index) => (
+            <Reveal key={plan.name} delay={index * 0.06} className="h-full">
+              <article
+                className={cn(
+                  "relative h-full overflow-hidden rounded-3xl border p-6",
+                  plan.tone === "dark"
+                    ? "border-secondary bg-secondary text-secondary-foreground"
+                    : "border-border bg-card text-card-foreground",
+                )}
+              >
+                <div className="flex h-full flex-col">
+                  <div className="flex items-center justify-between">
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "relative flex size-12 items-center justify-center rounded-full border font-mono text-xs font-bold",
+                        plan.tone === "dark"
+                          ? "border-secondary-foreground/20 bg-secondary"
+                          : "border-border bg-background",
+                      )}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <Badge variant={plan.tone === "dark" ? "secondary" : "outline"}>{plan.stage}</Badge>
                   </div>
-                  
-                  {/* Price */}
-                  <div className="mb-6">
-                    {plan.isTrial ? (
-                      <div>
-                        <div className="flex items-baseline gap-1">
-                          <span className="text-4xl font-black text-white">{plan.price}</span>
-                          <span className="text-gray-400">por 7 dias</span>
-                        </div>
-                        <p className="text-gray-400 text-sm mt-1">
-                          Depois R$ {plan.priceAfter}/mês
-                        </p>
-                        <p className="text-green-400 text-xs mt-2 font-medium">
-                          Sem cartão de crédito • Cancele quando quiser
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-gray-400 text-lg">R$</span>
-                        <span className="text-5xl font-black text-white">{plan.price}</span>
-                        <span className="text-gray-400">/mês</span>
-                      </div>
-                    )}
+
+                  <div className="mt-8">
+                    <h3 className="text-2xl font-extrabold tracking-[-0.04em]">{plan.name}</h3>
+                    <p
+                      className={cn(
+                        "mt-3 min-h-20 text-sm leading-relaxed",
+                        plan.tone === "dark" ? "text-secondary-foreground/62" : "text-muted-foreground",
+                      )}
+                    >
+                      {plan.description}
+                    </p>
                   </div>
-                  
-                  {/* Features */}
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <div className={`w-5 h-5 rounded-full bg-gradient-to-r ${plan.gradient} flex items-center justify-center shrink-0 mt-0.5`}>
-                          <Check className="w-3 h-3 text-white" />
-                        </div>
-                        <span className="text-gray-300 text-sm">{feature}</span>
+
+                  <div className="mt-6 border-y border-current/12 py-6">
+                    <div className="flex items-end gap-2">
+                      <p className="text-4xl font-extrabold tracking-[-0.055em]">{plan.price}</p>
+                      <p className="pb-1 text-sm opacity-65">{plan.cadence}</p>
+                    </div>
+                    {plan.billingNote ? <p className="mt-2 text-sm font-semibold text-primary">{plan.billingNote}</p> : null}
+                  </div>
+
+                  <ul className="mt-6 flex flex-col gap-3" aria-label={`Recursos do plano ${plan.name}`}>
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3 text-sm leading-relaxed">
+                        <CheckIcon aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-primary" />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  
-                  {/* CTA Buttons */}
-                  <div className="space-y-3">
-                    <Button 
-                      className={`w-full py-6 font-bold text-lg rounded-xl transition-all duration-300 ${
-                        plan.isTrial
-                          ? "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white shadow-lg shadow-purple-500/30 hover:scale-105"
-                          : plan.popular 
-                            ? "bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white shadow-lg shadow-green-500/30 hover:scale-105" 
-                            : `bg-gradient-to-r ${plan.gradient} hover:opacity-90 text-white`
-                      }`}
+
+                  <div className="mt-auto pt-8">
+                    <Button
                       asChild
+                      variant={plan.tone === "dark" ? "default" : "outline"}
+                      className="h-11 w-full rounded-full"
                     >
-                      <a 
-                        href={plan.signupUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                      >
+                      <a href={plan.href}>
                         {plan.cta}
+                        <ArrowUpRightIcon data-icon="inline-end" />
                       </a>
                     </Button>
+                    <div className="mt-5 flex flex-col gap-2">
+                      {plan.assurances.map((assurance) => (
+                        <p key={assurance} className="flex items-center gap-2 text-xs opacity-62">
+                          <ShieldCheckIcon aria-hidden="true" className="size-3.5" />
+                          {assurance}
+                        </p>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </article>
+            </Reveal>
           ))}
-        </div>
-        
-        {/* Guarantee */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-4 bg-green-500/10 border border-green-500/30 rounded-full px-8 py-4">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-              <Check className="w-6 h-6 text-white" />
-            </div>
-            <div className="text-left">
-              <p className="text-green-400 font-bold">Garantia de 7 dias</p>
-              <p className="text-gray-400 text-sm">Não gostou? Devolvemos cada centavo.</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>

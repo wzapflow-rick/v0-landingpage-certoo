@@ -1,74 +1,83 @@
-"use client"
+import { InstagramIcon, MessageCircleIcon } from "lucide-react"
 
-import Image from "next/image"
-import { Instagram, MessageCircle } from "lucide-react"
+import { BrandMark } from "@/components/landing/brand-mark"
+import { landingLinks, navigation } from "@/lib/landing-content"
 
 export function Footer() {
   return (
-    <footer className="py-12 bg-card border-t border-border/50">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Logo */}
-          <div className="flex items-center gap-3">
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1-QjuWS8KUURVn8hym7gCPJcjjaxqxC0.png"
-              alt="ZapFlow"
-              width={40}
-              height={40}
-              className="w-10 h-10"
-            />
-            <span className="text-xl font-black text-white">
-              Zap<span className="text-gradient-orange">Flow</span>
-            </span>
+    <footer className="border-t border-background/12 bg-foreground text-background">
+      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+          <div>
+            <BrandMark />
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-background/56">
+              Cardápio digital e operação de pedidos conectados em um só fluxo.
+            </p>
           </div>
-          
-          {/* Links */}
-          <div className="flex items-center gap-6">
-            <a 
-              href="#beneficios" 
-              className="text-gray-400 hover:text-orange-400 transition-colors text-sm font-medium"
-            >
-              Benefícios
-            </a>
-            <a 
-              href="#cardapio" 
-              className="text-gray-400 hover:text-orange-400 transition-colors text-sm font-medium"
-            >
-              Cardápio
-            </a>
-            <a 
-              href="#planos" 
-              className="text-gray-400 hover:text-orange-400 transition-colors text-sm font-medium"
-            >
-              Planos
-            </a>
-          </div>
-          
-          {/* Social */}
-          <div className="flex items-center gap-4">
-            <a 
-              href="https://instagram.com/zapflow" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-gray-400 hover:text-orange-400 hover:bg-orange-500/20 transition-all"
-            >
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a 
-              href="https://wa.me/5579998841252" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-gray-400 hover:text-green-400 hover:bg-green-500/20 transition-all"
-            >
-              <MessageCircle className="w-5 h-5" />
-            </a>
+
+          <div className="grid gap-10 sm:grid-cols-3 sm:gap-16">
+            <nav aria-label="Capítulos da página">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-background/42">Explorar</p>
+              <ul className="mt-4 flex flex-col gap-3">
+                {navigation.map((item) => (
+                  <li key={item.href}>
+                    <a className="text-sm text-background/70 transition-colors hover:text-background" href={item.href}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <nav aria-label="Acesso ao produto">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-background/42">Produto</p>
+              <ul className="mt-4 flex flex-col gap-3">
+                <li>
+                  <a className="text-sm text-background/70 transition-colors hover:text-background" href={landingLinks.login}>
+                    Entrar
+                  </a>
+                </li>
+                <li>
+                  <a className="text-sm text-background/70 transition-colors hover:text-background" href={landingLinks.partnership}>
+                    Testar Parceria
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+            <nav aria-label="Redes e contato">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-background/42">Conversar</p>
+              <ul className="mt-4 flex flex-col gap-3">
+                <li>
+                  <a
+                    className="inline-flex items-center gap-2 text-sm text-background/70 transition-colors hover:text-background"
+                    href={landingLinks.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <InstagramIcon aria-hidden="true" className="size-4" />
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="inline-flex items-center gap-2 text-sm text-background/70 transition-colors hover:text-background"
+                    href={landingLinks.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircleIcon aria-hidden="true" className="size-4" />
+                    WhatsApp
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
-        
-        <div className="mt-8 pt-8 border-t border-border/50 text-center">
-          <p className="text-gray-500 text-sm">
-            {new Date().getFullYear()} ZapFlow. Todos os direitos reservados.
-          </p>
+
+        <div className="mt-12 flex flex-col gap-2 border-t border-background/12 pt-6 text-xs text-background/42 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 ZapFlow. Todos os direitos reservados.</p>
+          <p>Feito para operações que querem fluir.</p>
         </div>
       </div>
     </footer>

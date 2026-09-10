@@ -1,92 +1,90 @@
 "use client"
 
-import { useState } from "react"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { LogInIcon, MenuIcon } from "lucide-react"
 
-const navLinks = [
-  { label: "Benefícios", href: "#beneficios" },
-  { label: "Cardápio", href: "#cardapio" },
-  { label: "Planos", href: "#planos" },
-]
+import { BrandMark } from "@/components/landing/brand-mark"
+import { Button } from "@/components/ui/button"
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { landingLinks, navigation } from "@/lib/landing-content"
 
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border/50">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1-QjuWS8KUURVn8hym7gCPJcjjaxqxC0.png"
-              alt="ZapFlow"
-              width={40}
-              height={40}
-              className="w-10 h-10"
-            />
-            <span className="text-xl font-black text-white">
-              Zap<span className="text-gradient-orange">Flow</span>
-            </span>
-          </a>
-          
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a 
-                key={link.href}
-                href={link.href}
-                className="text-gray-400 hover:text-orange-400 transition-colors font-medium"
+    <header className="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl rounded-full border border-background/15 bg-foreground/85 px-3 py-2 text-background shadow-2xl shadow-foreground/15 backdrop-blur-xl">
+        <div className="flex items-center justify-between">
+          <BrandMark className="pl-1" />
+
+          <nav aria-label="Navegação principal" className="hidden items-center gap-6 lg:flex">
+            {navigation.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm font-semibold text-background/70 transition-colors hover:text-background focus-visible:text-background"
               >
-                {link.label}
+                {item.label}
               </a>
             ))}
           </nav>
-          
-          {/* CTA */}
-          <div className="hidden md:block">
-            <Button 
-              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white font-bold rounded-xl px-6"
-              asChild
-            >
-              <a href="https://cardapio.wzapflow.com.br/signup?plano=parceria">Quero Vender Mais</a>
+
+          <div className="hidden items-center gap-2 sm:flex">
+            <Button asChild variant="ghost" size="sm">
+              <a href={landingLinks.login}>
+                <LogInIcon data-icon="inline-start" />
+                Entrar
+              </a>
+            </Button>
+            <Button asChild size="sm" className="rounded-full">
+              <a href={landingLinks.partnership}>Testar 7 dias</a>
             </Button>
           </div>
-          
-          {/* Mobile menu button */}
-          <button 
-            className="md:hidden text-white p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-        
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <nav className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a 
-                  key={link.href}
-                  href={link.href}
-                  className="text-gray-400 hover:text-orange-400 transition-colors font-medium py-2"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <Button 
-                className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white font-bold rounded-xl mt-2"
-                asChild
-              >
-                <a href="https://cardapio.wzapflow.com.br/signup?plano=parceria">Quero Vender Mais</a>
+
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Abrir menu">
+                <MenuIcon data-icon="inline-start" />
               </Button>
-            </nav>
-          </div>
-        )}
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[88%] overflow-y-auto border-border sm:max-w-sm">
+              <SheetHeader>
+                <SheetTitle>
+                  <BrandMark />
+                </SheetTitle>
+                <SheetDescription>Escolha um capítulo ou acesse sua conta.</SheetDescription>
+              </SheetHeader>
+
+              <nav aria-label="Navegação móvel" className="flex flex-col px-4">
+                {navigation.map((item) => (
+                  <SheetClose asChild key={item.href}>
+                    <a
+                      href={item.href}
+                      className="border-b border-border py-4 text-xl font-bold tracking-tight"
+                    >
+                      {item.label}
+                    </a>
+                  </SheetClose>
+                ))}
+              </nav>
+
+              <SheetFooter>
+                <Button asChild variant="outline" className="rounded-full">
+                  <a href={landingLinks.login}>Entrar na conta</a>
+                </Button>
+                <Button asChild className="rounded-full">
+                  <a href={landingLinks.partnership}>Começar pelo Parceria</a>
+                </Button>
+              </SheetFooter>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   )

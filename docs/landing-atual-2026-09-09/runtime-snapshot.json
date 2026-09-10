@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 1,
+  "snapshot": {
+    "name": "landing-atual-zapflow",
+    "capturedAt": "2026-09-09T23:57:07+00:00",
+    "route": "/",
+    "captureUrl": "http://localhost:3000/",
+    "language": "pt-BR",
+    "colorScheme": "dark",
+    "source": {
+      "repository": "wzapflow-rick/v0-landingpage-certoo",
+      "branch": "main",
+      "commit": "3e5632e9d9ab13c774451b501265ff7c5e9e6a8f",
+      "tree": "d7c1ba27739382ad766fa383c5ffa5a0636a0f8e",
+      "backupBranch": "backup/landing-atual-2026-09-09"
+    }
+  },
+  "counts": {
+    "header": 1,
+    "contentSections": 6,
+    "footer": 1,
+    "headingsDesktop": 22,
+    "linksDesktop": 16,
+    "imageOccurrencesDesktop": 10,
+    "uniqueRemoteImages": 5,
+    "benefits": 6,
+    "menuFeatures": 6,
+    "plans": 4,
+    "planFeatureItems": 25,
+    "faqs": 6,
+    "anchorSectionIds": 3
+  },
+  "sectionOrder": [
+    "header",
+    "hero",
+    "beneficios",
+    "cardapio",
+    "planos",
+    "faq",
+    "cta-final",
+    "footer"
+  ],
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": { "width": 1440, "height": 900, "devicePixelRatio": 1 },
+      "document": { "scrollWidth": 1440, "scrollHeight": 5614 },
+      "sections": [
+        { "index": 0, "name": "header", "tag": "header", "id": null, "top": 0, "width": 1440, "height": 65 },
+        { "index": 1, "name": "hero", "tag": "section", "id": null, "top": 0, "width": 1440, "height": 900 },
+        { "index": 2, "name": "beneficios", "tag": "section", "id": "beneficios", "top": 900, "width": 1440, "height": 872 },
+        { "index": 3, "name": "cardapio", "tag": "section", "id": "cardapio", "top": 1772, "width": 1440, "height": 840 },
+        { "index": 4, "name": "planos", "tag": "section", "id": "planos", "top": 2612, "width": 1440, "height": 1188 },
+        { "index": 5, "name": "faq", "tag": "section", "id": null, "top": 3800, "width": 1440, "height": 831 },
+        { "index": 6, "name": "cta-final", "tag": "section", "id": null, "top": 4631, "width": 1440, "height": 761 },
+        { "index": 7, "name": "footer", "tag": "footer", "id": null, "top": 5392, "width": 1440, "height": 222 }
+      ],
+      "layout": {
+        "heroDirection": "row",
+        "benefitColumns": 3,
+        "demoDirection": "row",
+        "pricingColumns": 4,
+        "desktopNavigationVisible": true,
+        "mobileMenuButtonVisible": false
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": { "width": 768, "height": 1024, "devicePixelRatio": 1 },
+      "document": { "scrollWidth": 768, "scrollHeight": 7222 },
+      "sections": [
+        { "index": 0, "name": "header", "tag": "header", "id": null, "top": 0, "width": 768, "height": 65 },
+        { "index": 1, "name": "hero", "tag": "section", "id": null, "top": 0, "width": 768, "height": 1218 },
+        { "index": 2, "name": "beneficios", "tag": "section", "id": "beneficios", "top": 1218, "width": 768, "height": 1192 },
+        { "index": 3, "name": "cardapio", "tag": "section", "id": "cardapio", "top": 2410, "width": 768, "height": 1419 },
+        { "index": 4, "name": "planos", "tag": "section", "id": "planos", "top": 3829, "width": 768, "height": 1609 },
+        { "index": 5, "name": "faq", "tag": "section", "id": null, "top": 5438, "width": 768, "height": 831 },
+        { "index": 6, "name": "cta-final", "tag": "section", "id": null, "top": 6269, "width": 768, "height": 731 },
+        { "index": 7, "name": "footer", "tag": "footer", "id": null, "top": 7000, "width": 768, "height": 222 }
+      ],
+      "layout": {
+        "heroDirection": "column",
+        "benefitColumns": 2,
+        "demoDirection": "column",
+        "pricingColumns": 2,
+        "desktopNavigationVisible": true,
+        "mobileMenuButtonVisible": false
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": { "width": 390, "height": 844, "devicePixelRatio": 1 },
+      "document": { "scrollWidth": 390, "scrollHeight": 9731 },
+      "sections": [
+        { "index": 0, "name": "header", "tag": "header", "id": null, "top": 0, "width": 390, "height": 65 },
+        { "index": 1, "name": "hero", "tag": "section", "id": null, "top": 0, "width": 390, "height": 1143 },
+        { "index": 2, "name": "beneficios", "tag": "section", "id": "beneficios", "top": 1143, "width": 390, "height": 2058 },
+        { "index": 3, "name": "cardapio", "tag": "section", "id": "cardapio", "top": 3201, "width": 390, "height": 1653 },
+        { "index": 4, "name": "planos", "tag": "section", "id": "planos", "top": 4854, "width": 390, "height": 2721 },
+        { "index": 5, "name": "faq", "tag": "section", "id": null, "top": 7575, "width": 390, "height": 911 },
+        { "index": 6, "name": "cta-final", "tag": "section", "id": null, "top": 8486, "width": 390, "height": 899 },
+        { "index": 7, "name": "footer", "tag": "footer", "id": null, "top": 9385, "width": 390, "height": 346 }
+      ],
+      "layout": {
+        "heroDirection": "column",
+        "benefitColumns": 1,
+        "demoDirection": "column",
+        "pricingColumns": 1,
+        "desktopNavigationVisible": false,
+        "mobileMenuButtonVisible": true,
+        "ctaDecorativePizzaVisible": false
+      }
+    }
+  ],
+  "interactiveStates": {
+    "mobileMenuOpen": {
+      "viewport": { "width": 390, "height": 844 },
+      "headerHeight": 310,
+      "visibleHeaderLinks": [
+        { "text": "ZapFlow", "href": "#" },
+        { "text": "Benefícios", "href": "#beneficios" },
+        { "text": "Cardápio", "href": "#cardapio" },
+        { "text": "Planos", "href": "#planos" },
+        { "text": "Quero Vender Mais", "href": "https://cardapio.wzapflow.com.br/signup?plano=parceria" }
+      ],
+      "screenshot": "screenshots/mobile-menu-aberto-390x844.png"
+    },
+    "faqExpanded": {
+      "viewport": { "width": 390, "height": 844 },
+      "accordionType": "single",
+      "collapsible": true,
+      "openQuestion": "Tem taxa por pedido como o iFood?",
+      "openAnswer": "Não! Essa é a melhor parte. Você paga apenas a mensalidade fixa. Pode vender R$10 mil ou R$100 mil por mês - o valor é o mesmo. O lucro é 100% seu.",
+      "observedContentHeight": 111,
+      "screenshot": "screenshots/faq-expandida-mobile-390x844.png"
+    }
+  },
+  "headings": [
+    { "index": 0, "level": 1, "text": "Tudo que você precisa para vender mais" },
+    { "index": 1, "level": 2, "text": "Por que donos de pizzarias escolhem o ZapFlow?" },
+    { "index": 2, "level": 3, "text": "Cardápio que Dá Fome" },
+    { "index": 3, "level": 3, "text": "Pedido em 30 Segundos" },
+    { "index": 4, "level": 3, "text": "Vendas Explodem" },
+    { "index": 5, "level": 3, "text": "Relatórios Completos" },
+    { "index": 6, "level": 3, "text": "Zero Taxa Por Pedido" },
+    { "index": 7, "level": 3, "text": "Gerenciamento de Mesas" },
+    { "index": 8, "level": 2, "text": "Seu cliente vai querer pedir tudo" },
+    { "index": 9, "level": 2, "text": "Escolha seu plano e comece a lucrar" },
+    { "index": 10, "level": 3, "text": "PARCERIA" },
+    { "index": 11, "level": 3, "text": "START" },
+    { "index": 12, "level": 3, "text": "PRO" },
+    { "index": 13, "level": 3, "text": "ELITE" },
+    { "index": 14, "level": 2, "text": "Perguntas frequentes" },
+    { "index": 15, "level": 3, "text": "Quanto tempo leva pra começar a usar?" },
+    { "index": 16, "level": 3, "text": "Preciso de conhecimento técnico?" },
+    { "index": 17, "level": 3, "text": "Tem taxa por pedido como o iFood?" },
+    { "index": 18, "level": 3, "text": "Funciona em qualquer cidade?" },
+    { "index": 19, "level": 3, "text": "E se eu não gostar?" },
+    { "index": 20, "level": 3, "text": "Posso cancelar quando quiser?" },
+    { "index": 21, "level": 2, "text": "Chega de perder venda pra concorrente" }
+  ],
+  "linksDesktopInDomOrder": [
+    { "index": 0, "component": "header-logo", "text": "ZapFlow", "href": "#", "target": null, "rel": null },
+    { "index": 1, "component": "header-nav", "text": "Benefícios", "href": "#beneficios", "target": null, "rel": null },
+    { "index": 2, "component": "header-nav", "text": "Cardápio", "href": "#cardapio", "target": null, "rel": null },
+    { "index": 3, "component": "header-nav", "text": "Planos", "href": "#planos", "target": null, "rel": null },
+    { "index": 4, "component": "header-cta", "text": "Quero Vender Mais", "href": "https://cardapio.wzapflow.com.br/signup?plano=parceria", "target": null, "rel": null },
+    { "index": 5, "component": "hero-cta", "text": "Quero Vender Mais", "href": "https://cardapio.wzapflow.com.br/signup?plano=parceria", "target": null, "rel": null },
+    { "index": 6, "component": "pricing-parceria", "text": "Testar 7 Dias Grátis", "href": "https://cardapio.wzapflow.com.br/signup?plano=parceria", "target": "_blank", "rel": "noopener noreferrer" },
+    { "index": 7, "component": "pricing-start", "text": "Começar Agora", "href": "https://cardapio.wzapflow.com.br/signup?plano=start", "target": "_blank", "rel": "noopener noreferrer" },
+    { "index": 8, "component": "pricing-pro", "text": "Escolher PRO", "href": "https://cardapio.wzapflow.com.br/signup?plano=pro", "target": "_blank", "rel": "noopener noreferrer" },
+    { "index": 9, "component": "pricing-elite", "text": "Ser ELITE", "href": "https://cardapio.wzapflow.com.br/signup?plano=elite", "target": "_blank", "rel": "noopener noreferrer" },
+    { "index": 10, "component": "cta-final", "text": "Quero Dominar Meu Delivery", "href": "#planos", "target": null, "rel": null },
+    { "index": 11, "component": "footer-nav", "text": "Benefícios", "href": "#beneficios", "target": null, "rel": null },
+    { "index": 12, "component": "footer-nav", "text": "Cardápio", "href": "#cardapio", "target": null, "rel": null },
+    { "index": 13, "component": "footer-nav", "text": "Planos", "href": "#planos", "target": null, "rel": null },
+    { "index": 14, "component": "footer-instagram", "text": "", "href": "https://instagram.com/zapflow", "target": "_blank", "rel": "noopener noreferrer" },
+    { "index": 15, "component": "footer-whatsapp", "text": "", "href": "https://wa.me/5579998841252", "target": "_blank", "rel": "noopener noreferrer" }
+  ],
+  "sectionAnchors": [
+    { "id": "beneficios", "selector": "section#beneficios" },
+    { "id": "cardapio", "selector": "section#cardapio" },
+    { "id": "planos", "selector": "section#planos" }
+  ],
+  "imagesDesktopInDomOrder": [
+    {
+      "index": 0,
+      "use": "header-logo",
+      "alt": "ZapFlow",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1-QjuWS8KUURVn8hym7gCPJcjjaxqxC0.png",
+      "natural": { "width": 1313, "height": 1198 },
+      "rendered": { "width": 40, "height": 40 },
+      "loading": "lazy"
+    },
+    {
+      "index": 1,
+      "use": "hero-pizza",
+      "alt": "Pizza ZapFlow - Delivery rápido como um raio",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1-QjuWS8KUURVn8hym7gCPJcjjaxqxC0.png",
+      "natural": { "width": 1313, "height": 1198 },
+      "rendered": { "width": 588, "height": 536 },
+      "loading": "auto",
+      "priority": true
+    },
+    {
+      "index": 2,
+      "use": "benefits-decoration",
+      "alt": "",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1-QjuWS8KUURVn8hym7gCPJcjjaxqxC0.png",
+      "natural": { "width": 1313, "height": 1198 },
+      "rendered": { "width": 299, "height": 282 },
+      "loading": "lazy"
+    },
+    {
+      "index": 3,
+      "use": "menu-screenshot",
+      "alt": "ZapFlow Cardápio Digital - Screenshot do sistema",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YNUtob87H8iyiQ40lik1Rm4aztZ4Wa.png",
+      "natural": { "width": 390, "height": 854 },
+      "rendered": { "width": 282, "height": 618 },
+      "loading": "lazy"
+    },
+    {
+      "index": 4,
+      "use": "pricing-parceria-mascot",
+      "alt": "Mascote PARCERIA",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_01_26-removebg-preview-rgYCkgksm8UH2pqWKyMMK6mUcCwiYt.png",
+      "natural": { "width": 500, "height": 500 },
+      "rendered": { "width": 96, "height": 96 },
+      "loading": "lazy"
+    },
+    {
+      "index": 5,
+      "use": "pricing-start-mascot",
+      "alt": "Mascote START",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_01_26-removebg-preview-rgYCkgksm8UH2pqWKyMMK6mUcCwiYt.png",
+      "natural": { "width": 500, "height": 500 },
+      "rendered": { "width": 96, "height": 96 },
+      "loading": "lazy"
+    },
+    {
+      "index": 6,
+      "use": "pricing-pro-mascot",
+      "alt": "Mascote PRO",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_03_18-removebg-preview-ITRILTSSlT4vzBTip4SW1zBmtGFdhT.png",
+      "natural": { "width": 500, "height": 500 },
+      "rendered": { "width": 123, "height": 123 },
+      "loading": "lazy"
+    },
+    {
+      "index": 7,
+      "use": "pricing-elite-mascot",
+      "alt": "Mascote ELITE",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_05_23-removebg-preview-kXIqEweXc607FWu020AJ8L2e1pfwUT.png",
+      "natural": { "width": 500, "height": 500 },
+      "rendered": { "width": 121, "height": 107 },
+      "loading": "lazy"
+    },
+    {
+      "index": 8,
+      "use": "cta-decoration",
+      "alt": "",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1-QjuWS8KUURVn8hym7gCPJcjjaxqxC0.png",
+      "natural": { "width": 1313, "height": 1198 },
+      "rendered": { "width": 411, "height": 376 },
+      "loading": "lazy"
+    },
+    {
+      "index": 9,
+      "use": "footer-logo",
+      "alt": "ZapFlow",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1-QjuWS8KUURVn8hym7gCPJcjjaxqxC0.png",
+      "natural": { "width": 1313, "height": 1198 },
+      "rendered": { "width": 40, "height": 40 },
+      "loading": "lazy"
+    }
+  ],
+  "uniqueRemoteAssets": [
+    {
+      "id": "zapflow-identidade-pizza-og",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1-QjuWS8KUURVn8hym7gCPJcjjaxqxC0.png",
+      "archivePath": "assets/zapflow-identidade-pizza-og.png",
+      "width": 1313,
+      "height": 1198,
+      "bytes": 1243851,
+      "sha256": "f1ebd5ab126059bf5b1fc1f725af19f6701558751b239c24e1af3af90a6b77d8"
+    },
+    {
+      "id": "cardapio-digital-screenshot",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YNUtob87H8iyiQ40lik1Rm4aztZ4Wa.png",
+      "archivePath": "assets/cardapio-digital-screenshot.png",
+      "width": 390,
+      "height": 854,
+      "bytes": 223957,
+      "sha256": "ee11445e8a336a0225e2ca39890de40eed290ae3f11c49c62ef2ebc8dd895ece"
+    },
+    {
+      "id": "mascote-parceria-start",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_01_26-removebg-preview-rgYCkgksm8UH2pqWKyMMK6mUcCwiYt.png",
+      "archivePath": "assets/mascote-parceria-start.png",
+      "width": 500,
+      "height": 500,
+      "bytes": 198828,
+      "sha256": "1b90e27f57933a5218667e9d1da75af5e356ea43e7ef5b15fa4aa5ce479a9a0c"
+    },
+    {
+      "id": "mascote-pro",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_03_18-removebg-preview-ITRILTSSlT4vzBTip4SW1zBmtGFdhT.png",
+      "archivePath": "assets/mascote-pro.png",
+      "width": 500,
+      "height": 500,
+      "bytes": 214200,
+      "sha256": "6095a991f02632565affb14e67c766b90234e716fcbfdf74b3a8ea4118b7832d"
+    },
+    {
+      "id": "mascote-elite",
+      "url": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026__09_05_23-removebg-preview-kXIqEweXc607FWu020AJ8L2e1pfwUT.png",
+      "archivePath": "assets/mascote-elite.png",
+      "width": 500,
+      "height": 500,
+      "bytes": 244604,
+      "sha256": "0da577d4f938e4e7d6e26b411dd9a34a0fcdf7e0e0c7f0d6db3b22c41a4b17bf"
+    }
+  ],
+  "metadata": {
+    "title": "ZapFlow - Venda Mais com Cardápio Digital | Sistema de Delivery",
+    "description": "Transforme seu delivery em uma máquina de vendas. Cardápio digital que dá água na boca, pedidos em segundos, zero taxa por pedido. +500 estabelecimentos já usam.",
+    "keywords": "delivery, cardápio digital, pizzaria, restaurante, pedidos online, whatsapp, sistema delivery, cardapio online",
+    "icons": {
+      "icon": "/favicon.png",
+      "shortcut": "/favicon.png",
+      "apple": "/favicon.png"
+    },
+    "openGraph": {
+      "title": "ZapFlow - Venda Mais com Cardápio Digital",
+      "description": "Transforme seu delivery em uma máquina de vendas. Cardápio digital profissional, zero taxa por pedido.",
+      "type": "website",
+      "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1-QjuWS8KUURVn8hym7gCPJcjjaxqxC0.png"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "title": "ZapFlow - Venda Mais com Cardápio Digital",
+      "description": "Transforme seu delivery em uma máquina de vendas.",
+      "runtimeImage": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1-QjuWS8KUURVn8hym7gCPJcjjaxqxC0.png"
+    },
+    "viewport": "width=device-width, initial-scale=1"
+  },
+  "css": {
+    "activeFile": "app/globals.css",
+    "bodyFontFamilyComputed": "Inter, \"Inter Fallback\"",
+    "fontSans": "'Inter', 'Inter Fallback', system-ui, sans-serif",
+    "fontMono": "'Geist Mono', 'Geist Mono Fallback'",
+    "customPropertiesDeclared": {
+      "--background": "oklch(0.10 0.02 250)",
+      "--foreground": "oklch(0.98 0 0)",
+      "--card": "oklch(0.15 0.02 250)",
+      "--card-foreground": "oklch(0.98 0 0)",
+      "--popover": "oklch(0.15 0.02 250)",
+      "--popover-foreground": "oklch(0.98 0 0)",
+      "--primary": "oklch(0.65 0.2 145)",
+      "--primary-foreground": "oklch(0.98 0 0)",
+      "--secondary": "oklch(0.55 0.15 250)",
+      "--secondary-foreground": "oklch(0.98 0 0)",
+      "--muted": "oklch(0.22 0.02 250)",
+      "--muted-foreground": "oklch(0.7 0 0)",
+      "--accent": "oklch(0.7 0.22 40)",
+      "--accent-foreground": "oklch(0.15 0 0)",
+      "--destructive": "oklch(0.6 0.25 25)",
+      "--destructive-foreground": "oklch(0.98 0 0)",
+      "--border": "oklch(0.28 0.02 250)",
+      "--input": "oklch(0.22 0.02 250)",
+      "--ring": "oklch(0.65 0.2 145)",
+      "--chart-1": "oklch(0.65 0.2 145)",
+      "--chart-2": "oklch(0.55 0.15 250)",
+      "--chart-3": "oklch(0.7 0.2 45)",
+      "--chart-4": "oklch(0.6 0.25 25)",
+      "--chart-5": "oklch(0.75 0.15 80)",
+      "--radius": "0.75rem"
+    },
+    "literalGradientColors": {
+      "hero": ["#0a0f1a", "#0d1829", "#0a1628"],
+      "meltingText": ["#fbbf24", "#f59e0b", "#ea580c", "#dc2626"],
+      "orangeText": ["#fb923c", "#f97316", "#ea580c"]
+    },
+    "scrollBehavior": "smooth"
+  },
+  "screenshots": [
+    { "path": "screenshots/desktop-1440x900.png", "width": 1440, "height": 5614, "sha256": "3b23bb33ca2a84b99f0e009cb2c4d0abc391e94624d905f69a3d002fcafc17d7" },
+    { "path": "screenshots/tablet-768x1024.png", "width": 768, "height": 7222, "sha256": "e25e7876279ee6b4269c1446268df82b312cc87385e9b30c708200e148063532" },
+    { "path": "screenshots/mobile-390x844.png", "width": 390, "height": 9731, "sha256": "12b9b645b21f0f44fba67e12172180babaf26faedd61f3af3ca5799360f99430" },
+    { "path": "screenshots/mobile-menu-aberto-390x844.png", "width": 390, "height": 844, "sha256": "fd4ef93257a3d1d9f9b5e5aa46fcc079b2ce29cc47ab4199e4bbef66f7af0e10" },
+    { "path": "screenshots/faq-expandida-mobile-390x844.png", "width": 390, "height": 844, "sha256": "f39f1737a1888dd881e1ad4a83d9f7099a9d42f1f427574f7ea977eb5e3a7473" }
+  ]
+}

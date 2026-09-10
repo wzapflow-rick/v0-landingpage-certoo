@@ -6,7 +6,7 @@ import { landingLinks, navigation } from "@/lib/landing-content"
 export function Footer() {
   return (
     <footer className="border-t border-background/12 bg-foreground text-background">
-      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8">
+      <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
           <div>
             <BrandMark />

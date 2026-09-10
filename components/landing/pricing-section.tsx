@@ -13,7 +13,7 @@ export function PricingSection() {
         <Reveal>
           <div className="mx-auto max-w-4xl text-center">
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-              04 — Um plano para cada momento
+              No ritmo do seu negócio
             </p>
             <h2
               id="pricing-heading"
@@ -22,7 +22,7 @@ export function PricingSection() {
               Comece simples. Evolua sem desmontar o fluxo.
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
-              Valores e recursos sincronizados com o cadastro ativo do ZapFlow.
+              Escolha a estrutura para o seu momento. Todos os planos com zero comissão por pedido.
             </p>
           </div>
         </Reveal>
@@ -41,17 +41,7 @@ export function PricingSection() {
               >
                 <div className="flex h-full flex-col">
                   <div className="flex items-center justify-between">
-                    <span
-                      aria-hidden="true"
-                      className={cn(
-                        "relative flex size-12 items-center justify-center rounded-full border font-mono text-xs font-bold",
-                        plan.tone === "dark"
-                          ? "border-secondary-foreground/20 bg-secondary"
-                          : "border-border bg-background",
-                      )}
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
+                    <span className="text-sm font-medium">{plan.name === "Pro" ? "Mais automação" : "Sem comissão"}</span>
                     <Badge variant={plan.tone === "dark" ? "secondary" : "outline"}>{plan.stage}</Badge>
                   </div>
 

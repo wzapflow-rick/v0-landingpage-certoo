@@ -19,7 +19,7 @@ import { landingLinks, navigation } from "@/lib/landing-content"
 export function Header() {
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
-      <div className="mx-auto max-w-7xl rounded-full border border-background/15 bg-foreground/85 px-3 py-2 text-background shadow-2xl shadow-foreground/15 backdrop-blur-xl">
+      <div className="mx-auto max-w-7xl rounded-2xl border border-background/15 bg-foreground/95 px-4 py-3 text-background backdrop-blur-xl">
         <div className="flex items-center justify-between">
           <BrandMark className="pl-1" />
 

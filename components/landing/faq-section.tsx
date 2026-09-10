@@ -14,7 +14,7 @@ export function FAQSection() {
         <Reveal>
           <div className="lg:sticky lg:top-28">
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-              05 — Antes de começar
+              Antes do primeiro pedido
             </p>
             <h2
               id="faq-heading"

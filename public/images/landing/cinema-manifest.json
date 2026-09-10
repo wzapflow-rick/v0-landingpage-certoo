@@ -1,0 +1,39 @@
+{
+  "method": "Original generated food photography, chroma-keyed WebP derivatives, Motion/CSS 2.5D choreography",
+  "assets": [
+    {
+      "original": "pizza-cinema.png",
+      "runtime": "pizza-cutout.webp",
+      "source": "GenerateImage in this conversation",
+      "direction": "Artisan pepperoni pizza in three-quarter view; lifted slice and mozzarella strands; warm softbox upper left; emerald rim; uniform dark forest backdrop; no text or props",
+      "selection": "Selected after visual inspection"
+    },
+    {
+      "original": "burger-clean.png",
+      "runtime": "burger-cutout.webp",
+      "source": "GenerateImage in this conversation",
+      "prompt": "Photorealistic luxury food advertising photograph of an exploded cheeseburger. Square image, centered, perfectly uniform solid dark forest green background #061C16. Only six separated ingredient layers floating aligned vertically: sesame brioche top bun, lettuce with tomato slices, cheddar cheese, seared beef patty, pickles and sauce, brioche bottom bun. Generous clearly visible empty gaps between each horizontal layer. All ingredients entirely inside frame. Large warm softbox from top left and soft emerald rim from right. Appetizing, tactile, extremely detailed. The photograph contains ONLY FOOD on plain background. Absolutely NO text, NO letters, NO numbers, NO annotations, NO labels, NO diagrams, NO typography, NO watermarks.",
+      "selection": "Second generation selected; first rejected because it contained annotations and was removed"
+    },
+    {
+      "runtime": "cardapio-digital.png",
+      "source": "Existing project asset, real product capture, preserved"
+    }
+  ],
+  "editing": {
+    "assets": "scripts/prepare-cinema.mjs regenerates transparent WebP derivatives using sharp",
+    "palette": "app/globals.css",
+    "commercialContent": "lib/landing-content.ts",
+    "chapters": "components/landing/flow-scene.tsx",
+    "layerMasksAndMotion": "components/landing/food-scene.tsx",
+    "styleTile": "/style-tile"
+  },
+  "timing": {
+    "pizzaSeparation": [0, 0.27],
+    "pizzaToBurgerHandoff": [0.27, 0.45],
+    "explodedBurger": [0.45, 0.58],
+    "assembly": [0.58, 0.84],
+    "finalReadingHold": [0.84, 1]
+  },
+  "limitations": ["A matched transition between food cutouts, not physical 3D morphing", "Mobile, short windows and reduced motion use static chapter illustrations", "No generation IDs were supplied by the image tool"]
+}

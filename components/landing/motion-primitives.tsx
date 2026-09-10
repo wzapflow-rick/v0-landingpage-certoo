@@ -101,7 +101,7 @@ export function ScrollText({ text, className }: { text: string; className?: stri
   const words = text.split(" ")
   const { scrollYProgress } = useScroll({
     target,
-    offset: ["start 88%", "end 42%"],
+    offset: ["start 82%", "end 82%"],
   })
 
   if (shouldReduceMotion) {

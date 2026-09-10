@@ -23,17 +23,17 @@ const flowIcons: readonly LucideIcon[] = [
 ]
 
 const positions = [
-  "left-[4%] top-[14%]",
+  "left-[4%] top-[16%]",
   "right-[4%] top-[18%]",
   "bottom-[18%] left-[6%]",
   "bottom-[14%] right-[5%]",
 ] as const
 
 const movement = [
-  { x: -170, y: -90, rotate: -8 },
-  { x: 180, y: -80, rotate: 7 },
-  { x: -180, y: 100, rotate: 6 },
-  { x: 170, y: 90, rotate: -7 },
+  { x: -112, y: -12, rotate: -8 },
+  { x: 112, y: -12, rotate: 7 },
+  { x: -112, y: 12, rotate: 6 },
+  { x: 112, y: 12, rotate: -7 },
 ] as const
 
 function FlowNode({
@@ -46,10 +46,10 @@ function FlowNode({
   const item = flowSteps[index]
   const Icon = flowIcons[index]
   const initial = movement[index]
-  const x = useTransform(progress, [0, 0.58, 0.92], [initial.x, initial.x * 0.3, 0])
-  const y = useTransform(progress, [0, 0.58, 0.92], [initial.y, initial.y * 0.3, 0])
-  const rotate = useTransform(progress, [0, 0.68, 0.92], [initial.rotate, initial.rotate * 0.4, 0])
-  const opacity = useTransform(progress, [0, 0.18, 0.92], [0.22, 0.78, 1])
+  const x = useTransform(progress, [0, 0.46, 0.66], [initial.x, initial.x * 0.24, 0])
+  const y = useTransform(progress, [0, 0.46, 0.66], [initial.y, initial.y * 0.24, 0])
+  const rotate = useTransform(progress, [0, 0.5, 0.66], [initial.rotate, initial.rotate * 0.28, 0])
+  const opacity = useTransform(progress, [0, 0.28, 0.58, 1], [0, 0.15, 1, 1])
 
   return (
     <m.article
@@ -113,10 +113,14 @@ export function FlowScene() {
     target,
     offset: ["start start", "end end"],
   })
-  const pizzaScale = useTransform(scrollYProgress, [0, 0.52, 1], [0.82, 1.04, 0.9])
-  const pizzaRotate = useTransform(scrollYProgress, [0, 0.52, 1], [-6, 2, 0])
-  const orbitScale = useTransform(scrollYProgress, [0.12, 0.9], [0.82, 1])
-  const orbitOpacity = useTransform(scrollYProgress, [0.12, 0.65], [0.12, 0.52])
+  const pizzaScale = useTransform(scrollYProgress, [0, 0.4, 0.66], [0.82, 1.04, 0.94])
+  const pizzaRotate = useTransform(scrollYProgress, [0, 0.4, 0.66], [-6, 2, 0])
+  const orbitScale = useTransform(scrollYProgress, [0.08, 0.62], [0.82, 1])
+  const orbitOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.08, 0.52, 1],
+    [0.12, 0.12, 0.52, 0.52],
+  )
 
   if (shouldReduceMotion) {
     return <StaticFlow />
@@ -124,8 +128,11 @@ export function FlowScene() {
 
   return (
     <>
-      <div ref={target} className="relative hidden min-h-[185vh] md:block">
-        <div className="sticky top-0 h-screen overflow-hidden">
+      <div
+        ref={target}
+        className="relative hidden min-h-[220svh] md:[@media(min-height:36rem)]:block"
+      >
+        <div className="sticky top-0 h-screen overflow-hidden supports-[height:100svh]:h-svh">
           <div aria-hidden="true" className="flow-grid absolute inset-0 opacity-30" />
           <m.div
             aria-hidden="true"
@@ -133,7 +140,7 @@ export function FlowScene() {
             style={{ scale: orbitScale, opacity: orbitOpacity }}
           />
           <m.div
-            className="motion-object absolute left-1/2 top-1/2 size-72 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border border-background/15 bg-secondary shadow-2xl shadow-primary/10 lg:size-96"
+            className="motion-object absolute left-1/2 top-1/2 size-[min(18rem,52svh)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border border-background/15 bg-secondary shadow-2xl shadow-primary/10 lg:size-[min(24rem,60svh)]"
             style={{ scale: pizzaScale, rotate: pizzaRotate }}
           >
             <Image
@@ -154,7 +161,7 @@ export function FlowScene() {
         </div>
       </div>
 
-      <StaticFlow className="md:hidden" />
+      <StaticFlow className="md:[@media(min-height:36rem)]:hidden" />
     </>
   )
 }

@@ -1,45 +1,74 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import type { Metadata, Viewport } from "next"
+import { Geist_Mono, Manrope } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
 
-const inter = Inter({ 
+import "./globals.css"
+
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: '--font-inter'
-});
+  variable: "--font-manrope",
+  display: "swap",
+})
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
-  title: 'ZapFlow - Venda Mais com Cardápio Digital | Sistema de Delivery',
-  description: 'Transforme seu delivery em uma máquina de vendas. Cardápio digital que dá água na boca, pedidos em segundos, zero taxa por pedido. +500 estabelecimentos já usam.',
-  keywords: 'delivery, cardápio digital, pizzaria, restaurante, pedidos online, whatsapp, sistema delivery, cardapio online',
+  metadataBase: new URL("https://cardapio.wzapflow.com.br"),
+  title: "ZapFlow — Do cardápio ao pedido. Tudo flui.",
+  description:
+    "Cardápio digital, pedidos e operação em um só fluxo. Receba pedidos online com 0% de taxa por pedido e teste o plano Parceria por 7 dias.",
+  keywords: [
+    "cardápio digital",
+    "sistema de pedidos",
+    "delivery",
+    "restaurante",
+    "pizzaria",
+    "Kanban de pedidos",
+    "pedidos no WhatsApp",
+  ],
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
-    apple: '/favicon.png',
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/apple-icon.png",
   },
   openGraph: {
-    title: 'ZapFlow - Venda Mais com Cardápio Digital',
-    description: 'Transforme seu delivery em uma máquina de vendas. Cardápio digital profissional, zero taxa por pedido.',
-    type: 'website',
-    images: ['https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1-QjuWS8KUURVn8hym7gCPJcjjaxqxC0.png']
+    title: "ZapFlow — Do cardápio ao pedido. Tudo flui.",
+    description: "Cardápio digital e operação de pedidos conectados, sem taxa por pedido.",
+    type: "website",
+    locale: "pt_BR",
+    images: [
+      {
+        url: "/images/landing/zapflow-social.png",
+        width: 1024,
+        height: 1024,
+        alt: "Pizza artesanal ao lado de uma interface móvel, representando o fluxo ZapFlow",
+      },
+    ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'ZapFlow - Venda Mais com Cardápio Digital',
-    description: 'Transforme seu delivery em uma máquina de vendas.',
-  }
+    card: "summary_large_image",
+    title: "ZapFlow — Do cardápio ao pedido. Tudo flui.",
+    description: "Cardápio digital e operação de pedidos conectados, sem taxa por pedido.",
+    images: ["/images/landing/zapflow-social.png"],
+  },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#122018",
+}
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className="bg-background">
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${manrope.variable} ${geistMono.variable} font-sans antialiased`}>
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.NODE_ENV === "production" ? <Analytics /> : null}
       </body>
     </html>
   )

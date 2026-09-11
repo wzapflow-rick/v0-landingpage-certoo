@@ -76,7 +76,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-2 border-t border-background/12 pt-6 text-xs text-background/42 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 ZapFlow. Todos os direitos reservados.</p>
+          <p>© 2026 wZapFlow. Todos os direitos reservados.</p>
           <p>Feito para operações que querem fluir.</p>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { landingLinks } from "@/lib/landing-content";
 
 export const metadata: Metadata = {
-  title: "ZapFlow — Style tile",
+  title: "wZapFlow — Style tile",
   robots: { index: false, follow: false },
 };
 const colors = [
@@ -26,7 +26,7 @@ export default function StyleTile() {
         </a>
       </header>
       <div className="flex flex-col gap-5">
-        <p className="eyebrow text-secondary">Direção de arte / ZapFlow</p>
+        <p className="eyebrow text-secondary">Direção de arte / wZapFlow</p>
         <h1 className="text-6xl font-medium tracking-[-0.055em]">
           A receita de um bom fluxo.
         </h1>

@@ -94,7 +94,7 @@ export const proofPoints = [
   {
     value: "+500",
     label: "estabelecimentos",
-    description: "já usam o ZapFlow em sua operação.",
+    description: "já usam o wZapFlow em sua operação.",
   },
   {
     value: "0%",
@@ -209,9 +209,9 @@ export const faqs = [
       "Você começa gratuitamente no plano Parceria por 7 dias. Depois desse período, a assinatura passa a R$ 29,90 por mês.",
   },
   {
-    question: "O ZapFlow cobra comissão sobre os pedidos?",
+    question: "O wZapFlow cobra comissão sobre os pedidos?",
     answer:
-      "Não. O ZapFlow informa 0% de taxa por pedido. Você paga a mensalidade correspondente ao plano escolhido.",
+      "Não. O wZapFlow informa 0% de taxa por pedido. Você paga a mensalidade correspondente ao plano escolhido.",
   },
   {
     question: "Posso cancelar quando quiser?",

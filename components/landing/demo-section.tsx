@@ -54,7 +54,7 @@ export function DemoSection() {
             <div className="max-w-72 overflow-hidden rounded-t-[2.5rem] border-x-8 border-t-8 border-foreground bg-foreground">
               <Image
                 src="/images/landing/cardapio-digital.png"
-                alt="Captura real do cardápio ZapFlow mostrando categorias, produtos e preços"
+                alt="Captura real do cardápio wZapFlow mostrando categorias, produtos e preços"
                 width={390}
                 height={854}
                 sizes="288px"
@@ -62,7 +62,7 @@ export function DemoSection() {
               />
             </div>
             <figcaption className="pb-6 text-sm text-secondary-foreground/70">
-              Captura real de um cardápio ZapFlow.
+              Captura real de um cardápio wZapFlow.
             </figcaption>
           </figure>
         </div>

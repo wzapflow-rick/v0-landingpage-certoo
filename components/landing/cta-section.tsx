@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { DarkGradientBg } from "@/components/ui/elegant-dark-pattern";
 import { MagneticButton } from "@/components/landing/motion-primitives";
 import { landingLinks } from "@/lib/landing-content";
 
@@ -8,6 +9,7 @@ export function CTASection() {
       aria-labelledby="cta-heading"
       className="overflow-hidden bg-foreground text-background"
     >
+      <DarkGradientBg>
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 py-20 md:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-28">
         <div className="flex flex-col items-start gap-7">
           <p className="eyebrow text-accent">Sua receita. Nosso fluxo.</p>
@@ -34,6 +36,7 @@ export function CTASection() {
           className="h-auto w-full"
         />
       </div>
+      </DarkGradientBg>
     </section>
   );
 }

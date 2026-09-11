@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { ArrowUpRightIcon } from "lucide-react";
-import { m, useScroll, useTransform, useMotionValue } from "motion/react";
+import { m, useScroll, useTransform, useMotionValue, useReducedMotion } from "motion/react";
 import { FoodScene } from "@/components/landing/food-scene";
 import { flowSteps } from "@/lib/landing-content";
 
@@ -23,7 +23,7 @@ const chapters = [
   },
   {
     label: "A conexão",
-    title: "É aqui que\nentra o ZapFlow.",
+    title: "É aqui que\nentra o wZapFlow.",
     description:
       "Cardápio por link ou QR Code, pedidos no Kanban, Pix e cartões. Cada parte encontra o seu lugar.",
     phase: 0.7,
@@ -38,10 +38,14 @@ const chapters = [
 ];
 
 function ChapterFood({ phase }: { phase: number }) {
-  const progress = useMotionValue(phase);
+  const target = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const still = useMotionValue(phase);
+  const { scrollYProgress } = useScroll({ target, offset: ["start end", "end start"] });
+  const progress = useTransform(scrollYProgress, [0, 0.8], [Math.max(0, phase - 0.3), Math.min(1, phase + 0.25)]);
   return (
-    <div className="chapter-food">
-      <FoodScene progress={progress} />
+    <div ref={target} className="chapter-food">
+      <FoodScene progress={reduced ? still : progress} />
     </div>
   );
 }

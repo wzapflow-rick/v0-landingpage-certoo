@@ -1,23 +1,13 @@
 "use client";
 
-import { useRef } from "react";
-import Image from "next/image";
+import { PizzaVideo } from "./pizza-video";
 import { ArrowDownIcon, ArrowUpRightIcon } from "lucide-react";
-import { m, useScroll, useTransform } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { landingLinks } from "@/lib/landing-content";
 
 export function HeroSection() {
-  const target = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 90]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [-5, 5]);
   return (
     <section
-      ref={target}
       id="inicio"
       aria-labelledby="hero-title"
       className="cinema-hero bg-foreground text-background"
@@ -56,16 +46,9 @@ export function HeroSection() {
             Plano Parceria. Depois, R$ 29,90/mês.
           </p>
         </div>
-        <m.div className="hero-food motion-object" style={{ y, rotate }}>
-          <Image
-            src="/images/landing/pizza-cutout.webp"
-            alt="Pizza de pepperoni com uma fatia levantada e fios de queijo derretido"
-            width={1024}
-            height={1024}
-            preload
-            sizes="(min-width: 1024px) 60vw, 100vw"
-          />
-        </m.div>
+        <div className="hero-food" style={{ pointerEvents: 'auto' }}>
+          <PizzaVideo />
+        </div>
       </div>
       <div className="hero-bottom">
         <p className="text-sm text-background/60">

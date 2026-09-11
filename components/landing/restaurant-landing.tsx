@@ -115,9 +115,7 @@ export function RestaurantLanding() {
                 Seu cardápio pode <em>dar água na boca.</em>
               </h1>
               <p>
-                Crie um cardápio digital bonito, fácil de acessar e de pedir — e
-                transforme cada visita em uma nova oportunidade para o seu
-                restaurante.
+                Crie um cardápio digital bonito, rápido e fácil de pedir — e transforme cada visita em mais pedidos para o seu restaurante.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="#planos" className="restaurant-button">
@@ -144,9 +142,7 @@ export function RestaurantLanding() {
               <MenuPhone />
               <RocketEntrance />
               <p className="art-note">
-                Mais sabor.
-                <br />
-                Mais possibilidades.
+                Mais pedidos para<br />o seu restaurante!<span className="hand-arrow" aria-hidden="true">⤴︎</span>
               </p>
             </div>
           </div>
@@ -167,9 +163,10 @@ export function RestaurantLanding() {
             </p>
           </div>
           <div className="feature-grid">
-            {features.map((f) => (
+            {features.map((f, i) => (
               <article className="restaurant-card" key={f.title}>
-                <f.icon className="text-primary" size={30} />
+                <div className={`feature-preview preview-${i}`} aria-hidden="true"><span className={`menu-photo food-${i}`} /><div><span>{["Cardápio da casa", "Pedido recebido", "Foto. Nome. Pronto.", "Do delivery ao salão"][i]}</span><small>{["Feito para abrir o apetite", "Tudo organizado", "Sua vitrine no ar", "Um cardápio, sua identidade"][i]}</small></div></div>
+                <f.icon className="text-primary" size={24} />
                 <h3>{f.title}</h3>
                 <p>{f.text}</p>
               </article>
@@ -209,20 +206,22 @@ export function RestaurantLanding() {
               <a href="#planos" className="text-link">
                 Encontre o seu plano <ArrowRight size={16} />
               </a>
+              <p className="product-note">Seu restaurante sempre a um clique de distância! <span aria-hidden="true">⤶</span></p>
             </div>
           </div>
         </section>
         {testimonialTemplates.some((t) => t.approved) && (
           <section className="restaurant-container feature-section">
-            <h2>Quem usa, recomenda.</h2>
+            <h2>Restaurantes que já <em>decolaram</em><br />com o Cardápio wZapFlow.</h2>
             <div className="feature-grid">
               {testimonialTemplates
                 .filter((t) => t.approved)
                 .map((t) => (
                   <blockquote key={t.name} className="restaurant-card">
                     <p>{t.quote}</p>
-                    <footer>
-                      {t.name} · {t.restaurant}
+                    <footer className="flex items-center gap-3">
+                      {t.photo && <img src={t.photo} alt={t.name} width={48} height={48} className="size-12 rounded-full object-cover" loading="lazy" />}
+                      <span>{t.name}<br /><small>{t.restaurant}</small></span>
                     </footer>
                   </blockquote>
                 ))}
@@ -243,9 +242,7 @@ export function RestaurantLanding() {
               para o seu restaurante.
             </h2>
             <p>
-              Seu negócio cresce.
-              <br />
-              Seu cardápio acompanha.
+              Mais pedidos.<br />Mais lucro. <span aria-hidden="true">⤵</span>
             </p>
           </div>
           <div className="restaurant-plans">
@@ -255,7 +252,7 @@ export function RestaurantLanding() {
                 className={`restaurant-plan ${plan.name === "Pro" ? "featured-plan" : ""}`}
               >
                 <div>
-                  <span className="plan-stage">{plan.stage}</span>
+                  <span className="plan-stage">{plan.name === "Pro" ? "Mais escolhido" : plan.stage}</span>
                   <h3>{plan.name}</h3>
                   <p>{plan.description}</p>
                 </div>
@@ -303,7 +300,14 @@ export function RestaurantLanding() {
             </a>
           </div>
           <div>
-            {faqs.map((f) => (
+            {[
+              { question: "Como funciona o Cardápio wZapFlow?", answer: "Você organiza seus produtos em um cardápio digital e compartilha o link ou QR Code. Seus clientes consultam as opções e fazem seus pedidos online." },
+              { question: "Preciso ter um site?", answer: "Não. Seu cardápio possui um link próprio para compartilhar com os clientes." },
+              { question: "Posso personalizar o cardápio?", answer: "Você pode organizar fotos, produtos e categorias. O plano Elite inclui customização total; consulte os recursos de cada plano." },
+              { question: "Como meus clientes fazem os pedidos?", answer: "Eles acessam o link ou QR Code e escolhem os produtos. Você acompanha os pedidos no Kanban. Recursos de WhatsApp estão disponíveis no Pro e Elite." },
+              { question: "O pagamento é seguro?", answer: "Pix e cartões estão entre os meios oferecidos. Antes de contratar, consulte a equipe sobre o processamento dos pagamentos e as condições aplicáveis ao seu restaurante." },
+              ...faqs,
+            ].map((f) => (
               <details key={f.question}>
                 <summary>
                   {f.question}
@@ -322,10 +326,9 @@ export function RestaurantLanding() {
                 O próximo pedido começa aqui
               </span>
               <h2>
-                Seu sabor merece
-                <br />
-                <em>um cardápio à altura.</em>
+                Pronto para transformar<br /><em>seu cardápio em pedidos?</em>
               </h2>
+              <p>Crie agora seu cardápio digital e leve seu restaurante para outro nível.</p>
             </div>
             <a href="#planos" className="restaurant-button">
               Criar meu cardápio <ArrowRight size={18} />

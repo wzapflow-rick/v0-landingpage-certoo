@@ -17,10 +17,7 @@ export function RocketEntrance() {
   const ref = useRef<HTMLImageElement>(null);
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    try {
-      if (sessionStorage.getItem("wzapflow-rocket-seen")) return;
-      sessionStorage.setItem("wzapflow-rocket-seen", "1");
-    } catch {}
+
     const image = ref.current;
     if (!image) return;
     const rect = image.getBoundingClientRect();
@@ -30,7 +27,8 @@ export function RocketEntrance() {
           transform: `translate(${innerWidth / 2 - rect.left - rect.width / 2}px, ${innerHeight / 2 - rect.top - rect.height / 2}px) rotate(-18deg) scale(.7)`,
           opacity: 0.2,
         },
-        { transform: "translate(0,0) rotate(0) scale(1)", opacity: 1 },
+        { transform: `translate(${innerWidth / 2 - rect.left - rect.width / 2}px, ${innerHeight / 2 - rect.top - rect.height / 2}px) rotate(-12deg) scale(.82)`, opacity: 1, filter: "brightness(1.25) saturate(1.15)", offset: .3 },
+        { transform: "translate(0,0) rotate(0) scale(1)", opacity: 1, filter: "brightness(1.04) saturate(1.12)" },
       ],
       { duration: 2100, easing: "cubic-bezier(.16,1,.3,1)" },
     );
@@ -69,30 +67,11 @@ export function MenuPhone({ burger = false }: { burger?: boolean }) {
         </span>
         <small>Feito com sabor. Pedido com carinho.</small>
       </div>
-      <img
-        className="phone-cover"
-        src={
-          burger
-            ? "/images/landing/restaurant-feast.png"
-            : "/images/landing/pizza-cutout.webp"
-        }
-        alt=""
-        width={300}
-        height={160}
-      />
+      <div className={`phone-cover menu-photo food-${burger ? 1 : 0}`} role="img" aria-label={burger ? "Cheeseburger artesanal" : "Pizza de pepperoni"} />
       <div className="phone-menu">
         {["Pizzas", "Hambúrgueres", "Combos", "Bebidas"].map((name, i) => (
           <div className="phone-row" key={name}>
-            <img
-              src={
-                i === 0
-                  ? "/images/landing/pizza-cutout.webp"
-                  : "/images/landing/restaurant-feast.png"
-              }
-              alt=""
-              width={60}
-              height={60}
-            />
+            <span className={`category-photo menu-photo food-${i}`} aria-hidden="true" />
             <span>
               {name}
               <small>

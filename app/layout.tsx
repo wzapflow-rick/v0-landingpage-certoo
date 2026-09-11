@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Geist_Mono, Manrope } from "next/font/google"
+import { Caveat, Manrope } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 
 import "./globals.css"
@@ -16,9 +16,9 @@ const manrope = Manrope({
   display: "swap",
 })
 
-const geistMono = Geist_Mono({
+const geistMono = Caveat({
   subsets: ["latin"],
-  variable: "--font-geist-mono",
+  variable: "--font-hand",
   display: "swap",
 })
 

@@ -842,6 +842,19 @@ html:root {
   }
 }
 
+.brand-intro { position:fixed; inset:0; z-index:100; display:grid; place-items:center; pointer-events:none; }
+.brand-intro-backdrop { position:absolute; inset:0; background:var(--background); }
+.brand-intro>img { position:relative; width:min(300px,65vw); height:auto; will-change:transform,opacity; }
+.restaurant-page .restaurant-hero { overflow:visible; background:transparent; }
+.restaurant-page .restaurant-hero::before { bottom:-160px; mask-image:linear-gradient(to bottom, black 65%,transparent 100%); }
+.restaurant-page .counter-edge { display:none; }
+.restaurant-page .feature-section { position:relative; z-index:1; }
+.restaurant-page .restaurant-product { position:relative; isolation:isolate; border:0; background:none; }
+.restaurant-page .restaurant-product::before { content:''; position:absolute; inset:-90px 0 -150px; z-index:-1; pointer-events:none; background:linear-gradient(90deg,transparent 30%,var(--background) 85%),url('/images/landing/restaurant-feast.png') left center/cover; mask-image:linear-gradient(to bottom,transparent,black 18%,black 68%,transparent); }
+.restaurant-page .restaurant-pricing { position:relative; z-index:1; }
+@media(max-width:640px) { .restaurant-page .restaurant-hero::before { bottom:-100px; } .restaurant-page .restaurant-product::before { inset:-60px 0 -100px; background:linear-gradient(0deg,var(--background) 30%,transparent 80%),url('/images/landing/restaurant-feast.png') left top/auto 600px no-repeat; } }
+@media(prefers-reduced-motion:reduce) { .brand-intro { display:none; } }
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

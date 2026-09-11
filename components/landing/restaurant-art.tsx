@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { ArrowUpRight, ChevronRight, Signal, BatteryFull } from "lucide-react";
 export const rocketUrl =
   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1%20%281%29-ePAqdPm41ih5QKKHvtkU5C6Bp1YtW2.png";
@@ -14,42 +15,42 @@ export function RestaurantBrand() {
   );
 }
 export function RocketEntrance() {
-  const ref = useRef<HTMLImageElement>(null);
+  const [intro, setIntro] = useState(false);
+  const logo = useRef<HTMLImageElement>(null);
+  const backdrop = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const image = ref.current;
-    if (!image) return;
-    const rect = image.getBoundingClientRect();
-    const animation = image.animate(
-      [
-        {
-          transform: `translate(${innerWidth / 2 - rect.left - rect.width / 2}px, ${innerHeight / 2 - rect.top - rect.height / 2}px) rotate(-18deg) scale(.7)`,
-          opacity: 0.2,
-        },
-        { transform: `translate(${innerWidth / 2 - rect.left - rect.width / 2}px, ${innerHeight / 2 - rect.top - rect.height / 2}px) rotate(-12deg) scale(.82)`, opacity: 1, filter: "brightness(1.25) saturate(1.15)", offset: .3 },
-        { transform: "translate(0,0) rotate(0) scale(1)", opacity: 1, filter: "brightness(1.04) saturate(1.12)" },
-      ],
-      { duration: 2100, easing: "cubic-bezier(.16,1,.3,1)" },
-    );
-    const cancel = () => animation.cancel();
-    window.addEventListener("resize", cancel);
-    return () => {
-      animation.cancel();
-      window.removeEventListener("resize", cancel);
-    };
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) setIntro(true);
   }, []);
-  return (
-    <img
-      ref={ref}
-      src={rocketUrl}
-      className="restaurant-rocket"
-      width={1344}
-      height={1200}
-      alt="Pizza-foguete wZapFlow com queijo dourado e pepperoni"
-      fetchPriority="high"
-    />
-  );
+  useEffect(() => {
+    if (!intro) return;
+    const image = logo.current;
+    const background = backdrop.current;
+    const target = document.querySelector('.restaurant-header .restaurant-brand img');
+    if (!image || !background || !target) return;
+    const rect = image.getBoundingClientRect();
+    const destination = target.getBoundingClientRect();
+    const dx = destination.x + destination.width / 2 - rect.x - rect.width / 2;
+    const dy = destination.y + destination.height / 2 - rect.y - rect.height / 2;
+    const scale = destination.width / rect.width;
+    const animation = image.animate([
+      { transform: 'perspective(900px) rotateY(-100deg) scale(.65)', opacity: 0, filter: 'brightness(.6)', offset: 0 },
+      { transform: 'perspective(900px) rotateY(0deg) scale(1)', opacity: 1, filter: 'brightness(1)', offset: .3 },
+      { transform: 'perspective(900px) rotateY(360deg) scale(1)', opacity: 1, filter: 'brightness(1.5)', offset: .57 },
+      { transform: 'perspective(900px) rotateY(360deg) scale(1)', opacity: 1, filter: 'brightness(1)', offset: .7 },
+      { transform: `perspective(900px) translate(${dx}px, ${dy}px) rotateY(360deg) scale(${scale})`, opacity: 1, filter: 'brightness(1)', offset: 1 },
+    ], { duration: 2600, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' });
+    const fade = background.animate([{ opacity: 1 }, { opacity: 1, offset: .65 }, { opacity: 0 }], { duration: 2600, fill: 'forwards' });
+    const finish = () => setIntro(false);
+    animation.onfinish = finish;
+    const timeout = window.setTimeout(finish, 3000);
+    window.addEventListener('resize', finish);
+    window.addEventListener('scroll', finish, { passive: true });
+    return () => { animation.cancel(); fade.cancel(); clearTimeout(timeout); window.removeEventListener('resize', finish); window.removeEventListener('scroll', finish); };
+  }, [intro]);
+  return <>
+    <img src={rocketUrl} className="restaurant-rocket" width={1344} height={1200} alt="Pizza-foguete wZapFlow com queijo dourado e pepperoni" fetchPriority="high" />
+    {intro && createPortal(<div className="brand-intro" aria-hidden="true"><div ref={backdrop} className="brand-intro-backdrop" /><img ref={logo} src={rocketUrl} alt="" width={300} height={268} /></div>, document.body)}
+  </>;
 }
 export function MenuPhone({ burger = false }: { burger?: boolean }) {
   return (

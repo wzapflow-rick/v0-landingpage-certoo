@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 const colors = [
-  ["Floresta", "bg-foreground text-background", "#061C16"],
-  ["Esmeralda", "bg-secondary text-secondary-foreground", "#164E3D"],
-  ["Lima", "bg-accent text-accent-foreground", "#C5E98A"],
-  ["Névoa", "bg-background text-foreground", "#F3F5EF"],
-  ["Sálvia", "bg-muted-foreground text-background", "#597069"],
+  ["Carvão", "bg-background text-foreground", "#100C08"],
+  ["Madeira", "bg-secondary text-secondary-foreground", "#21170F"],
+  ["Âmbar", "bg-primary text-primary-foreground", "#FF981F"],
+  ["Luz", "bg-foreground text-background", "#FFF7ED"],
+  ["Neutro", "bg-muted-foreground text-background", "#BAA998"],
 ];
 
 export default function StyleTile() {
@@ -31,7 +31,7 @@ export default function StyleTile() {
           A receita de um bom fluxo.
         </h1>
         <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Fotografia tátil, floresta profunda, luz quente nos alimentos e
+          Fotografia gastronômica, carvão e madeira, luz âmbar nos alimentos e
           tipografia aberta. Movimento a serviço da explicação, com pausas para
           leitura.
         </p>

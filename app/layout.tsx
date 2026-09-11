@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase,
-  title: "wZapFlow — Do cardápio ao pedido. Tudo flui.",
+  title: "Cardápio wZapFlow — Seu cardápio pode dar água na boca.",
   description:
     "Cardápio digital, pedidos e operação em um só fluxo. Receba pedidos online com 0% de taxa por pedido e teste o plano Parceria por 7 dias.",
   keywords: [
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   openGraph: {
-    title: "wZapFlow — Do cardápio ao pedido. Tudo flui.",
+    title: "Cardápio wZapFlow — Seu cardápio pode dar água na boca.",
     description: "Cardápio digital e operação de pedidos conectados, sem taxa por pedido.",
     type: "website",
     locale: "pt_BR",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "wZapFlow — Do cardápio ao pedido. Tudo flui.",
+    title: "Cardápio wZapFlow — Seu cardápio pode dar água na boca.",
     description: "Cardápio digital e operação de pedidos conectados, sem taxa por pedido.",
     images: ["/images/landing/zapflow-social.png"],
   },
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#061c16",
+  themeColor: "#100c08",
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

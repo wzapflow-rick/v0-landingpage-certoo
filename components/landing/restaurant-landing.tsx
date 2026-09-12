@@ -43,7 +43,7 @@ const features = [
 ];
 const planCharacters: Record<string, { src: string; message: string }> = {
   Parceria: {
-    src: "/images/landing/plan-parceria.png",
+    src: rocketUrl,
     message: "Primeiros pedidos",
   },
   Start: {
@@ -55,7 +55,7 @@ const planCharacters: Record<string, { src: string; message: string }> = {
     message: "Hora de acelerar",
   },
   Elite: {
-    src: rocketUrl,
+    src: "/images/landing/plan-parceria.png",
     message: "Operação no topo",
   },
 } as const;

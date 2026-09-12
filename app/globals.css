@@ -510,17 +510,18 @@ html:root {
 }
 .plan-mascot {
   display: flex;
-  min-height: 108px;
+  min-height: 112px;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   margin: -10px -6px 0;
 }
 .plan-mascot img {
-  width: 108px;
-  height: 108px;
+  width: 112px;
+  height: 112px;
   flex-shrink: 0;
   object-fit: contain;
+  object-position: center;
   filter: drop-shadow(0 10px 14px color-mix(in srgb, var(--background) 52%, transparent));
   transition: transform .3s cubic-bezier(.2,.8,.2,1);
 }
@@ -537,10 +538,6 @@ html:root {
 }
 .restaurant-plan:hover .plan-mascot img {
   transform: translateY(-5px) rotate(-2deg);
-}
-.plan-mascot-elite img {
-  width: 116px;
-  height: 104px;
 }
 .restaurant-plan h3 {
   font-size: 23px;

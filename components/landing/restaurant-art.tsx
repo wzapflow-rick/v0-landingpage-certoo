@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { ArrowUpRight, ChevronRight, Signal, BatteryFull } from "lucide-react";
 export const rocketUrl =
   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1%20%281%29-ePAqdPm41ih5QKKHvtkU5C6Bp1YtW2.png";
 export function RestaurantBrand() {
@@ -52,47 +51,31 @@ export function RocketEntrance() {
     {intro && createPortal(<div className="brand-intro" aria-hidden="true"><div ref={backdrop} className="brand-intro-backdrop" /><img ref={logo} src={rocketUrl} alt="" width={300} height={268} /></div>, document.body)}
   </>;
 }
-export function MenuPhone({ burger = false }: { burger?: boolean }) {
+export function MenuPhone({ product = false }: { product?: boolean }) {
+  const source = product
+    ? "/images/landing/menu-product-mobile.png"
+    : "/images/landing/menu-real-mobile.png";
+  const description = product
+    ? "Tela real do wZapFlow com as opções de tamanho de um produto"
+    : "Tela real do cardápio Tropical Açaí criado no wZapFlow";
+
   return (
-    <div className="menu-phone" aria-label="Prévia ilustrativa de cardápio">
-      <div className="phone-status">
-        <span>9:41</span>
-        <span className="flex gap-1">
-          <Signal size={14} />
-          <BatteryFull size={16} />
-        </span>
+    <figure className={`menu-phone${product ? " menu-phone-product" : ""}`}>
+      <span className="phone-side-button phone-side-button-top" aria-hidden="true" />
+      <span className="phone-side-button phone-side-button-bottom" aria-hidden="true" />
+      <div className="phone-screen">
+        <img
+          src={source}
+          alt={description}
+          width={390}
+          height={844}
+          loading={product ? "lazy" : "eager"}
+          fetchPriority={product ? "auto" : "high"}
+        />
+        <span className="phone-island" aria-hidden="true" />
+        <span className="phone-home-indicator" aria-hidden="true" />
       </div>
-      <div className="phone-heading">
-        <span className="text-primary">
-          {burger ? "Burger House" : "Pizzaria Sabor & Arte"}
-        </span>
-        <small>Feito com sabor. Pedido com carinho.</small>
-      </div>
-      <div className={`phone-cover menu-photo food-${burger ? 1 : 0}`} role="img" aria-label={burger ? "Cheeseburger artesanal" : "Pizza de pepperoni"} />
-      <div className="phone-menu">
-        {["Pizzas", "Hambúrgueres", "Combos", "Bebidas"].map((name, i) => (
-          <div className="phone-row" key={name}>
-            <span className={`category-photo menu-photo food-${i}`} aria-hidden="true" />
-            <span>
-              {name}
-              <small>
-                {
-                  [
-                    "Tradicionais e especiais",
-                    "Suculentos e artesanais",
-                    "O melhor por menos",
-                    "Seu refresco favorito",
-                  ][i]
-                }
-              </small>
-            </span>
-            <ChevronRight size={15} />
-          </div>
-        ))}
-      </div>
-      <span className="phone-demo">
-        Demonstração visual <ArrowUpRight size={14} />
-      </span>
-    </div>
+      <figcaption className="sr-only">{description}</figcaption>
+    </figure>
   );
 }

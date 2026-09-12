@@ -212,10 +212,48 @@ html:root {
 .restaurant-hero h1 em {
   display: block;
 }
+.restaurant-hero .mouthwatering {
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+  background: linear-gradient(100deg, var(--primary) 15%, var(--primary) 42%, var(--foreground) 50%, var(--primary) 58%, var(--primary) 85%);
+  background-size: 230% 100%;
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 8px 30px color-mix(in srgb, var(--primary) 22%, transparent);
+  animation: mouthwatering-shine 4.2s ease-in-out infinite;
+}
+.restaurant-hero .mouthwatering::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  left: 0;
+  z-index: -1;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--primary);
+  box-shadow: 0 4px 18px color-mix(in srgb, var(--primary) 35%, transparent);
+  transform: scaleX(.82) skewX(-14deg);
+  transform-origin: left;
+  animation: mouthwatering-underline 2.8s ease-in-out infinite;
+}
+@keyframes mouthwatering-shine {
+  0%, 28% { background-position: 100% 50%; }
+  62%, 100% { background-position: 0 50%; }
+}
+@keyframes mouthwatering-underline {
+  0%, 100% { transform: scaleX(.82) skewX(-14deg); opacity: .55; }
+  50% { transform: scaleX(1) skewX(-14deg); opacity: 1; }
+}
 .restaurant-hero-copy > p {
-  max-width: 480px;
+  max-width: 440px;
   font-size: 17px;
+  font-weight: 520;
   color: var(--foreground);
+  text-shadow: 0 2px 18px var(--background);
 }
 .hero-assurances {
   display: flex;
@@ -237,95 +275,114 @@ html:root {
 }
 .restaurant-rocket {
   position: absolute;
-  width: 90%;
+  width: 76%;
   height: auto;
-  top: 0;
-  left: -12%;
+  top: 72px;
+  left: -7%;
   z-index: 3;
   pointer-events: none;
 }
 .restaurant-hero-art .menu-phone {
   position: absolute;
-  right: 5%;
-  top: 55px;
-  transform: rotate(12deg);
+  right: 2%;
+  top: 8px;
+  z-index: 2;
+  transform: rotate(5deg);
 }
 .menu-phone {
   position: relative;
-  width: 255px;
-  border: 5px solid var(--secondary);
-  outline: 1px solid var(--muted-foreground);
-  border-radius: 38px;
-  background: var(--background);
-  color: var(--foreground);
-  padding: 16px 12px;
-  box-shadow: 14px 22px 40px var(--background);
-  overflow: hidden;
+  isolation: isolate;
+  width: 270px;
+  aspect-ratio: 390 / 844;
+  border: 2px solid color-mix(in srgb, var(--foreground) 38%, var(--secondary));
+  border-radius: 48px;
+  padding: 7px;
+  background: color-mix(in srgb, var(--secondary) 82%, var(--foreground));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--foreground) 18%, transparent),
+    inset 3px 0 5px color-mix(in srgb, var(--foreground) 12%, transparent),
+    18px 32px 54px color-mix(in srgb, var(--background) 85%, transparent),
+    0 0 28px color-mix(in srgb, var(--primary) 12%, transparent);
+  overflow: visible;
 }
-.phone-status {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  padding: 0 6px 18px;
-}
-.phone-heading {
-  font-size: 16px;
-  font-weight: 750;
-}
-.phone-heading small {
-  display: block;
-  font-size: 10px;
-  color: var(--muted-foreground);
-  font-weight: 400;
-  margin-top: 5px;
-}
-.phone-cover {
-  width: 100%;
-  height: 115px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-block: 14px;
-}
-.phone-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border-bottom: 1px solid var(--secondary);
-  padding-block: 10px;
-  font-size: 12px;
-}
-.phone-row img {
-  width: 48px;
-  height: 48px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-.phone-row span {
-  flex: 1;
-}
-.phone-row small {
-  display: block;
-  font-size: 9px;
-  color: var(--muted-foreground);
-  margin-top: 3px;
-}
-.phone-demo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-size: 10px;
-  color: var(--muted-foreground);
-  padding-top: 12px;
-}
-.art-note {
+.menu-phone::after {
+  content: "";
   position: absolute;
+  inset: 4px;
+  z-index: 3;
+  border: 1px solid color-mix(in srgb, var(--foreground) 16%, transparent);
+  border-radius: 43px;
+  pointer-events: none;
+}
+.phone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 39px;
+  background: var(--background);
+}
+.phone-screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.phone-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(112deg, transparent 42%, color-mix(in srgb, var(--foreground) 7%, transparent) 50%, transparent 58%);
+  pointer-events: none;
+}
+.phone-island {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  z-index: 4;
+  width: 64px;
+  height: 18px;
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  border-radius: 999px;
+  background: var(--background);
+  transform: translateX(-50%);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--background) 75%, transparent);
+}
+.phone-home-indicator {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  z-index: 4;
+  width: 66px;
+  height: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--foreground) 75%, transparent);
+  transform: translateX(-50%);
+}
+.menu-phone-product .phone-screen::before {
+  content: "";
+  position: absolute;
+  right: 0;
   bottom: 0;
-  left: 25px;
-  color: var(--primary) !important;
-  font-size: 16px;
-  font-style: italic;
-  transform: rotate(-8deg);
+  left: 0;
+  z-index: 2;
+  height: 30px;
+  background: var(--background);
+}
+.phone-side-button {
+  position: absolute;
+  left: -6px;
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+  background: color-mix(in srgb, var(--muted-foreground) 72%, var(--secondary));
+}
+.phone-side-button-top {
+  top: 102px;
+  height: 48px;
+}
+.phone-side-button-bottom {
+  top: 166px;
+  height: 70px;
 }
 .counter-edge {
   height: 20px;
@@ -384,15 +441,14 @@ html:root {
   gap: 60px;
 }
 .product-art {
-  height: 530px;
+  height: 590px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-right: 30px;
+  justify-content: center;
 }
 .product-art .menu-phone {
-  transform: rotate(-9deg);
-  width: 230px;
+  width: 268px;
+  transform: rotate(-3deg);
 }
 .product-copy {
   display: flex;
@@ -442,13 +498,49 @@ html:root {
   gap: 16px;
 }
 .restaurant-plan {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 24px 20px;
+  border-radius: 20px;
+  padding: 20px;
   background: var(--secondary);
+}
+.plan-mascot {
+  display: flex;
+  min-height: 112px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: -10px -6px 0;
+}
+.restaurant-page .plan-mascot img {
+  width: 112px;
+  height: 112px;
+  min-width: 112px;
+  max-width: 112px;
+  flex: 0 0 112px;
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 10px 14px color-mix(in srgb, var(--background) 52%, transparent));
+  transition: transform .3s cubic-bezier(.2,.8,.2,1);
+}
+.plan-mascot span {
+  max-width: 92px;
+  border: 1px solid color-mix(in srgb, var(--primary) 45%, var(--border));
+  border-radius: 999px;
+  padding: 7px 9px;
+  color: var(--foreground);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+.restaurant-plan:hover .plan-mascot img {
+  transform: translateY(-5px) rotate(-2deg);
 }
 .restaurant-plan h3 {
   font-size: 23px;
@@ -618,20 +710,21 @@ html:root {
     display: none;
   }
   .hero-grid {
-    grid-template-columns: 1.1fr 1fr;
-    min-height: 650px;
+    grid-template-columns: 1.05fr 1fr;
+    min-height: 680px;
   }
   .restaurant-hero-art {
-    height: 440px;
+    height: 540px;
   }
   .restaurant-hero-art .menu-phone {
-    width: 220px;
+    width: 230px;
     right: 0;
+    top: 16px;
   }
   .restaurant-rocket {
-    width: 105%;
-    top: 15px;
-    left: -20%;
+    width: 74%;
+    top: 104px;
+    left: -5%;
   }
   .hero-assurances {
     gap: 10px;
@@ -661,16 +754,8 @@ html:root {
 .restaurant-page .food-1 { background-position: right top; }
 .restaurant-page .food-2 { background-position: left bottom; }
 .restaurant-page .food-3 { background-position: right bottom; }
-.restaurant-page .phone-cover { height: 136px; }
-.category-photo { display: block; width: 62px; height: 62px; flex-shrink: 0; border-radius: 9px; }
-.restaurant-page .phone-row { padding-block: 7px; }
-.restaurant-page .menu-phone { border-color: var(--secondary); box-shadow: inset 2px 1px 2px color-mix(in srgb,var(--primary) 65%,transparent), 16px 30px 40px var(--background), 0 0 16px color-mix(in srgb,var(--primary) 12%,transparent); }
-.menu-phone:after { content: ''; position: absolute; inset: 0; pointer-events:none; border-radius:inherit; background:linear-gradient(120deg,transparent 24%,color-mix(in srgb,var(--foreground) 9%,transparent) 25%,transparent 47%); }
 .restaurant-page .restaurant-rocket { filter: saturate(1.12) brightness(1.04) drop-shadow(0 4px 13px color-mix(in srgb,var(--primary) 28%,transparent)); animation: restaurant-flight 6s ease-in-out 2.1s infinite; }
-.restaurant-page .art-note,.restaurant-page .product-note,.restaurant-page .pricing-heading>p { font-family:var(--font-hand),cursive; color:var(--primary); font-size:25px; line-height:1.15; font-style:normal; }
-.restaurant-page .art-note { left:0; bottom:4px; rotate:-7deg; }
-.hand-arrow { display:inline-block; font-size:46px; margin-left:12px; }
-.restaurant-page .product-note { max-width:290px; align-self:flex-end; rotate:-5deg; }
+.restaurant-page .pricing-heading > p { color: var(--primary); font-size: 18px; line-height: 1.35; font-style: normal; }
 .feature-preview { display:flex; align-items:center; gap:10px; border:1px solid var(--border); border-radius:10px; padding:10px; margin-bottom:22px; background:var(--background); }
 .feature-preview>.menu-photo { width:48px; height:58px; flex-shrink:0; border-radius:6px; }
 .feature-preview>div { font-size:12px; line-height:1.4; }
@@ -687,7 +772,7 @@ html:root {
 .restaurant-faq details[open]>p { animation:restaurant-reveal .3s ease-out; }
 .restaurant-faq summary svg { transition:transform .25s; flex-shrink:0; }
 @media(prefers-reduced-motion:no-preference) { .restaurant-header { animation:restaurant-reveal .65s .65s both; } .restaurant-hero-copy>* { animation:restaurant-reveal .7s 1s both; } .restaurant-hero-copy>*:nth-child(2) { animation-delay:1.15s; } .restaurant-hero-copy>*:nth-child(n+3) { animation-delay:1.3s; } @supports(animation-timeline:view()) { .feature-section,.product-copy,.restaurant-plan,.final-panel { animation:food-depth linear both; animation-timeline:view(); animation-range:entry 0% entry 30%; } } }
-@media(max-width:640px) { .restaurant-page .restaurant-hero-art { height:510px; } .restaurant-page .art-note { bottom:0; } .feature-preview { flex-direction:column; align-items:flex-start; } .restaurant-page .restaurant-product { background-image:linear-gradient(0deg,var(--background) 40%,transparent),url('/images/landing/restaurant-feast.png'); } }
+@media(max-width:640px) { .feature-preview { flex-direction:column; align-items:flex-start; } .restaurant-page .restaurant-product { background-image:linear-gradient(0deg,var(--background) 40%,transparent),url('/images/landing/restaurant-feast.png'); } }
 
 @media (max-width: 640px) {
 .restaurant-container {
@@ -730,25 +815,21 @@ html:root {
     font-size: 12px;
   }
   .restaurant-hero-art {
-    height: 440px;
+    height: 500px;
     max-width: 400px;
     width: 100%;
     margin-inline: auto;
-    margin-top: 30px;
+    margin-top: 18px;
   }
   .restaurant-hero-art .menu-phone {
-    right: 15px;
-    top: 30px;
-    width: 210px;
+    right: 4px;
+    top: 12px;
+    width: 205px;
   }
   .restaurant-rocket {
-    width: 90%;
-    left: -3%;
-    top: 0;
-  }
-  .art-note {
-    bottom: 10px;
-    left: 0;
+    width: 72%;
+    left: -2%;
+    top: 112px;
   }
   .feature-section {
     padding-block: 44px;
@@ -772,11 +853,10 @@ html:root {
       url("/images/landing/restaurant-feast.png") top left/auto 460px no-repeat;
   }
   .product-art {
-    height: 420px;
-    padding-right: 18px;
+    height: 520px;
   }
   .product-art .menu-phone {
-    width: 205px;
+    width: 232px;
   }
   .product-copy {
     padding-block: 24px 40px;

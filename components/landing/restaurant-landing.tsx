@@ -41,6 +41,24 @@ const features = [
     text: "Do pequeno delivery à operação completa. Escolha o plano para o seu momento.",
   },
 ];
+const planCharacters: Record<string, { src: string; message: string }> = {
+  Parceria: {
+    src: rocketUrl,
+    message: "Primeiros pedidos",
+  },
+  Start: {
+    src: "/images/landing/plan-parceria.png",
+    message: "Rotina organizada",
+  },
+  Pro: {
+    src: "/images/landing/plan-start.png",
+    message: "Hora de acelerar",
+  },
+  Elite: {
+    src: "/images/landing/plan-pro.png",
+    message: "Operação no topo",
+  },
+} as const;
 export const testimonialTemplates: {
   name: string;
   restaurant: string;
@@ -112,10 +130,10 @@ export function RestaurantLanding() {
                 Cardápio digital para restaurantes
               </span>
               <h1>
-                Seu cardápio pode <em>dar água na boca.</em>
+                Seu cardápio pode <em className="mouthwatering">dar água na boca.</em>
               </h1>
-              <p>
-                Crie um cardápio digital bonito, rápido e fácil de pedir — e transforme cada visita em mais pedidos para o seu restaurante.
+              <p className="hero-lead">
+                Crie um cardápio digital bonito, rápido e fácil de pedir.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="#planos" className="restaurant-button">
@@ -141,9 +159,6 @@ export function RestaurantLanding() {
             <div className="restaurant-hero-art">
               <MenuPhone />
               <RocketEntrance />
-              <p className="art-note">
-                Mais pedidos para<br />o seu restaurante!<span className="hand-arrow" aria-hidden="true">⤴︎</span>
-              </p>
             </div>
           </div>
           <div className="counter-edge" />
@@ -176,7 +191,7 @@ export function RestaurantLanding() {
         <section id="vantagens" className="restaurant-product">
           <div className="restaurant-container product-grid">
             <div id="exemplo" className="product-art">
-              <MenuPhone burger />
+              <MenuPhone product />
             </div>
             <div className="product-copy">
               <span className="restaurant-kicker">Do cardápio ao pedido</span>
@@ -206,7 +221,6 @@ export function RestaurantLanding() {
               <a href="#planos" className="text-link">
                 Encontre o seu plano <ArrowRight size={16} />
               </a>
-              <p className="product-note">Seu restaurante sempre a um clique de distância! <span aria-hidden="true">⤶</span></p>
             </div>
           </div>
         </section>
@@ -241,9 +255,9 @@ export function RestaurantLanding() {
               <br />
               para o seu restaurante.
             </h2>
-            <p>
-              Mais pedidos.<br />Mais lucro. <span aria-hidden="true">⤵</span>
-            </p>
+              <p>
+                Mais pedidos.<br />Mais lucro.
+              </p>
           </div>
           <div className="restaurant-plans">
             {plans.map((plan) => (
@@ -251,6 +265,16 @@ export function RestaurantLanding() {
                 key={plan.name}
                 className={`restaurant-plan ${plan.name === "Pro" ? "featured-plan" : ""}`}
               >
+                <div className={`plan-mascot plan-mascot-${plan.name.toLowerCase()}`}>
+                  <img
+                    src={planCharacters[plan.name].src}
+                    alt=""
+                    width={112}
+                    height={112}
+                    loading="lazy"
+                  />
+                  <span>{planCharacters[plan.name].message}</span>
+                </div>
                 <div>
                   <span className="plan-stage">{plan.name === "Pro" ? "Mais escolhido" : plan.stage}</span>
                   <h3>{plan.name}</h3>

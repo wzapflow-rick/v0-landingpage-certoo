@@ -516,10 +516,13 @@ html:root {
   gap: 8px;
   margin: -10px -6px 0;
 }
-.plan-mascot img {
+.restaurant-page .plan-mascot img {
   width: 112px;
   height: 112px;
-  flex-shrink: 0;
+  min-width: 112px;
+  max-width: 112px;
+  flex: 0 0 112px;
+  aspect-ratio: 1;
   object-fit: contain;
   object-position: center;
   filter: drop-shadow(0 10px 14px color-mix(in srgb, var(--background) 52%, transparent));

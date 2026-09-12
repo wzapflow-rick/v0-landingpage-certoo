@@ -47,15 +47,15 @@ const planCharacters: Record<string, { src: string; message: string }> = {
     message: "Primeiros pedidos",
   },
   Start: {
-    src: "/images/landing/plan-start.png",
+    src: "/images/landing/plan-parceria.png",
     message: "Rotina organizada",
   },
   Pro: {
-    src: "/images/landing/plan-pro.png",
+    src: "/images/landing/plan-start.png",
     message: "Hora de acelerar",
   },
   Elite: {
-    src: "/images/landing/plan-parceria.png",
+    src: "/images/landing/plan-pro.png",
     message: "Operação no topo",
   },
 } as const;

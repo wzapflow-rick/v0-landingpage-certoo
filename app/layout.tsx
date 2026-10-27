@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Caveat, Manrope } from "next/font/google"
+import { Geist_Mono, Manrope } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 
 import "./globals.css"
@@ -16,17 +16,17 @@ const manrope = Manrope({
   display: "swap",
 })
 
-const geistMono = Caveat({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-hand",
+  variable: "--font-geist-mono",
   display: "swap",
 })
 
 export const metadata: Metadata = {
   metadataBase,
-  title: "Cardápio wZapFlow — Seu cardápio pode dar água na boca.",
+  title: "wZapFlow — Cardápio digital com pedidos no WhatsApp e IA",
   description:
-    "Cardápio digital, pedidos e operação em um só fluxo. Receba pedidos online com 0% de taxa por pedido e teste o plano Parceria por 7 dias.",
+    "Cardápio digital com fotos, pedidos direto no WhatsApp e agente de IA para atender seus clientes. Zero comissão por venda e 7 dias grátis.",
   keywords: [
     "cardápio digital",
     "sistema de pedidos",
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   openGraph: {
-    title: "Cardápio wZapFlow — Seu cardápio pode dar água na boca.",
-    description: "Cardápio digital e operação de pedidos conectados, sem taxa por pedido.",
+    title: "wZapFlow — Cardápio digital com pedidos no WhatsApp e IA",
+    description: "Cardápio digital com pedidos no WhatsApp e IA. Zero comissão por venda.",
     type: "website",
     locale: "pt_BR",
     images: [
@@ -57,8 +57,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cardápio wZapFlow — Seu cardápio pode dar água na boca.",
-    description: "Cardápio digital e operação de pedidos conectados, sem taxa por pedido.",
+    title: "wZapFlow — Cardápio digital com pedidos no WhatsApp e IA",
+    description: "Cardápio digital com pedidos no WhatsApp e IA. Zero comissão por venda.",
     images: ["/images/landing/zapflow-social.png"],
   },
 }
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#100c08",
+  themeColor: "#09090b",
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -28,7 +28,7 @@ export function SiteHeader() {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-3.5 py-2 transition-colors hover:bg-foreground/[0.05] hover:text-foreground"
+              className="nav-link relative rounded-full px-3.5 py-2 transition-colors duration-200 hover:text-foreground"
             >
               {link.label}
             </a>

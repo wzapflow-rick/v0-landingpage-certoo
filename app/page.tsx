@@ -4,6 +4,7 @@ import { Demo } from "@/components/zapflow/demo"
 import { Faq } from "@/components/zapflow/faq"
 import { Hero } from "@/components/zapflow/hero"
 import { Pricing } from "@/components/zapflow/pricing"
+import { ScrollReveal } from "@/components/zapflow/scroll-reveal"
 import { SiteHeader } from "@/components/zapflow/site-header"
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
       </main>
       <SiteFooter />
       <MobileCtaBar />
+      <ScrollReveal />
     </div>
   )
 }

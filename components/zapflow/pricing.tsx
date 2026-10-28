@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 
 export function Pricing() {
   return (
-    <section id="planos" className="mx-auto max-w-6xl px-5 py-20 md:py-28">
+    <section id="planos" data-reveal className="mx-auto max-w-6xl px-5 py-20 md:py-28">
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-sm font-semibold text-accent">Planos</p>
         <h2 className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">

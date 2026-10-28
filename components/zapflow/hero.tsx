@@ -1,7 +1,9 @@
 import type { CSSProperties } from "react"
 import { ArrowRight, Check, MessageCircle, Sparkles } from "lucide-react"
 import { landingLinks } from "@/lib/landing-content"
+import { FlowLines, HeroAtmosphere } from "./hero-atmosphere"
 import { PhoneFrame } from "./phone-frame"
+import { PhoneStage } from "./phone-stage"
 
 const assurances = ["0% de comissão por venda", "7 dias grátis", "Cancele quando quiser"]
 
@@ -10,11 +12,11 @@ const delay = (step: number) => ({ "--d": step }) as CSSProperties
 export function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden">
-      <div aria-hidden="true" className="hero-halo pointer-events-none absolute inset-0" />
-      <div aria-hidden="true" className="dot-grid pointer-events-none absolute inset-0" />
+      <HeroAtmosphere />
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-5 pb-16 pt-12 sm:pt-16 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14 lg:py-14 xl:grid-cols-[minmax(0,1fr)_21rem] xl:gap-20">
-        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+        <FlowLines />
+        <div className="relative flex flex-col items-center text-center lg:items-start lg:text-left">
           <p
             className="rise inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/[0.07] px-3 py-1.5 text-[13px] font-semibold text-accent"
             style={delay(0)}
@@ -73,35 +75,38 @@ export function Hero() {
           </ul>
         </div>
 
-        <div className="rise relative mx-auto w-full max-w-[16.5rem] sm:max-w-[19rem] lg:max-w-none" style={delay(3)}>
-          <PhoneFrame
-            src="/images/landing/menu-real-mobile.png"
-            alt="Cardápio digital real do Tropical Açaí criado no wZapFlow, aberto no celular"
-            priority
-          />
+        <div className="rise relative mx-auto w-full max-w-[16.5rem] sm:max-w-[19rem] lg:max-w-none" style={delay(5)}>
+          <div aria-hidden="true" className="phone-floor pointer-events-none absolute inset-x-6 -bottom-8 h-16" />
+          <PhoneStage>
+            <div className="phone-float">
+              <PhoneFrame
+                src="/images/landing/menu-real-mobile.png"
+                alt="Cardápio digital real do Tropical Açaí criado no wZapFlow, aberto no celular"
+                priority
+              />
+            </div>
 
-          <div
-            className="float-chip rise absolute -left-28 top-[29%] hidden w-52 rounded-2xl p-2.5 backdrop-blur-md sm:block lg:-left-32"
-            style={delay(6)}
-          >
-            <div className="flex items-center gap-2.5">
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
-                <MessageCircle className="size-4" aria-hidden="true" />
-              </span>
-              <div className="min-w-0">
-                <p className="text-[13px] font-bold leading-tight">Novo pedido #1042</p>
-                <p className="mt-0.5 truncate text-xs text-muted-foreground">2x Batata Frita · R$ 34,00</p>
+            <div className="chip-depth absolute -left-28 top-[29%] hidden w-52 sm:block lg:-left-32">
+              <div className="float-chip chip-in-left rounded-2xl p-2.5" style={delay(8)}>
+                <div className="flex items-center gap-2.5">
+                  <span className="order-dot relative flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+                    <MessageCircle className="size-4" aria-hidden="true" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[13px] font-bold leading-tight">Novo pedido #1042</p>
+                    <p className="mt-0.5 truncate text-xs text-muted-foreground">2x Batata Frita · R$ 34,00</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div
-            className="float-chip rise absolute -right-12 top-[38%] hidden rounded-2xl px-3.5 py-2.5 backdrop-blur-md sm:block lg:-right-14"
-            style={delay(7)}
-          >
-            <p className="text-xs font-medium text-muted-foreground">Comissão</p>
-            <p className="text-xl font-extrabold leading-tight text-accent">0%</p>
-          </div>
+            <div className="chip-depth absolute -right-12 top-[38%] hidden sm:block lg:-right-14">
+              <div className="float-chip chip-in-right rounded-2xl px-3.5 py-2.5" style={delay(10)}>
+                <p className="text-xs font-medium text-muted-foreground">Comissão</p>
+                <p className="text-xl font-extrabold leading-tight text-accent">0%</p>
+              </div>
+            </div>
+          </PhoneStage>
         </div>
       </div>
     </section>

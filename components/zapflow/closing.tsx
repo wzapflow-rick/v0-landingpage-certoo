@@ -4,7 +4,7 @@ import { Brand, brandLogoUrl } from "./brand"
 
 export function FinalCta() {
   return (
-    <section className="mx-auto max-w-6xl px-5 pb-20 md:pb-28">
+    <section data-reveal className="mx-auto max-w-6xl px-5 pb-20 md:pb-28">
       <div className="surface relative flex flex-col items-center overflow-hidden rounded-[2rem] px-6 py-16 text-center sm:px-12">
         <div
           aria-hidden="true"

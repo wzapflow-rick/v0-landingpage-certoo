@@ -5,7 +5,11 @@ import { Brand, brandLogoUrl } from "./brand"
 export function FinalCta() {
   return (
     <section className="mx-auto max-w-6xl px-5 pb-20 md:pb-28">
-      <div className="hero-halo relative flex flex-col items-center overflow-hidden rounded-3xl border border-border/80 bg-card/60 px-6 py-14 text-center sm:px-12">
+      <div className="surface relative flex flex-col items-center overflow-hidden rounded-[2rem] px-6 py-16 text-center sm:px-12">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_70%_at_50%_0%,color-mix(in_srgb,var(--accent)_8%,transparent),transparent_70%)]"
+        />
         <img src={brandLogoUrl} alt="" width={96} height={86} loading="lazy" className="h-20 w-auto" />
         <h2 className="mt-6 max-w-2xl text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
           Seu próximo pedido pode chegar <span className="text-warm">ainda hoje.</span>

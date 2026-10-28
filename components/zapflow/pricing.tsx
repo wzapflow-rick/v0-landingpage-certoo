@@ -6,7 +6,7 @@ export function Pricing() {
   return (
     <section id="planos" className="mx-auto max-w-6xl px-5 py-20 md:py-28">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="font-mono text-xs uppercase tracking-widest text-accent">Planos</p>
+        <p className="text-sm font-semibold text-accent">Planos</p>
         <h2 className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
           Mensalidade fixa. Nenhuma comissão sobre suas vendas.
         </h2>
@@ -22,10 +22,8 @@ export function Pricing() {
             <article
               key={plan.name}
               className={cn(
-                "relative flex flex-col rounded-2xl border p-6",
-                featured
-                  ? "border-primary/60 bg-card shadow-[0_0_60px_-20px] shadow-primary/50"
-                  : "border-border/80 bg-card/60",
+                "relative flex flex-col rounded-3xl p-6",
+                featured ? "bg-card ring-1 ring-primary/50 shadow-2xl shadow-primary/10" : "surface",
               )}
             >
               {featured ? (
@@ -33,7 +31,7 @@ export function Pricing() {
                   Mais escolhido
                 </span>
               ) : null}
-              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{plan.stage}</p>
+              <p className="text-sm font-medium text-muted-foreground">{plan.stage}</p>
               <h3 className="mt-1 text-xl font-extrabold">{plan.name}</h3>
               <p className="mt-2 min-h-[4.5rem] text-sm leading-relaxed text-muted-foreground">{plan.description}</p>
 
@@ -56,9 +54,7 @@ export function Pricing() {
                 href={plan.href}
                 className={cn(
                   "mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-full text-sm font-bold",
-                  featured
-                    ? "btn-glow text-primary-foreground"
-                    : "border border-border transition-colors hover:border-muted-foreground/50 hover:bg-secondary",
+                  featured ? "btn-glow text-primary-foreground" : "btn-quiet",
                 )}
               >
                 {plan.cta}

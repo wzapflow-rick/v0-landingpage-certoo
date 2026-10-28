@@ -54,7 +54,7 @@ export function Demo() {
     <section id="demo" className="relative border-y border-border/60 bg-card/30">
       <div className="mx-auto max-w-6xl px-5 py-20 md:py-28">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent">Como funciona</p>
+          <p className="text-sm font-semibold text-accent">Como funciona</p>
           <h2 className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
             Do toque no cardápio à mensagem no WhatsApp.
           </h2>
@@ -111,8 +111,8 @@ export function Demo() {
 
         <ol className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
-            <li key={step.title} className="rounded-2xl border border-border/80 bg-card/60 p-5">
-              <span className="font-mono text-xs font-semibold text-accent">Passo {index + 1}</span>
+            <li key={step.title} className="border-t border-foreground/10 pt-5">
+              <span className="text-sm font-semibold text-accent">Passo {index + 1}</span>
               <h3 className="mt-2 font-bold">{step.title}</h3>
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
             </li>

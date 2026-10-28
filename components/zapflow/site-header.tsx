@@ -16,25 +16,35 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/75 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+    <header className="sticky top-0 z-40 border-b border-foreground/[0.06] bg-background/80 backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-5">
         <Brand />
 
-        <nav aria-label="Navegação principal" className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
+        <nav
+          aria-label="Navegação principal"
+          className="hidden items-center gap-1 text-sm font-medium text-foreground/65 md:flex"
+        >
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="transition-colors hover:text-foreground">
+            <a
+              key={link.href}
+              href={link.href}
+              className="rounded-full px-3.5 py-2 transition-colors hover:bg-foreground/[0.05] hover:text-foreground"
+            >
               {link.label}
             </a>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-5 md:flex">
-          <a href={landingLinks.login} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+        <div className="hidden items-center gap-2 md:flex">
+          <a
+            href={landingLinks.login}
+            className="rounded-full px-3.5 py-2 text-sm font-medium text-foreground/65 transition-colors hover:text-foreground"
+          >
             Entrar
           </a>
           <a
             href={landingLinks.partnership}
-            className="btn-glow inline-flex h-10 items-center gap-2 rounded-full px-5 text-sm font-bold text-primary-foreground"
+            className="btn-glow inline-flex h-10 items-center gap-1.5 rounded-full pl-5 pr-4 text-sm font-bold text-primary-foreground"
           >
             Criar meu cardápio
             <ArrowRight className="size-4" aria-hidden="true" />
@@ -43,7 +53,7 @@ export function SiteHeader() {
 
         <button
           type="button"
-          className="inline-flex size-10 items-center justify-center rounded-full border border-border md:hidden"
+          className="btn-quiet inline-flex size-10 items-center justify-center rounded-full md:hidden"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           aria-controls="menu-movel"

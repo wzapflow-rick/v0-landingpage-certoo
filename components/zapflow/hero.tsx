@@ -1,8 +1,11 @@
+import type { CSSProperties } from "react"
 import { ArrowRight, Check, MessageCircle, Sparkles } from "lucide-react"
 import { landingLinks } from "@/lib/landing-content"
 import { PhoneFrame } from "./phone-frame"
 
 const assurances = ["0% de comissão por venda", "7 dias grátis", "Cancele quando quiser"]
+
+const delay = (step: number) => ({ "--d": step }) as CSSProperties
 
 export function Hero() {
   return (
@@ -10,74 +13,94 @@ export function Hero() {
       <div aria-hidden="true" className="hero-halo pointer-events-none absolute inset-0" />
       <div aria-hidden="true" className="dot-grid pointer-events-none absolute inset-0" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-5 pb-20 pt-12 md:pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8 lg:pb-28">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-5 pb-16 pt-12 sm:pt-16 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14 lg:py-14 xl:grid-cols-[minmax(0,1fr)_21rem] xl:gap-20">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accent">
+          <p
+            className="rise inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/[0.07] px-3 py-1.5 text-[13px] font-semibold text-accent"
+            style={delay(0)}
+          >
             <Sparkles className="size-3.5" aria-hidden="true" />
             Cardápio digital + WhatsApp + IA
           </p>
 
-          <h1 className="mt-6 text-balance text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Seu cardápio vendendo <span className="text-warm">no automático</span>, direto no WhatsApp.
+          <h1
+            className="rise mt-7 max-w-[20ch] text-balance text-[2.5rem] font-extrabold leading-[1.04] tracking-[-0.035em] sm:text-6xl lg:max-w-none lg:whitespace-nowrap lg:text-[3.4rem] xl:text-[3.75rem]"
+            style={delay(1)}
+          >
+            <span className="lg:block">Seu cardápio vendendo</span>{" "}
+            <span className="lg:block">
+              <span className="text-warm">no automático</span>, direto
+            </span>{" "}
+            <span className="lg:block">no WhatsApp.</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-            O cliente escolhe pelo celular, o pedido chega pronto no seu WhatsApp e a IA responde por você.
-            Sem comissão por venda: <strong className="font-semibold text-foreground">o lucro é 100% seu.</strong>
+          <p
+            className="rise mt-6 max-w-[34rem] text-pretty text-[1.0625rem] leading-relaxed text-muted-foreground sm:text-lg"
+            style={delay(2)}
+          >
+            O cliente escolhe pelo celular, o pedido chega pronto no seu WhatsApp e a IA responde por você. Sem
+            comissão por venda: <strong className="whitespace-nowrap font-semibold text-foreground">o lucro é 100% seu.</strong>
           </p>
 
-          <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+          <div className="rise mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row" style={delay(3)}>
             <a
               href={landingLinks.partnership}
-              className="btn-glow inline-flex h-13 items-center justify-center gap-2 rounded-full px-7 text-base font-bold text-primary-foreground"
+              className="btn-glow inline-flex h-13 items-center justify-center gap-2 rounded-full px-7 text-[15px] font-bold text-primary-foreground sm:h-12"
             >
               Criar meu cardápio
-              <ArrowRight className="size-5" aria-hidden="true" />
+              <ArrowRight className="size-[1.125rem]" aria-hidden="true" />
             </a>
             <a
               href="#demo"
-              className="inline-flex h-13 items-center justify-center gap-2 rounded-full border border-border bg-card/40 px-7 text-base font-semibold transition-colors hover:border-muted-foreground/50 hover:bg-card"
+              className="btn-quiet inline-flex h-13 items-center justify-center rounded-full px-7 text-[15px] font-semibold sm:h-12"
             >
               Ver um exemplo
             </a>
           </div>
 
-          <ul className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground lg:justify-start">
+          <ul
+            className="rise mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2.5 text-sm text-muted-foreground lg:justify-start"
+            style={delay(4)}
+          >
             {assurances.map((item) => (
-              <li key={item} className="flex items-center gap-1.5">
-                <Check className="size-4 text-primary" aria-hidden="true" />
+              <li key={item} className="flex items-center gap-2">
+                <span className="flex size-4 items-center justify-center rounded-full bg-primary/15 text-primary">
+                  <Check className="size-3" strokeWidth={3} aria-hidden="true" />
+                </span>
                 {item}
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[18rem] sm:max-w-[19rem]">
+        <div className="rise relative mx-auto w-full max-w-[16.5rem] sm:max-w-[19rem] lg:max-w-none" style={delay(3)}>
           <PhoneFrame
             src="/images/landing/menu-real-mobile.png"
             alt="Cardápio digital real do Tropical Açaí criado no wZapFlow, aberto no celular"
             priority
-            className="rotate-0 lg:rotate-2"
           />
 
-          <div className="float-card absolute -left-6 top-24 w-56 rounded-2xl border border-border/80 bg-card/90 p-3 shadow-xl backdrop-blur-md sm:-left-20">
+          <div
+            className="float-chip rise absolute -left-28 top-[29%] hidden w-52 rounded-2xl p-2.5 backdrop-blur-md sm:block lg:-left-32"
+            style={delay(6)}
+          >
             <div className="flex items-center gap-2.5">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
-                <MessageCircle className="size-4.5" aria-hidden="true" />
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+                <MessageCircle className="size-4" aria-hidden="true" />
               </span>
               <div className="min-w-0">
-                <p className="text-xs font-bold">Novo pedido #1042</p>
-                <p className="truncate text-xs text-muted-foreground">2x Batata Frita · R$ 34,00</p>
+                <p className="text-[13px] font-bold leading-tight">Novo pedido #1042</p>
+                <p className="mt-0.5 truncate text-xs text-muted-foreground">2x Batata Frita · R$ 34,00</p>
               </div>
             </div>
           </div>
 
           <div
-            className="float-card absolute -right-4 bottom-28 rounded-2xl border border-border/80 bg-card/90 px-4 py-3 shadow-xl backdrop-blur-md sm:-right-14"
-            style={{ animationDelay: "-3s" }}
+            className="float-chip rise absolute -right-12 top-[38%] hidden rounded-2xl px-3.5 py-2.5 backdrop-blur-md sm:block lg:-right-14"
+            style={delay(7)}
           >
-            <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">Comissão</p>
-            <p className="text-2xl font-extrabold text-accent">0%</p>
+            <p className="text-xs font-medium text-muted-foreground">Comissão</p>
+            <p className="text-xl font-extrabold leading-tight text-accent">0%</p>
           </div>
         </div>
       </div>

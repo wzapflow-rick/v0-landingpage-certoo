@@ -7,7 +7,7 @@ function GlassCard({ className, children }: { className?: string; children: Reac
   return (
     <article
       className={cn(
-        "relative flex flex-col overflow-hidden rounded-2xl border border-border/80 bg-card/60 p-6 backdrop-blur-sm sm:p-7",
+        "surface relative flex flex-col overflow-hidden rounded-3xl p-6 sm:p-8",
         className,
       )}
     >
@@ -32,7 +32,7 @@ export function Benefits() {
   return (
     <section id="recursos" className="mx-auto max-w-6xl px-5 py-20 md:py-28">
       <div className="max-w-2xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-accent">Recursos</p>
+        <p className="text-sm font-semibold text-accent">Recursos</p>
         <h2 className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
           Tudo o que seu delivery precisa para vender mais, em um só lugar.
         </h2>

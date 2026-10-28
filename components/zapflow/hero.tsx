@@ -47,7 +47,8 @@ export function Hero() {
           <div className="rise mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row" style={delay(3)}>
             <a
               href={landingLinks.partnership}
-              className="btn-glow inline-flex h-13 items-center justify-center gap-2 rounded-full px-7 text-[15px] font-bold text-primary-foreground sm:h-12"
+              data-hide-mobile-cta
+  className="btn-glow inline-flex h-13 items-center justify-center gap-2 rounded-full px-7 text-[15px] font-bold text-primary-foreground sm:h-12"
             >
               Criar meu cardápio
               <ArrowRight className="size-[1.125rem]" aria-hidden="true" />

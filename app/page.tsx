@@ -1,6 +1,7 @@
 import { Addons } from "@/components/zapflow/addons"
 import { Benefits } from "@/components/zapflow/benefits"
-import { FinalCta, MobileCtaBar, SiteFooter } from "@/components/zapflow/closing"
+import { FinalCta, SiteFooter } from "@/components/zapflow/closing"
+import { MobileCtaBar } from "@/components/zapflow/mobile-cta-bar"
 import { Demo } from "@/components/zapflow/demo"
 import { Faq } from "@/components/zapflow/faq"
 import { Hero } from "@/components/zapflow/hero"

@@ -22,6 +22,7 @@ export function FinalCta() {
           por venda.
         </p>
         <a
+          data-hide-mobile-cta
           href={landingLinks.partnership}
           className="btn-glow mt-8 inline-flex h-13 items-center gap-2 rounded-full px-8 text-base font-bold text-primary-foreground"
         >
@@ -55,19 +56,5 @@ export function SiteFooter() {
         </p>
       </div>
     </footer>
-  )
-}
-
-export function MobileCtaBar() {
-  return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border/80 bg-background/85 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 backdrop-blur-xl md:hidden">
-      <a
-        href={landingLinks.partnership}
-        className="btn-glow flex h-12 w-full items-center justify-center gap-2 rounded-full font-bold text-primary-foreground"
-      >
-        Criar meu cardápio grátis
-        <ArrowRight className="size-5" aria-hidden="true" />
-      </a>
-    </div>
   )
 }

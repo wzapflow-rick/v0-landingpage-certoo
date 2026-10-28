@@ -1,3 +1,4 @@
+import { Addons } from "@/components/zapflow/addons"
 import { Benefits } from "@/components/zapflow/benefits"
 import { FinalCta, MobileCtaBar, SiteFooter } from "@/components/zapflow/closing"
 import { Demo } from "@/components/zapflow/demo"
@@ -21,6 +22,7 @@ export default function Home() {
         <Hero />
         <Benefits />
         <Demo />
+        <Addons />
         <Pricing />
         <Faq />
         <FinalCta />

@@ -41,7 +41,8 @@ export function Addons() {
         <figure className="flex flex-col gap-3 lg:w-3/5">
           <BurgerStage />
           <figcaption className="text-center text-sm text-muted-foreground">
-            Passe o mouse ou toque no lanche para ver as camadas.
+            <span className="sm:hidden">Toque no lanche para ver as camadas.</span>
+            <span className="hidden sm:inline">Passe o mouse ou toque no lanche para ver as camadas.</span>
           </figcaption>
         </figure>
       </div>

@@ -47,7 +47,7 @@ export function BurgerStage() {
       ref={ref}
       role="img"
       aria-label="Hambúrguer 3D que se separa em camadas, cada uma identificada como um adicional do cardápio com seu preço"
-      className="relative aspect-[3/2] w-full overflow-hidden rounded-3xl border border-border bg-background"
+      className="relative aspect-square w-full touch-manipulation sm:aspect-[3/2] overflow-hidden rounded-3xl border border-border bg-background"
     >
       {visible ? (
         <BriocheAloft

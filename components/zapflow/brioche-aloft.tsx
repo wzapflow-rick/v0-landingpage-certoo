@@ -16,6 +16,13 @@ const RenderTarget = {
 import { useEffect, useRef, useState } from "react"
 import type { CSSProperties } from "react"
 import { animate } from "motion/react"
+
+// The spread Framer transition defeats motion's overload resolution for plain numbers.
+const animateValue = animate as unknown as (
+    from: number,
+    to: number,
+    options: Record<string, unknown>
+) => ReturnType<typeof animate>
 import type { AnimationPlaybackControls, Transition } from "motion/react"
 import * as THREE from "three"
 
@@ -56,7 +63,7 @@ export interface BriocheAloftProps {
     background?: string
 
     labels?: boolean
-    font?: CSSProperties
+    font?: CSSProperties & { variant?: string }
     textColor?: string
 
     spacing?: number
@@ -1864,7 +1871,7 @@ function __OriginkitBase_BriocheAloft({
     spacing = DEFAULTS.spacing,
     scale = DEFAULTS.scale,
     placement,
-    explode = DEFAULTS.explode,
+    explode = DEFAULTS.explode as NonNullable<BriocheAloftProps["explode"]>,
     parallax = DEFAULTS.parallax,
     spin = DEFAULTS.spin,
     transition = {"mass":1,"type":"spring","damping":13,"stiffness":70},
@@ -2325,7 +2332,7 @@ function __OriginkitBase_BriocheAloft({
                 running++
                 const tr = (p.transition || DEFAULT_TRANSITION) as Transition
                 anims.push(
-                    animate(prog[i], t, {
+                    animateValue(prog[i], t, {
                         ...(tr as object),
                         delay: ((tr as { delay?: number }).delay || 0) + order * stagger,
                         onUpdate: (v: number) => {
@@ -2336,7 +2343,7 @@ function __OriginkitBase_BriocheAloft({
                             prog[i] = t
                             needs = true
                         },
-                    } as Parameters<typeof animate>[2])
+                    })
                 )
             }
             needs = true

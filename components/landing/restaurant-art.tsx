@@ -8,7 +8,7 @@ export function RestaurantBrand() {
     <a href="#inicio" className="restaurant-brand">
       <img src={rocketUrl} alt="" width={52} height={48} />
       <span>
-        Cardápio<strong>wZapFlow</strong>
+        Cardápio<strong>ZapFlash</strong>
       </span>
     </a>
   );
@@ -47,7 +47,7 @@ export function RocketEntrance() {
     return () => { animation.cancel(); fade.cancel(); clearTimeout(timeout); window.removeEventListener('resize', finish); window.removeEventListener('scroll', finish); };
   }, [intro]);
   return <>
-    <img src={rocketUrl} className="restaurant-rocket" width={1344} height={1200} alt="Pizza-foguete wZapFlow com queijo dourado e pepperoni" fetchPriority="high" />
+    <img src={rocketUrl} className="restaurant-rocket" width={1344} height={1200} alt="Pizza-foguete ZapFlash com queijo dourado e pepperoni" fetchPriority="high" />
     {intro && createPortal(<div className="brand-intro" aria-hidden="true"><div ref={backdrop} className="brand-intro-backdrop" /><img ref={logo} src={rocketUrl} alt="" width={300} height={268} /></div>, document.body)}
   </>;
 }
@@ -56,8 +56,8 @@ export function MenuPhone({ product = false }: { product?: boolean }) {
     ? "/images/landing/menu-product-mobile.png"
     : "/images/landing/menu-real-mobile.png";
   const description = product
-    ? "Tela real do wZapFlow com as opções de tamanho de um produto"
-    : "Tela real do cardápio Tropical Açaí criado no wZapFlow";
+    ? "Tela real do ZapFlash com as opções de tamanho de um produto"
+    : "Tela real do cardápio Tropical Açaí criado no ZapFlash";
 
   return (
     <figure className={`menu-phone${product ? " menu-phone-product" : ""}`}>

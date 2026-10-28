@@ -3,11 +3,11 @@ export const brandLogoUrl =
 
 export function Brand() {
   return (
-    <a href="#inicio" className="flex items-center gap-2" aria-label="wZapFlow, voltar ao início">
+    <a href="#inicio" className="flex items-center gap-2" aria-label="ZapFlash, voltar ao início">
       <img src={brandLogoUrl} alt="" width={40} height={36} className="h-9 w-auto" />
       <span className="flex flex-col leading-none">
         <span className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">Cardápio</span>
-        <span className="text-lg font-extrabold tracking-tight">wZapFlow</span>
+        <span className="text-lg font-extrabold tracking-tight">ZapFlash</span>
       </span>
     </a>
   )

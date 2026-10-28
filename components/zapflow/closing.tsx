@@ -48,7 +48,7 @@ export function SiteFooter() {
         </nav>
         <p className="text-xs text-muted-foreground">
           {"© "}
-          {new Date().getFullYear()} wZapFlow. Todos os direitos reservados.
+          {new Date().getFullYear()} ZapFlash. Todos os direitos reservados.
         </p>
       </div>
     </footer>

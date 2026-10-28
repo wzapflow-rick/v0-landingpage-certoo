@@ -226,7 +226,7 @@ export function RestaurantLanding() {
         </section>
         {testimonialTemplates.some((t) => t.approved) && (
           <section className="restaurant-container feature-section">
-            <h2>Restaurantes que já <em>decolaram</em><br />com o Cardápio wZapFlow.</h2>
+            <h2>Restaurantes que já <em>decolaram</em><br />com o Cardápio ZapFlash.</h2>
             <div className="feature-grid">
               {testimonialTemplates
                 .filter((t) => t.approved)
@@ -312,7 +312,7 @@ export function RestaurantLanding() {
             <span className="restaurant-kicker">Dúvidas frequentes</span>
             <h2>Ainda tem dúvidas?</h2>
             <p>
-              A gente te ajuda. Veja as respostas sobre o Cardápio wZapFlow.
+              A gente te ajuda. Veja as respostas sobre o Cardápio ZapFlash.
             </p>
             <a
               href={landingLinks.whatsapp}
@@ -325,7 +325,7 @@ export function RestaurantLanding() {
           </div>
           <div>
             {[
-              { question: "Como funciona o Cardápio wZapFlow?", answer: "Você organiza seus produtos em um cardápio digital e compartilha o link ou QR Code. Seus clientes consultam as opções e fazem seus pedidos online." },
+              { question: "Como funciona o Cardápio ZapFlash?", answer: "Você organiza seus produtos em um cardápio digital e compartilha o link ou QR Code. Seus clientes consultam as opções e fazem seus pedidos online." },
               { question: "Preciso ter um site?", answer: "Não. Seu cardápio possui um link próprio para compartilhar com os clientes." },
               { question: "Posso personalizar o cardápio?", answer: "Você pode organizar fotos, produtos e categorias. O plano Elite inclui customização total; consulte os recursos de cada plano." },
               { question: "Como meus clientes fazem os pedidos?", answer: "Eles acessam o link ou QR Code e escolhem os produtos. Você acompanha os pedidos no Kanban. Recursos de WhatsApp estão disponíveis no Pro e Elite." },
@@ -369,7 +369,7 @@ export function RestaurantLanding() {
           <a href={landingLinks.login}>Entrar</a>
         </nav>
         <small>
-          © {new Date().getFullYear()} wZapFlow.
+          © {new Date().getFullYear()} ZapFlash.
           <br />
           Todos os direitos reservados.
         </small>

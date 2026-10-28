@@ -81,7 +81,7 @@ export function Hero() {
             <div className="phone-float">
               <PhoneFrame
                 src="/images/landing/menu-real-mobile.png"
-                alt="Cardápio digital real do Tropical Açaí criado no wZapFlow, aberto no celular"
+                alt="Cardápio digital real do Tropical Açaí criado no ZapFlash, aberto no celular"
                 priority
               />
             </div>

@@ -1,4 +1,4 @@
-# ZapFlow — produção e edição
+# ZapFlash — produção e edição
 
 ## Entrega
 Landing completa, arte original, camadas animadas, captura real do produto, quatro planos preservados e style tile em `/style-tile` (noindex). Fonte comercial estática: `lib/landing-content.ts`; não há sincronização automática com o cadastro.

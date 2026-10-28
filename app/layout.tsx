@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase,
-  title: "wZapFlow — Cardápio digital com pedidos no WhatsApp e IA",
+  title: "ZapFlash — Cardápio digital com pedidos no WhatsApp e IA",
   description:
     "Cardápio digital com fotos, pedidos direto no WhatsApp e agente de IA para atender seus clientes. Zero comissão por venda e 7 dias grátis.",
   keywords: [
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   openGraph: {
-    title: "wZapFlow — Cardápio digital com pedidos no WhatsApp e IA",
+    title: "ZapFlash — Cardápio digital com pedidos no WhatsApp e IA",
     description: "Cardápio digital com pedidos no WhatsApp e IA. Zero comissão por venda.",
     type: "website",
     locale: "pt_BR",
@@ -51,13 +51,13 @@ export const metadata: Metadata = {
         url: "/images/landing/zapflow-social.png",
         width: 1024,
         height: 1024,
-        alt: "Pizza artesanal ao lado de uma interface móvel, representando o fluxo wZapFlow",
+        alt: "Pizza artesanal ao lado de uma interface móvel, representando o fluxo ZapFlash",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "wZapFlow — Cardápio digital com pedidos no WhatsApp e IA",
+    title: "ZapFlash — Cardápio digital com pedidos no WhatsApp e IA",
     description: "Cardápio digital com pedidos no WhatsApp e IA. Zero comissão por venda.",
     images: ["/images/landing/zapflow-social.png"],
   },

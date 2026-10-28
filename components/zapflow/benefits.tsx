@@ -70,7 +70,7 @@ export function Benefits() {
               <dd className="font-semibold">R$ 100,00</dd>
             </div>
             <div className="flex items-center justify-between">
-              <dt className="text-muted-foreground">Comissão wZapFlow</dt>
+              <dt className="text-muted-foreground">Comissão ZapFlash</dt>
               <dd className="font-semibold text-accent">R$ 0,00</dd>
             </div>
             <div className="flex items-center justify-between border-t border-border/80 pt-2">

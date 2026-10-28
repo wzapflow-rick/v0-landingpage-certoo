@@ -23,7 +23,7 @@ const chapters = [
   },
   {
     label: "A conexão",
-    title: "É aqui que\nentra o wZapFlow.",
+    title: "É aqui que\nentra o ZapFlash.",
     description:
       "Cardápio por link ou QR Code, pedidos no Kanban, Pix e cartões. Cada parte encontra o seu lugar.",
     phase: 0.7,

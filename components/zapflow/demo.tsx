@@ -67,7 +67,7 @@ export function Demo() {
           <div className="mx-auto w-full max-w-[16rem] lg:w-72 lg:max-w-none">
             <PhoneFrame
               src="/images/landing/menu-product-mobile.png"
-              alt="Tela do cardápio wZapFlow com a escolha de tamanho da Batata Frita e botão Continuar"
+              alt="Tela do cardápio ZapFlash com a escolha de tamanho da Batata Frita e botão Continuar"
             />
             <p className="mt-4 text-center text-sm text-muted-foreground">No celular do cliente</p>
           </div>

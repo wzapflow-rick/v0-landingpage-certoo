@@ -33,7 +33,7 @@ export function Benefits() {
     <section id="recursos" data-reveal className="mx-auto max-w-6xl px-5 py-20 md:py-28">
       <div className="max-w-2xl">
         <p className="text-sm font-semibold text-accent">Recursos</p>
-        <h2 className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <h2 data-wipe className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
           Tudo o que seu delivery precisa para vender mais, em um só lugar.
         </h2>
       </div>

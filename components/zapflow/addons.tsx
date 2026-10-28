@@ -11,9 +11,9 @@ export function Addons() {
   return (
     <section id="adicionais" aria-labelledby="adicionais-titulo" className="reveal px-5 py-20 sm:py-28">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
-        <div className="flex flex-col gap-6 lg:w-2/5">
+        <div data-reveal className="flex flex-col gap-6 lg:w-2/5">
           <p className="text-sm font-semibold text-accent">Adicionais e complementos</p>
-          <h2 id="adicionais-titulo" className="text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <h2 id="adicionais-titulo" data-wipe className="text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
             Cada camada vira venda a mais
           </h2>
           <p className="text-pretty leading-relaxed text-muted-foreground">

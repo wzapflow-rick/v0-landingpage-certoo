@@ -21,7 +21,7 @@ export function Faq() {
       <div data-reveal className="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:py-28 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <p className="text-sm font-semibold text-accent">Dúvidas</p>
-          <h2 className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">Perguntas frequentes</h2>
+          <h2 data-wipe className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">Perguntas frequentes</h2>
           <p className="mt-4 leading-relaxed text-muted-foreground">Não encontrou o que procurava? Fale com a nossa equipe.</p>
           <a
             href={landingLinks.whatsapp}

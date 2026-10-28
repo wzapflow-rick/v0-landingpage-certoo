@@ -55,7 +55,7 @@ export function Demo() {
       <div data-reveal className="mx-auto max-w-6xl px-5 py-20 md:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold text-accent">Como funciona</p>
-          <h2 className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <h2 data-wipe className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
             Do toque no cardápio à mensagem no WhatsApp.
           </h2>
           <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">

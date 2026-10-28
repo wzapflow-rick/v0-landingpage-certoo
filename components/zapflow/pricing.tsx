@@ -7,7 +7,7 @@ export function Pricing() {
     <section id="planos" data-reveal className="mx-auto max-w-6xl px-5 py-20 md:py-28">
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-sm font-semibold text-accent">Planos</p>
-        <h2 className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <h2 data-wipe className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
           Mensalidade fixa. Nenhuma comissão sobre suas vendas.
         </h2>
         <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">

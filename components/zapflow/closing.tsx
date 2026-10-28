@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react"
 import { landingLinks } from "@/lib/landing-content"
 import { Brand, brandLogoUrl } from "./brand"
+import { TextRing } from "./text-ring"
 
 export function FinalCta() {
   return (
@@ -10,8 +11,10 @@ export function FinalCta() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_70%_at_50%_0%,color-mix(in_srgb,var(--accent)_8%,transparent),transparent_70%)]"
         />
-        <img src={brandLogoUrl} alt="" width={96} height={86} loading="lazy" className="h-20 w-auto" />
-        <h2 className="mt-6 max-w-2xl text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <TextRing words={["7 dias grátis", "Zero comissão", "Pedidos no WhatsApp"]}>
+          <img src={brandLogoUrl} alt="" width={96} height={86} loading="lazy" className="h-16 w-auto" />
+        </TextRing>
+        <h2 data-wipe className="mt-6 max-w-2xl text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
           Seu próximo pedido pode chegar <span className="text-warm">ainda hoje.</span>
         </h2>
         <p className="mt-4 max-w-lg text-pretty leading-relaxed text-muted-foreground">

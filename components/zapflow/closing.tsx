@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react"
 import { landingLinks } from "@/lib/landing-content"
 import { Brand, brandLogoUrl } from "./brand"
+import { RotatingWord } from "./rotating-word"
 import { TextRing } from "./text-ring"
 
 export function FinalCta() {
@@ -15,7 +16,8 @@ export function FinalCta() {
           <img src={brandLogoUrl} alt="" width={96} height={86} loading="lazy" className="h-16 w-auto" />
         </TextRing>
         <h2 data-wipe className="mt-6 max-w-2xl text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
-          Seu próximo pedido pode chegar <span className="text-warm">ainda hoje.</span>
+          O próximo pedido de <RotatingWord words={["açaí", "pizza", "hambúrguer", "marmita", "sorvete"]} /> pode
+          chegar ainda hoje.
         </h2>
         <p className="mt-4 max-w-lg text-pretty leading-relaxed text-muted-foreground">
           Monte seu cardápio, compartilhe o link e comece a receber pedidos no WhatsApp. 7 dias grátis e zero comissão

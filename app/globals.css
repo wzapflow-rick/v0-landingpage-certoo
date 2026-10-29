@@ -512,3 +512,24 @@ body {
     opacity: 1;
   }
 }
+
+@keyframes segment-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.segment-progress {
+  animation-name: segment-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .segment-progress {
+    display: none;
+  }
+}

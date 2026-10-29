@@ -21,10 +21,19 @@ type RotatingWordProps = {
   words: string[]
   interval?: number
   className?: string
+  index?: number
+  onIndexChange?: (index: number) => void
 }
 
-export function RotatingWord({ words, interval = 2200, className }: RotatingWordProps) {
-  const [index, setIndex] = useState(0)
+export function RotatingWord({
+  words,
+  interval = 2200,
+  className,
+  index: controlledIndex,
+  onIndexChange,
+}: RotatingWordProps) {
+  const [ownIndex, setOwnIndex] = useState(0)
+  const index = controlledIndex ?? ownIndex
   const [width, setWidth] = useState<number>()
   const rootRef = useRef<HTMLSpanElement>(null)
   const contentRef = useRef<HTMLSpanElement>(null)
@@ -34,10 +43,13 @@ export function RotatingWord({ words, interval = 2200, className }: RotatingWord
   useEffect(() => {
     if (!inView || reduceMotion || words.length < 2) return
     const id = window.setInterval(() => {
-      if (!document.hidden) setIndex((current) => (current + 1) % words.length)
+      if (document.hidden) return
+      const next = (index + 1) % words.length
+      if (controlledIndex === undefined) setOwnIndex(next)
+      onIndexChange?.(next)
     }, interval)
     return () => window.clearInterval(id)
-  }, [inView, reduceMotion, words.length, interval])
+  }, [inView, reduceMotion, words.length, interval, index, controlledIndex, onIndexChange])
 
   useLayoutEffect(() => {
     const content = contentRef.current

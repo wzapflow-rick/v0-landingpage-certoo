@@ -40,7 +40,7 @@ function CardHeading({ icon, title, text }: { icon: ReactNode; title: string; te
 
 export function Benefits() {
   return (
-    <section id="recursos" data-reveal className="mx-auto max-w-6xl px-5 py-20 md:py-28">
+    <section id="recursos" data-reveal className="ambient ambient-amber relative mx-auto max-w-6xl px-5 py-20 md:py-28">
       <div className="max-w-2xl">
         <p className="text-sm font-semibold text-accent">Recursos</p>
         <h2 data-wipe className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">

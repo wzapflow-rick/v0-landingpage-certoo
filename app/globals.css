@@ -427,6 +427,57 @@
   animation-delay: calc(var(--i, 0) * 900ms + 200ms);
 }
 
+/* Ambient section light: one soft source per section, so the page never reads as a flat black sheet */
+body {
+  overflow-x: clip;
+}
+.ambient {
+  isolation: isolate;
+}
+.ambient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.ambient-amber::before {
+  inset: 0 -20vw;
+  background: radial-gradient(42rem 26rem at 12% 22%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 70%);
+}
+.ambient-green::before {
+  background: radial-gradient(48rem 30rem at 85% 45%, color-mix(in srgb, var(--primary) 7%, transparent), transparent 70%);
+}
+.ambient-plans::before {
+  inset: 0 -20vw;
+  background:
+    radial-gradient(36rem 24rem at 62% 58%, color-mix(in srgb, var(--primary) 6%, transparent), transparent 70%),
+    linear-gradient(180deg, transparent, color-mix(in srgb, var(--card) 35%, transparent) 50%, transparent);
+}
+.ambient-band {
+  position: relative;
+}
+.ambient-band::before {
+  background: radial-gradient(40rem 12rem at 20% 50%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 70%);
+}
+
+/* "Como funciona" steps fill in sync with the chat timeline */
+.flow-step-bar {
+  transform: scaleX(1);
+}
+#demo:has(.chat-stage[data-state="armed"]) .flow-step-bar {
+  transform: scaleX(0);
+}
+#demo:has(.chat-stage[data-state="armed"]) .flow-step-title {
+  color: var(--muted-foreground);
+}
+#demo:has(.chat-stage[data-state="playing"]) .flow-step-bar {
+  transition: transform 700ms cubic-bezier(0.65, 0, 0.35, 1) var(--s, 0ms);
+}
+#demo:has(.chat-stage[data-state="playing"]) .flow-step-title {
+  transition: color 400ms ease var(--s, 0ms);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -11,6 +11,9 @@ const steps = [
   { title: "Você só prepara", text: "Acompanhe cada etapa no Kanban e o cliente é avisado automaticamente." },
 ]
 
+// Matches the chat bubble timeline: order arrives at bubble 0, AI replies at bubble 2, delivery at bubble 3
+const stepDelays = [0, 200, 2000, 2900]
+
 function Bubble({
   index,
   side,
@@ -51,8 +54,8 @@ function Bubble({
 
 export function Demo() {
   return (
-    <section id="demo" className="relative border-y border-border/60 bg-card/30">
-      <div data-reveal className="mx-auto max-w-6xl px-5 py-20 md:py-28">
+    <section id="demo" className="ambient ambient-green relative border-y border-border/60 bg-card/30">
+      <div data-reveal className="relative mx-auto max-w-6xl px-5 py-20 md:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold text-accent">Como funciona</p>
           <h2 data-wipe className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
@@ -109,11 +112,17 @@ export function Demo() {
           </div>
         </div>
 
-        <ol className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-16 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
-            <li key={step.title} className="border-t border-foreground/10 pt-5">
+            <li
+              key={step.title}
+              className="flow-step relative pt-5"
+              style={{ "--s": `${stepDelays[index]}ms` } as CSSProperties}
+            >
+              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-foreground/10" />
+              <span aria-hidden="true" className="flow-step-bar absolute inset-x-0 top-0 h-0.5 origin-left rounded-full bg-accent" />
               <span className="text-sm font-semibold text-accent">Passo {index + 1}</span>
-              <h3 className="mt-2 font-bold">{step.title}</h3>
+              <h3 className="flow-step-title mt-2 font-bold">{step.title}</h3>
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
             </li>
           ))}

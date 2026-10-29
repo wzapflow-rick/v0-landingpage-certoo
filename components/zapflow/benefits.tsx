@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { Bot, ImageIcon, MessageCircle, Wallet } from "lucide-react"
 import type { ReactNode } from "react"
 import { cn } from "@/lib/utils"
 
@@ -16,12 +15,23 @@ function GlassCard({ className, children }: { className?: string; children: Reac
   )
 }
 
+function NeonIcon({ name, className }: { name: "photos" | "wallet" | "chat" | "bot"; className?: string }) {
+  return (
+    <span
+      className={cn(
+        "relative block size-12 shrink-0 overflow-hidden rounded-xl ring-1 ring-accent/50 shadow-[0_0_18px_-4px_var(--color-accent)]",
+        className,
+      )}
+    >
+      <Image src={`/icons/neon-${name}.png`} alt="" fill sizes="56px" className="scale-110 object-cover" />
+    </span>
+  )
+}
+
 function CardHeading({ icon, title, text }: { icon: ReactNode; title: string; text: string }) {
   return (
     <div>
-      <span className="flex size-10 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-accent">
-        {icon}
-      </span>
+      {icon}
       <h3 className="mt-5 text-xl font-bold tracking-tight">{title}</h3>
       <p className="mt-2 text-pretty leading-relaxed text-muted-foreground">{text}</p>
     </div>
@@ -42,7 +52,7 @@ export function Benefits() {
         <GlassCard className="md:col-span-4">
           <div className="grid gap-6 sm:grid-cols-2 sm:items-center">
             <CardHeading
-              icon={<ImageIcon className="size-5" aria-hidden="true" />}
+              icon={<NeonIcon name="photos" />}
               title="Cardápio com fotos que abrem o apetite"
               text="Produtos com foto, preço e categorias organizadas. Seu cliente encontra o que quer em segundos, por link ou QR Code."
             />
@@ -60,7 +70,7 @@ export function Benefits() {
 
         <GlassCard className="md:col-span-2">
           <CardHeading
-            icon={<Wallet className="size-5" aria-hidden="true" />}
+            icon={<NeonIcon name="wallet" />}
             title="Zero comissão por venda"
             text="Você paga só a mensalidade. Cada real vendido fica com você."
           />
@@ -82,7 +92,7 @@ export function Benefits() {
 
         <GlassCard className="md:col-span-3">
           <CardHeading
-            icon={<MessageCircle className="size-5" aria-hidden="true" />}
+            icon={<NeonIcon name="chat" />}
             title="Pedidos direto no WhatsApp"
             text="Cada pedido chega completo, com itens, endereço e pagamento. Notificações automáticas avisam o cliente a cada etapa."
           />
@@ -96,14 +106,12 @@ export function Benefits() {
 
         <GlassCard className="md:col-span-3">
           <CardHeading
-            icon={<Bot className="size-5" aria-hidden="true" />}
+            icon={<NeonIcon name="bot" />}
             title="IA que atende e vende por você"
             text="Um agente de IA responde dúvidas, envia o cardápio e conduz o cliente até o pedido, mesmo quando a cozinha está cheia."
           />
           <div className="mt-6 flex items-start gap-3 rounded-xl border border-border/80 bg-background/60 p-4 text-sm">
-            <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
-              <Bot className="size-4" aria-hidden="true" />
-            </span>
+            <NeonIcon name="bot" className="size-8 rounded-lg" />
             <p className="leading-relaxed text-muted-foreground">
               {"\"Temos sim! A batata grande sai por R$ 17. Quer que eu adicione ao seu pedido?\""}
             </p>

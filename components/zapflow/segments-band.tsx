@@ -21,7 +21,7 @@ export function SegmentsBand() {
 
   return (
     <section aria-label="Para quem é o ZapFlash" className="ambient ambient-band border-y border-border/60">
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-7 px-5 py-12 md:py-14">
+      <div className="relative mx-auto flex max-w-7xl flex-col gap-7 px-5 py-12 md:py-14">
         <div className="flex flex-col items-center gap-3 text-center md:flex-row md:items-end md:justify-between md:text-left">
           <p className="text-balance text-3xl font-extrabold tracking-[-0.03em] sm:text-4xl">
             Feito para <RotatingWord words={words} index={active} onIndexChange={setActive} interval={ROTATE_MS} />

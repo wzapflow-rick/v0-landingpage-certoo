@@ -1,12 +1,11 @@
-import { Addons } from "@/components/zapflow/addons"
-import { Benefits } from "@/components/zapflow/benefits"
 import { FinalCta, SiteFooter } from "@/components/zapflow/closing"
-import { MobileCtaBar } from "@/components/zapflow/mobile-cta-bar"
-import { Demo } from "@/components/zapflow/demo"
 import { Faq } from "@/components/zapflow/faq"
 import { Hero } from "@/components/zapflow/hero"
+import { MobileCtaBar } from "@/components/zapflow/mobile-cta-bar"
+import { Operation } from "@/components/zapflow/operation"
+import { OrderDemo } from "@/components/zapflow/order-demo"
 import { Pricing } from "@/components/zapflow/pricing"
-import { ScrollReveal } from "@/components/zapflow/scroll-reveal"
+import { Savings } from "@/components/zapflow/savings"
 import { SegmentsBand } from "@/components/zapflow/segments-band"
 import { SiteHeader } from "@/components/zapflow/site-header"
 
@@ -23,16 +22,15 @@ export default function Home() {
       <main id="conteudo">
         <Hero />
         <SegmentsBand />
-        <Benefits />
-        <Demo />
-        <Addons />
+        <OrderDemo />
+        <Savings />
+        <Operation />
         <Pricing />
         <Faq />
         <FinalCta />
       </main>
       <SiteFooter />
       <MobileCtaBar />
-      <ScrollReveal />
     </div>
   )
 }

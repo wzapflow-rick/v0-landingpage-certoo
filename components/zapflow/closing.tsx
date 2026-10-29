@@ -1,36 +1,63 @@
 import { ArrowRight } from "lucide-react"
 import { landingLinks } from "@/lib/landing-content"
-import { Brand, brandLogoUrl } from "./brand"
-import { RotatingWord } from "./rotating-word"
-import { TextRing } from "./text-ring"
+import { Brand } from "./brand"
+import { OrderTicket } from "./order-ticket"
 
 export function FinalCta() {
   return (
-    <section data-reveal className="mx-auto max-w-6xl px-5 pb-20 md:pb-28">
-      <div className="surface relative flex flex-col items-center overflow-hidden rounded-[2rem] px-6 py-16 text-center sm:px-12">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_70%_at_50%_0%,color-mix(in_srgb,var(--accent)_8%,transparent),transparent_70%)]"
-        />
-        <TextRing words={["7 dias grátis", "Zero comissão", "Pedidos no WhatsApp"]}>
-          <img src={brandLogoUrl} alt="" width={96} height={86} loading="lazy" className="h-16 w-auto" />
-        </TextRing>
-        <h2 data-wipe className="mt-6 max-w-2xl text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">
-          O próximo pedido de <RotatingWord words={["açaí", "pizza", "hambúrguer", "marmita", "sorvete"]} /> pode
-          chegar ainda hoje.
-        </h2>
-        <p className="mt-4 max-w-lg text-pretty leading-relaxed text-muted-foreground">
-          Monte seu cardápio, compartilhe o link e comece a receber pedidos no WhatsApp. 7 dias grátis e zero comissão
-          por venda.
-        </p>
-        <a
-          data-hide-mobile-cta
-          href={landingLinks.partnership}
-          className="btn-glow mt-8 inline-flex h-13 items-center gap-2 rounded-full px-8 text-base font-bold text-primary-foreground"
-        >
-          Criar meu cardápio
-          <ArrowRight className="size-5" aria-hidden="true" />
-        </a>
+    <section aria-labelledby="final-titulo" className="relative overflow-hidden border-t border-border/60">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_60%_at_75%_50%,color-mix(in_srgb,var(--accent)_10%,transparent),transparent_70%)]"
+      />
+      <div className="relative mx-auto grid max-w-7xl gap-14 px-5 py-20 md:py-28 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center">
+        <div>
+          <h2 id="final-titulo" className="max-w-[14ch] text-balance text-5xl font-extrabold leading-[0.98] tracking-[-0.045em] sm:text-6xl">
+            Seu cardápio pode receber pedidos ainda hoje.
+          </h2>
+          <p className="mt-6 max-w-md text-pretty leading-relaxed text-muted-foreground">
+            Cadastre os produtos, compartilhe o link e acompanhe os pedidos no Kanban. Se não fizer sentido para o seu
+            delivery, cancele dentro dos 7 dias.
+          </p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a
+              data-hide-mobile-cta
+              href={landingLinks.partnership}
+              className="btn-glow inline-flex h-13 items-center justify-center gap-2 rounded-full px-8 text-base font-bold text-primary-foreground"
+            >
+              Criar meu cardápio grátis
+              <ArrowRight className="size-5" aria-hidden="true" />
+            </a>
+            <a
+              href={landingLinks.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-13 items-center justify-center px-4 font-semibold text-foreground/80 hover:text-foreground"
+            >
+              Tirar dúvidas no WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div className="mx-auto w-full max-w-sm -rotate-2 lg:mx-0 lg:ml-auto">
+          <OrderTicket
+            title="Seu delivery no ZapFlash"
+            meta="Plano Parceria"
+            lines={[
+              { label: "Cardápio com link e QR Code", value: "incluso" },
+              { label: "Kanban de pedidos", value: "incluso" },
+              { label: "Pix e cartões", value: "incluso" },
+              { label: "7 dias de teste", value: "R$ 0,00" },
+            ]}
+            details={[
+              { label: "Depois do teste", value: "R$ 29,90/mês" },
+              { label: "Comissão por pedido", value: "R$ 0,00" },
+              { label: "Cancelamento", value: "quando quiser" },
+            ]}
+            totalLabel="Para começar hoje"
+            total="R$ 0,00"
+          />
+        </div>
       </div>
     </section>
   )
@@ -39,10 +66,10 @@ export function FinalCta() {
 export function SiteFooter() {
   return (
     <footer className="border-t border-border/60">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between">
         <Brand />
         <nav aria-label="Links do rodapé" className="flex flex-wrap gap-6 text-sm text-muted-foreground">
-          <a href="#recursos" className="hover:text-foreground">Recursos</a>
+          <a href="#demo" className="hover:text-foreground">Como funciona</a>
           <a href="#planos" className="hover:text-foreground">Planos</a>
           <a href={landingLinks.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
             Instagram

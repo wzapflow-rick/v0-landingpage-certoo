@@ -1,115 +1,106 @@
 import type { CSSProperties } from "react"
-import { ArrowRight, Check, MessageCircle, Sparkles } from "lucide-react"
+import { ArrowRight, MessageCircle } from "lucide-react"
 import { landingLinks } from "@/lib/landing-content"
-import { FlowLines, HeroAtmosphere } from "./hero-atmosphere"
+import { OrderTicket } from "./order-ticket"
 import { PhoneFrame } from "./phone-frame"
-import { PhoneStage } from "./phone-stage"
-
-const assurances = ["0% de comissão por venda", "7 dias grátis", "Cancele quando quiser"]
 
 const delay = (step: number) => ({ "--d": step }) as CSSProperties
 
 export function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden">
-      <HeroAtmosphere />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_55%_at_78%_45%,color-mix(in_srgb,var(--accent)_11%,transparent),transparent_70%)]"
+      />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-5 pb-16 pt-12 sm:pt-16 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14 lg:py-14 xl:grid-cols-[minmax(0,1fr)_21rem] xl:gap-20">
-        <FlowLines />
-        <div className="relative flex flex-col items-center text-center lg:items-start lg:text-left">
-          <p
-            className="rise inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/[0.07] px-3 py-1.5 text-[13px] font-semibold text-accent"
-            style={delay(0)}
-          >
-            <Sparkles className="size-3.5" aria-hidden="true" />
-            Cardápio digital + WhatsApp + IA
-          </p>
-
-          <h1
-            className="rise mt-7 max-w-[20ch] text-balance text-[2.5rem] font-extrabold leading-[1.04] tracking-[-0.035em] sm:text-6xl lg:max-w-none lg:whitespace-nowrap lg:text-[3.4rem] xl:text-[3.75rem]"
-            style={delay(1)}
-          >
-            <span className="lg:block">Seu cardápio vendendo</span>{" "}
-            <span className="lg:block">
-              <span className="text-warm">no automático</span>, direto
-            </span>{" "}
-            <span className="lg:block">no WhatsApp.</span>
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-5 pb-20 pt-10 sm:pt-14 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:gap-8 lg:py-12">
+        <div className="flex flex-col">
+          <h1 className="rise hero-title max-w-[13ch] text-balance font-extrabold" style={delay(0)}>
+            O cliente pede pelo link. O pedido chega pronto.
           </h1>
 
           <p
-            className="rise mt-6 max-w-[34rem] text-pretty text-[1.0625rem] leading-relaxed text-muted-foreground sm:text-lg"
-            style={delay(2)}
+            className="rise mt-7 max-w-[30rem] text-pretty text-lg leading-relaxed text-muted-foreground"
+            style={delay(1)}
           >
-            O cliente escolhe pelo celular, o pedido chega pronto no seu WhatsApp e a IA responde por você. Sem
-            comissão por venda: <strong className="whitespace-nowrap font-semibold text-foreground">o lucro é 100% seu.</strong>
+            Cardápio digital com pedidos organizados, avisos no WhatsApp e IA para responder seus clientes. Sem comissão
+            por venda.
           </p>
 
-          <div className="rise mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row" style={delay(3)}>
+          <div className="rise mt-9 flex flex-col gap-3 sm:flex-row" style={delay(2)}>
             <a
               href={landingLinks.partnership}
               data-hide-mobile-cta
-  className="btn-glow inline-flex h-13 items-center justify-center gap-2 rounded-full px-7 text-[15px] font-bold text-primary-foreground sm:h-12"
+              className="btn-glow inline-flex h-13 items-center justify-center gap-2 rounded-full px-7 text-[15px] font-bold text-primary-foreground"
             >
-              Criar meu cardápio
+              Criar meu cardápio grátis
               <ArrowRight className="size-[1.125rem]" aria-hidden="true" />
             </a>
             <a
               href="#demo"
-              className="btn-quiet inline-flex h-13 items-center justify-center rounded-full px-7 text-[15px] font-semibold sm:h-12"
+              className="btn-quiet inline-flex h-13 items-center justify-center rounded-full px-7 text-[15px] font-semibold"
             >
-              Ver um exemplo
+              Montar um pedido de teste
             </a>
           </div>
 
-          <ul
-            className="rise mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2.5 text-sm text-muted-foreground lg:justify-start"
-            style={delay(4)}
-          >
-            {assurances.map((item) => (
-              <li key={item} className="flex items-center gap-2">
-                <span className="flex size-4 items-center justify-center rounded-full bg-primary/15 text-primary">
-                  <Check className="size-3" strokeWidth={3} aria-hidden="true" />
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
+          <p className="rise mt-6 max-w-md text-sm leading-relaxed text-muted-foreground" style={delay(3)}>
+            7 dias grátis no plano Parceria, depois R$ 29,90/mês. 0% de comissão por pedido e cancelamento quando quiser.
+          </p>
         </div>
 
-        <div className="rise relative mx-auto w-full max-w-[16.5rem] sm:max-w-[19rem] lg:max-w-none" style={delay(5)}>
-          <div aria-hidden="true" className="phone-floor pointer-events-none absolute inset-x-6 -bottom-8 h-16" />
-          <PhoneStage>
-            <div className="phone-float">
-              <PhoneFrame
-                src="/images/landing/menu-real-mobile.png"
-                alt="Cardápio digital real do Tropical Açaí criado no ZapFlash, aberto no celular"
-                priority
-              />
-            </div>
-
-            <div className="chip-depth absolute -left-28 top-[29%] hidden w-52 sm:block lg:-left-32">
-              <div className="float-chip chip-in-left rounded-2xl p-2.5" style={delay(8)}>
-                <div className="flex items-center gap-2.5">
-                  <span className="order-dot relative flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
-                    <MessageCircle className="size-4" aria-hidden="true" />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-[13px] font-bold leading-tight">Novo pedido #1042</p>
-                    <p className="mt-0.5 truncate text-xs text-muted-foreground">2x Batata Frita · R$ 34,00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="chip-depth absolute -right-12 top-[38%] hidden sm:block lg:-right-14">
-              <div className="float-chip chip-in-right rounded-2xl px-3.5 py-2.5" style={delay(10)}>
-                <p className="text-xs font-medium text-muted-foreground">Comissão</p>
-                <p className="text-xl font-extrabold leading-tight text-accent">0%</p>
-              </div>
-            </div>
-          </PhoneStage>
-        </div>
+        <HeroComposition />
       </div>
     </section>
+  )
+}
+
+function HeroComposition() {
+  return (
+    <div className="relative mx-auto h-[30rem] w-full max-w-[26rem] sm:h-[36rem] sm:max-w-[32rem] lg:mx-0 lg:ml-auto">
+      <figure className="rise absolute left-0 top-0 w-[58%] sm:w-[55%]" style={delay(2)}>
+        <PhoneFrame
+          src="/images/landing/menu-real-mobile.png"
+          alt="Cardápio digital real do Tropical Açaí criado no ZapFlash, aberto no celular"
+          priority
+        />
+        <figcaption className="sr-only">O cliente escolhe pelo cardápio no celular</figcaption>
+      </figure>
+
+      <div
+        className="ticket-print absolute right-0 top-[18%] w-[62%] rotate-[2.5deg] sm:w-[56%]"
+        style={{ "--print-delay": "0.9s" } as CSSProperties}
+      >
+        <OrderTicket
+          title="Tropical Açaí"
+          meta="#1042 · 19:42"
+          lines={[
+            { label: "1x Açaí 500 ml", value: "22,00" },
+            { label: "+ Granola", value: "2,00", sub: true },
+            { label: "+ Leite em pó", value: "2,50", sub: true },
+          ]}
+          details={[
+            { label: "Entrega", value: "Rua das Flores, 120" },
+            { label: "Pagamento", value: "Pix" },
+          ]}
+          total="R$ 26,50"
+          footer={<p className="ticket-muted text-xs">Comissão ZapFlash: R$ 0,00</p>}
+        />
+      </div>
+
+      <div
+        className="rise absolute bottom-2 right-2 flex max-w-[15rem] items-center gap-3 rounded-2xl border border-primary/30 bg-card/95 p-3 shadow-2xl backdrop-blur sm:bottom-6"
+        style={delay(9)}
+      >
+        <span className="order-dot relative flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+          <MessageCircle className="size-4" aria-hidden="true" />
+        </span>
+        <p className="text-[13px] leading-snug">
+          <span className="block font-bold">Pedido confirmado</span>
+          <span className="text-muted-foreground">Aviso enviado ao cliente no WhatsApp</span>
+        </p>
+      </div>
+    </div>
   )
 }

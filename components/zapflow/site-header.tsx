@@ -6,8 +6,9 @@ import { landingLinks } from "@/lib/landing-content"
 import { Brand } from "./brand"
 
 const links = [
-  { label: "Recursos", href: "#recursos" },
   { label: "Como funciona", href: "#demo" },
+  { label: "Economia", href: "#economia" },
+  { label: "Operação", href: "#operacao" },
   { label: "Planos", href: "#planos" },
   { label: "Dúvidas", href: "#duvidas" },
 ]
@@ -17,7 +18,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-foreground/[0.06] bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-5">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5">
         <Brand />
 
         <nav

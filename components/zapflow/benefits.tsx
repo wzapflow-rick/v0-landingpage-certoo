@@ -19,11 +19,11 @@ function NeonIcon({ name, className }: { name: "photos" | "wallet" | "chat" | "b
   return (
     <span
       className={cn(
-        "relative block size-12 shrink-0 overflow-hidden rounded-xl ring-1 ring-accent/50 shadow-[0_0_18px_-4px_var(--color-accent)]",
+        "relative block size-9 shrink-0 overflow-hidden rounded-[10px] ring-1 ring-accent/40 shadow-[0_0_12px_-6px_var(--color-accent)] md:size-10 md:rounded-xl",
         className,
       )}
     >
-      <Image src={`/icons/neon-${name}.png`} alt="" fill sizes="56px" className="scale-110 object-cover" />
+      <Image src={`/icons/neon-${name}.png`} alt="" fill sizes="40px" className="scale-110 object-cover" />
     </span>
   )
 }
@@ -111,7 +111,7 @@ export function Benefits() {
             text="Um agente de IA responde dúvidas, envia o cardápio e conduz o cliente até o pedido, mesmo quando a cozinha está cheia."
           />
           <div className="mt-6 flex items-start gap-3 rounded-xl border border-border/80 bg-background/60 p-4 text-sm">
-            <NeonIcon name="bot" className="size-8 rounded-lg" />
+            <NeonIcon name="bot" className="size-6 rounded-md md:size-7 md:rounded-md" />
             <p className="leading-relaxed text-muted-foreground">
               {"\"Temos sim! A batata grande sai por R$ 17. Quer que eu adicione ao seu pedido?\""}
             </p>

@@ -1,3 +1,7 @@
+export const siteUrl = "https://www.wzapflow.com.br"
+
+export const ctaLabel = "Começar 7 dias grátis"
+
 export const landingLinks = {
   login: "https://cardapio.wzapflow.com.br/login",
   partnership: "https://cardapio.wzapflow.com.br/signup?plano=parceria",
@@ -255,7 +259,7 @@ export const plans: readonly LandingPlan[] = [
       "Taxa fixa por bairro",
       "Suporte por e-mail",
     ],
-    assurances: ["Garantia de 7 dias", "Cancele quando quiser"],
+    assurances: ["Cancele quando quiser"],
     cta: "Escolher Start",
     href: landingLinks.start,
     tone: "light",
@@ -274,7 +278,7 @@ export const plans: readonly LandingPlan[] = [
       "Cupons de desconto",
       "Suporte prioritário",
     ],
-    assurances: ["Garantia de 7 dias", "Cancele quando quiser"],
+    assurances: ["Cancele quando quiser"],
     cta: "Escolher Pro",
     href: landingLinks.pro,
     tone: "dark",
@@ -294,7 +298,7 @@ export const plans: readonly LandingPlan[] = [
       "Onboarding VIP",
       "Gerente de conta",
     ],
-    assurances: ["Garantia de 7 dias", "Cancele quando quiser"],
+    assurances: ["Cancele quando quiser"],
     cta: "Escolher Elite",
     href: landingLinks.elite,
     tone: "light",
@@ -315,7 +319,7 @@ export const faqs = [
   {
     question: "Posso cancelar quando quiser?",
     answer:
-      "Sim. Os planos informam cancelamento a qualquer momento e garantia de 7 dias.",
+      "Sim. Os planos informam cancelamento a qualquer momento. O plano Parceria tem 7 dias grátis.",
   },
   {
     question: "Qual é a diferença entre Start, Pro e Elite?",

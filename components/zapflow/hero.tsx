@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react"
-import { ArrowRight, LayoutGrid } from "lucide-react"
-import { landingLinks } from "@/lib/landing-content"
+import { ArrowRight, Check, LayoutGrid } from "lucide-react"
+import { ctaLabel, landingLinks } from "@/lib/landing-content"
 import { OrderTicket } from "./order-ticket"
 import { PhoneFrame } from "./phone-frame"
 import { SpeedLines } from "./speed-lines"
@@ -21,43 +21,32 @@ export function Hero() {
             className="rise mt-2 max-w-[13ch] text-balance text-[2.6rem] font-black leading-[0.98] tracking-[-0.045em] sm:text-6xl lg:text-[4.4rem]"
             style={delay(0)}
           >
-            O cliente pede pelo link.{" "}
+            Venda pelo delivery{" "}
             <span className="inline-flex items-center gap-[0.18em]">
               <SpeedLines className="hidden w-[0.8em] sm:flex" />
-              <span className="text-flash italic">O pedido chega pronto.</span>
-            </span>
+              <span className="text-flash italic">sem pagar comissão</span>
+            </span>{" "}
+            por pedido.
           </h1>
 
           <p
             className="rise mt-6 max-w-[32rem] text-pretty text-lg leading-relaxed text-muted-foreground"
             style={delay(1)}
           >
-            Cardápio digital, pedidos organizados e zero comissão por venda. Sua operação mais simples desde o
-            primeiro pedido.
+            Cardápio digital, pedidos e WhatsApp num só painel. Você paga uma mensalidade fixa e nenhuma porcentagem
+            das suas vendas fica com a ZapFlash.
           </p>
-
-          <ul className="rise mt-6 flex flex-wrap gap-2" style={delay(1)} aria-label="Condições do plano Parceria">
-            {["7 dias grátis", "Depois R$ 29,90/mês", "Zero comissão por pedido"].map((item, index) => (
-              <li
-                key={item}
-                className={
-                  index === 0
-                    ? "rounded-full bg-primary/15 px-3.5 py-1.5 text-sm font-bold text-primary"
-                    : "rounded-full bg-card px-3.5 py-1.5 text-sm font-semibold text-foreground"
-                }
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
 
           <div className="rise mt-8 flex flex-col gap-3 sm:flex-row" style={delay(2)}>
             <a
               href={landingLinks.partnership}
               data-hide-mobile-cta
+              data-track="cta_click"
+              data-position="hero"
+              data-plan="parceria"
               className="btn-glow inline-flex h-14 items-center justify-center gap-2 rounded-full px-8 text-base font-bold text-primary-foreground"
             >
-              Criar meu cardápio grátis
+              {ctaLabel}
               <ArrowRight className="size-5" aria-hidden="true" />
             </a>
             <a
@@ -67,6 +56,19 @@ export function Hero() {
               Ver como funciona
             </a>
           </div>
+
+          <ul
+            className="rise mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground"
+            style={delay(3)}
+            aria-label="Condições do teste grátis"
+          >
+            {["Sem cartão de crédito", "Depois R$ 29,90/mês", "Cancele quando quiser"].map((item) => (
+              <li key={item} className="flex items-center gap-1.5">
+                <Check className="size-4 shrink-0 text-primary" aria-hidden="true" />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <HeroComposition />

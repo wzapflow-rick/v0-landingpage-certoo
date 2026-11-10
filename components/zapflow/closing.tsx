@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react"
-import { landingLinks } from "@/lib/landing-content"
+import { ctaLabel, landingLinks } from "@/lib/landing-content"
 import { Brand } from "./brand"
 
 export function FinalCta() {
@@ -19,13 +19,16 @@ export function FinalCta() {
         <a
           data-hide-mobile-cta
           href={landingLinks.partnership}
+          data-track="cta_click"
+          data-position="final"
+          data-plan="parceria"
           className="btn-glow mt-10 inline-flex h-14 w-full items-center justify-center gap-2 rounded-full px-9 text-base font-bold text-primary-foreground sm:w-auto"
         >
-          Criar meu cardápio grátis
+          {ctaLabel}
           <ArrowRight className="size-5" aria-hidden="true" />
         </a>
         <p className="mt-5 max-w-md text-pretty text-sm leading-relaxed text-muted-foreground">
-          7 dias grátis. Depois R$ 29,90/mês no plano Parceria. Zero comissão por pedido.
+          Sem cartão de crédito. Depois R$ 29,90/mês no plano Parceria. Zero comissão por pedido.
         </p>
       </div>
     </section>
@@ -43,7 +46,14 @@ export function SiteFooter() {
           <a href={landingLinks.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
             Instagram
           </a>
-          <a href={landingLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
+          <a
+            href={landingLinks.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track="whatsapp_click"
+            data-position="footer"
+            className="hover:text-foreground"
+          >
             Suporte
           </a>
           <a href={landingLinks.login} className="hover:text-foreground">Entrar</a>

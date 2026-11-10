@@ -1,7 +1,6 @@
 import { FinalCta, SiteFooter } from "@/components/zapflow/closing"
 import { Faq } from "@/components/zapflow/faq"
 import { Hero } from "@/components/zapflow/hero"
-import { KeyBenefits } from "@/components/zapflow/key-benefits"
 import { MobileCtaBar } from "@/components/zapflow/mobile-cta-bar"
 import { Pricing } from "@/components/zapflow/pricing"
 import { ProductShowcase } from "@/components/zapflow/product-showcase"
@@ -20,7 +19,6 @@ export default function Home() {
       <main id="conteudo">
         <Hero />
         <ProductShowcase />
-        <KeyBenefits />
         <Pricing />
         <Faq />
         <FinalCta />

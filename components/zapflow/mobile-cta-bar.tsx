@@ -37,7 +37,7 @@ export function MobileCtaBar() {
         href={landingLinks.partnership}
         className="btn-glow flex h-12 w-full items-center justify-center gap-2 rounded-full font-bold text-primary-foreground"
       >
-        Criar meu cardápio grátis
+        Começar grátis por 7 dias
         <ArrowRight className="size-5" aria-hidden="true" />
       </a>
     </div>

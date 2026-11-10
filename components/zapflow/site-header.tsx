@@ -6,9 +6,9 @@ import { landingLinks } from "@/lib/landing-content"
 import { Brand } from "./brand"
 
 const links = [
-  { label: "Como funciona", href: "#demo" },
+  { label: "Como funciona", href: "#como-funciona" },
+  { label: "Recursos", href: "#recursos" },
   { label: "Economia", href: "#economia" },
-  { label: "Operação", href: "#operacao" },
   { label: "Planos", href: "#planos" },
   { label: "Dúvidas", href: "#duvidas" },
 ]
@@ -47,7 +47,7 @@ export function SiteHeader() {
             href={landingLinks.partnership}
             className="btn-glow inline-flex h-10 items-center gap-1.5 rounded-full pl-5 pr-4 text-sm font-bold text-primary-foreground"
           >
-            Criar meu cardápio
+            Começar grátis
             <ArrowRight className="size-4" aria-hidden="true" />
           </a>
         </div>

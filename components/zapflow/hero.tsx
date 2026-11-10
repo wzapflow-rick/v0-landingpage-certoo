@@ -3,6 +3,7 @@ import { ArrowRight, MessageCircle } from "lucide-react"
 import { landingLinks } from "@/lib/landing-content"
 import { OrderTicket } from "./order-ticket"
 import { PhoneFrame } from "./phone-frame"
+import { SpeedLines } from "./speed-lines"
 
 const delay = (step: number) => ({ "--d": step }) as CSSProperties
 
@@ -11,21 +12,32 @@ export function Hero() {
     <section id="inicio" className="relative overflow-hidden">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_55%_at_78%_45%,color-mix(in_srgb,var(--accent)_11%,transparent),transparent_70%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_50%_at_80%_45%,color-mix(in_srgb,var(--primary)_9%,transparent),transparent_70%)]"
       />
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-5 pb-20 pt-10 sm:pt-14 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:gap-8 lg:py-12">
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-5 pb-20 pt-10 sm:pt-14 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:gap-8 lg:py-12">
         <div className="flex flex-col">
-          <h1 className="rise hero-title max-w-[13ch] text-balance font-extrabold" style={delay(0)}>
-            O cliente pede pelo link. O pedido chega pronto.
+          <p
+            className="rise inline-flex w-fit items-center gap-2 rounded-full bg-card px-3.5 py-1.5 text-xs font-semibold text-muted-foreground"
+            style={delay(0)}
+          >
+            <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
+            Gestão de delivery com 0% de comissão
+          </p>
+
+          <h1 className="rise hero-title mt-6 text-balance font-black" style={delay(0)}>
+            Seu delivery
+            <span className="flex items-center gap-[0.18em]">
+              <SpeedLines className="hidden w-[0.9em] sm:flex" />
+              <span className="text-flash italic">no ritmo certo.</span>
+            </span>
           </h1>
 
           <p
-            className="rise mt-7 max-w-[30rem] text-pretty text-lg leading-relaxed text-muted-foreground"
+            className="rise mt-7 max-w-[31rem] text-pretty text-lg leading-relaxed text-muted-foreground"
             style={delay(1)}
           >
-            Cardápio digital com pedidos organizados, avisos no WhatsApp e IA para responder seus clientes. Sem comissão
-            por venda.
+            Organize pedidos, cardápio e operação em um só lugar. Venda sem pagar comissão por pedido.
           </p>
 
           <div className="rise mt-9 flex flex-col gap-3 sm:flex-row" style={delay(2)}>
@@ -34,19 +46,19 @@ export function Hero() {
               data-hide-mobile-cta
               className="btn-glow inline-flex h-13 items-center justify-center gap-2 rounded-full px-7 text-[15px] font-bold text-primary-foreground"
             >
-              Criar meu cardápio grátis
+              Começar grátis por 7 dias
               <ArrowRight className="size-[1.125rem]" aria-hidden="true" />
             </a>
             <a
-              href="#demo"
+              href="#como-funciona"
               className="btn-quiet inline-flex h-13 items-center justify-center rounded-full px-7 text-[15px] font-semibold"
             >
-              Montar um pedido de teste
+              Conhecer a plataforma
             </a>
           </div>
 
           <p className="rise mt-6 max-w-md text-sm leading-relaxed text-muted-foreground" style={delay(3)}>
-            7 dias grátis no plano Parceria, depois R$ 29,90/mês. 0% de comissão por pedido e cancelamento quando quiser.
+            Plano Parceria: 7 dias grátis, depois R$ 29,90/mês. Cancele quando quiser.
           </p>
         </div>
 
@@ -62,7 +74,7 @@ function HeroComposition() {
       <figure className="rise absolute left-0 top-0 w-[58%] sm:w-[55%]" style={delay(2)}>
         <PhoneFrame
           src="/images/landing/menu-real-mobile.png"
-          alt="Cardápio digital real do Tropical Açaí criado no ZapFlash, aberto no celular"
+          alt="Cardápio digital real do Tropical Açaí criado na ZapFlash, aberto no celular"
           priority
         />
         <figcaption className="sr-only">O cliente escolhe pelo cardápio no celular</figcaption>
@@ -90,7 +102,7 @@ function HeroComposition() {
       </div>
 
       <div
-        className="rise absolute bottom-2 right-2 flex max-w-[15rem] items-center gap-3 rounded-2xl border border-primary/30 bg-card/95 p-3 shadow-2xl backdrop-blur sm:bottom-6"
+        className="rise absolute bottom-2 right-2 flex max-w-[15rem] items-center gap-3 rounded-2xl bg-card/95 p-3 shadow-2xl ring-1 ring-primary/25 backdrop-blur sm:bottom-6"
         style={delay(9)}
       >
         <span className="order-dot relative flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">

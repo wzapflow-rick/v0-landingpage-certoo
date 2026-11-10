@@ -4,38 +4,41 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --card: #18181b;
+  --background: #090b0d;
+  --foreground: #f4f2ed;
+  --card: #151a1d;
   --card-foreground: var(--foreground);
   --popover: var(--card);
   --popover-foreground: var(--foreground);
-  --primary: #10b981;
-  --primary-foreground: #09090b;
-  --secondary: #27272a;
+  --primary: #b7f000;
+  --primary-foreground: #090b0d;
+  --secondary: color-mix(in srgb, var(--card) 86%, var(--foreground));
   --secondary-foreground: var(--foreground);
-  --muted: #18181b;
-  --muted-foreground: #a1a1aa;
-  --accent: #f59e0b;
-  --accent-foreground: #09090b;
+  --muted: var(--card);
+  --muted-foreground: color-mix(in srgb, var(--foreground) 66%, var(--background));
+  --accent: #ff9f1c;
+  --accent-foreground: #090b0d;
   --destructive: #ef4444;
   --destructive-foreground: var(--foreground);
-  --border: #27272a;
-  --input: #27272a;
-  --ring: #10b981;
+  --border: color-mix(in srgb, var(--foreground) 11%, var(--background));
+  --input: color-mix(in srgb, var(--foreground) 14%, var(--background));
+  --ring: #b7f000;
   --chart-1: var(--primary);
   --chart-2: var(--accent);
   --chart-3: var(--muted-foreground);
   --chart-4: var(--secondary);
   --chart-5: var(--border);
   --radius: 0.75rem;
-  --paper: #f3ede2;
-  --paper-foreground: #1c1917;
+  --paper: var(--foreground);
+  --paper-foreground: var(--background);
+  --plan-start: #4aa8ff;
+  --plan-elite: #ffc53d;
 }
 
 @theme inline {
   --font-sans: var(--font-manrope), "Manrope Fallback", system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), "Geist Mono Fallback", ui-monospace, monospace;
+  --font-display: var(--font-montserrat), "Montserrat Fallback", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -60,6 +63,8 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --color-plan-start: var(--plan-start);
+  --color-plan-elite: var(--plan-elite);
   --color-paper: var(--paper);
   --color-paper-foreground: var(--paper-foreground);
   --radius-sm: calc(var(--radius) - 4px);
@@ -79,6 +84,46 @@
   body {
     @apply bg-background text-foreground;
   }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Official logo crops sit on pure black; lighten merges them into the page background */
+.logo-blend {
+  mix-blend-mode: lighten;
+}
+
+/* Signature: the speed dashes from the Z symbol */
+.speed-lines {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3em;
+}
+.speed-lines > span {
+  display: block;
+  height: 0.16em;
+  border-radius: 9999px;
+  background: var(--primary);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .speed-lines > span {
+    animation: dash-in 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 350ms);
+  }
+}
+@keyframes dash-in {
+  from {
+    opacity: 0;
+    transform: translateX(-1.2em) scaleX(0.4);
+  }
+}
+
+.text-flash {
+  color: var(--primary);
 }
 
 /* Primary conversion button: restrained emerald gradient, soft contact shadow */
@@ -591,9 +636,9 @@ body {
 }
 
 .hero-title {
-  font-size: clamp(2.6rem, 6.4vw, 5.9rem);
-  line-height: 0.95;
-  letter-spacing: -0.045em;
+  font-size: clamp(2.7rem, 6.6vw, 6rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
 }
 
 .status-dot[data-done="true"] {
@@ -602,7 +647,7 @@ body {
 }
 
 input[type="range"].range {
-  accent-color: var(--accent);
+  accent-color: var(--primary);
 }
 
 @media (prefers-reduced-motion: reduce) {

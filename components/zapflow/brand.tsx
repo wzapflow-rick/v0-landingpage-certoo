@@ -1,14 +1,17 @@
-export const brandLogoUrl =
-  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT_Image_1_de_mai._de_2026_07_10_10_1%20%281%29-ePAqdPm41ih5QKKHvtkU5C6Bp1YtW2.png"
+import Image from "next/image"
+import { cn } from "@/lib/utils"
 
-export function Brand() {
+export function Brand({ className }: { className?: string }) {
   return (
-    <a href="#inicio" className="flex items-center gap-2" aria-label="ZapFlash, voltar ao início">
-      <img src={brandLogoUrl} alt="" width={40} height={36} className="h-9 w-auto" />
-      <span className="flex flex-col leading-none">
-        <span className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">Cardápio</span>
-        <span className="text-lg font-extrabold tracking-tight">ZapFlash</span>
-      </span>
+    <a href="#inicio" className={cn("flex shrink-0 items-center", className)} aria-label="ZapFlash, voltar ao início">
+      <Image
+        src="/brand/logo-horizontal.png"
+        alt=""
+        width={374}
+        height={90}
+        priority
+        className="logo-blend h-9 w-auto sm:h-10"
+      />
     </a>
   )
 }

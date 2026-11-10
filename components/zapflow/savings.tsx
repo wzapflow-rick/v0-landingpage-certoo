@@ -19,12 +19,33 @@ export function Savings() {
       <div className="mx-auto grid max-w-7xl gap-14 px-5 py-20 md:py-28 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:gap-20">
         <div>
           <h2 id="economia-titulo" className="max-w-xl text-balance text-4xl font-extrabold tracking-[-0.035em] sm:text-5xl">
-            Comissão por pedido é dinheiro que sai do seu caixa todo mês.
+            Mensalidade fixa. <span className="text-flash italic">Nenhuma comissão sobre suas vendas.</span>
           </h2>
           <p className="mt-5 max-w-lg text-pretty leading-relaxed text-muted-foreground">
-            No ZapFlash a comissão por pedido é 0%. Você paga só a mensalidade do plano, a partir de R$ 29,90 depois dos
-            7 dias grátis. Faça a conta com os números do seu delivery.
+            Comissão por pedido cresce junto com as suas vendas. Na ZapFlash a comissão é 0%: você paga só a mensalidade
+            do plano, a partir de R$ 29,90 depois dos 7 dias grátis.
           </p>
+
+          <div className="mt-10 flex max-w-lg flex-col gap-4" aria-label="Exemplo em um pedido de R$ 100">
+            <p className="text-sm font-semibold">Num pedido de R$ 100</p>
+            <div className="flex flex-col gap-1.5">
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Com {rate}% de comissão, fica com você</span>
+                <span className="font-bold tabular-nums">{money(100 - rate)}</span>
+              </div>
+              <div className="flex h-3 overflow-hidden rounded-full bg-card" aria-hidden="true">
+                <span className="h-full bg-foreground/40 transition-[width] duration-300" style={{ width: `${100 - rate}%` }} />
+                <span className="h-full bg-accent transition-[width] duration-300" style={{ width: `${rate}%` }} />
+              </div>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Na ZapFlash, fica com você</span>
+                <span className="font-bold tabular-nums text-primary">{money(100)}</span>
+              </div>
+              <div className="h-3 rounded-full bg-primary" aria-hidden="true" />
+            </div>
+          </div>
 
           <p className="mt-12 text-sm text-muted-foreground" aria-live="polite">
             Com {rate}% de comissão, saem por ano

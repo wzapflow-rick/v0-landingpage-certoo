@@ -85,10 +85,10 @@ export function FlowScene() {
               <ul className="flex flex-wrap gap-2">
                 {flowSteps.map((step) => (
                   <li
-                    key={step.label}
+                    key={step.title}
                     className="rounded-full border border-background/20 px-4 py-2 text-sm"
                   >
-                    {step.label}
+                    {step.title}
                   </li>
                 ))}
               </ul>

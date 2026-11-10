@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Geist_Mono, Manrope } from "next/font/google"
+import { Manrope, Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 
 import "./globals.css"
@@ -16,63 +16,60 @@ const manrope = Manrope({
   display: "swap",
 })
 
-const geistMono = Geist_Mono({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-geist-mono",
+  weight: ["700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-montserrat",
   display: "swap",
 })
 
+const title = "ZapFlash — Gestão de delivery sem comissão por pedido"
+const description =
+  "Organize pedidos, cardápio e operação em um só lugar. Venda sem pagar comissão por pedido. 7 dias grátis no plano Parceria."
+
 export const metadata: Metadata = {
   metadataBase,
-  title: "ZapFlash — Cardápio digital com pedidos no WhatsApp e IA",
-  description:
-    "Cardápio digital com fotos, pedidos direto no WhatsApp e agente de IA para atender seus clientes. Zero comissão por venda e 7 dias grátis.",
+  title,
+  description,
   keywords: [
+    "gestão de delivery",
     "cardápio digital",
     "sistema de pedidos",
-    "delivery",
-    "restaurante",
-    "pizzaria",
     "Kanban de pedidos",
     "pedidos no WhatsApp",
+    "delivery sem comissão",
   ],
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/apple-icon.png",
+    icon: "/brand/favicon.png",
+    shortcut: "/brand/favicon.png",
+    apple: "/brand/apple-icon.png",
   },
   openGraph: {
-    title: "ZapFlash — Cardápio digital com pedidos no WhatsApp e IA",
-    description: "Cardápio digital com pedidos no WhatsApp e IA. Zero comissão por venda.",
+    title,
+    description,
     type: "website",
     locale: "pt_BR",
-    images: [
-      {
-        url: "/images/landing/zapflow-social.png",
-        width: 1024,
-        height: 1024,
-        alt: "Pizza artesanal ao lado de uma interface móvel, representando o fluxo ZapFlash",
-      },
-    ],
+    images: [{ url: "/brand/logo-badge.png", width: 512, height: 512, alt: "Logotipo ZapFlash, Gestão de Delivery" }],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "ZapFlash — Cardápio digital com pedidos no WhatsApp e IA",
-    description: "Cardápio digital com pedidos no WhatsApp e IA. Zero comissão por venda.",
-    images: ["/images/landing/zapflow-social.png"],
+    card: "summary",
+    title,
+    description,
+    images: ["/brand/logo-badge.png"],
   },
 }
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#09090b",
+  themeColor: "#090b0d",
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className="bg-background">
-      <body className={`${manrope.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${manrope.variable} ${montserrat.variable} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === "production" ? <Analytics /> : null}
       </body>

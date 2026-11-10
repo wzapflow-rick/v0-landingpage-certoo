@@ -18,25 +18,124 @@ export const navigation = [
 
 export const flowSteps = [
   {
-    label: "Cardápio",
-    title: "O cliente escolhe",
-    description: "Um cardápio digital acessível por link ou QR Code.",
+    title: "Cliente acessa o cardápio",
+    description: "Pelo link ou QR Code, direto no celular, sem baixar aplicativo.",
   },
   {
-    label: "Pedido",
-    title: "A operação recebe",
-    description: "Os pedidos chegam organizados no Kanban.",
+    title: "Escolhe os produtos",
+    description: "Tamanhos, adicionais e observações em cada item.",
   },
   {
-    label: "Pagamento",
-    title: "A venda acontece",
-    description: "Pix e cartões conectados ao mesmo fluxo.",
+    title: "Finaliza o pedido",
+    description: "Endereço, taxa de entrega e pagamento por Pix ou cartão.",
   },
   {
-    label: "Entrega",
-    title: "O pedido avança",
-    description: "Taxas e etapas claras até a saída.",
+    title: "A loja recebe e organiza",
+    description: "O pedido entra completo no Kanban, pronto para preparo.",
   },
+  {
+    title: "A operação acompanha",
+    description: "Cada pedido avança de etapa até a saída para entrega.",
+  },
+] as const
+
+export const painPoints = [
+  {
+    pain: "Pedidos desorganizados",
+    cost: "Papel, prints e mensagens espalhadas viram erro na cozinha.",
+    solution: "Todos os pedidos entram no mesmo Kanban, separados por etapa.",
+  },
+  {
+    pain: "Atendimento manual",
+    cost: "Alguém precisa parar tudo para anotar cada pedido.",
+    solution: "O cliente monta o pedido sozinho no cardápio. No Pro e Elite, avisos e agente de IA no WhatsApp.",
+  },
+  {
+    pain: "Falta de controle",
+    cost: "Sem histórico, não dá para saber o que vendeu e o que travou.",
+    solution: "Cada pedido fica registrado com itens, pagamento e status em um só painel.",
+  },
+  {
+    pain: "Entregas sem acompanhamento",
+    cost: "Cliente perguntando onde está o pedido, taxa calculada no chute.",
+    solution: "Etapas claras até a saída, taxa por bairro ou por Google Maps e app de entregadores no Elite.",
+  },
+  {
+    pain: "Tempo perdido na operação",
+    cost: "Retrabalho para confirmar endereço, item e forma de pagamento.",
+    solution: "O pedido já chega completo: itens, adicionais, endereço e pagamento.",
+  },
+] as const
+
+export const features = [
+  {
+    icon: "menu",
+    title: "Cardápio digital",
+    description:
+      "Seu cardápio com fotos, tamanhos e adicionais, aberto por link ou QR Code. O cliente pede pelo celular e o pedido chega organizado.",
+    availability: "Em todos os planos",
+  },
+  {
+    icon: "orders",
+    title: "Gestão de pedidos",
+    description: "Itens, endereço e pagamento de cada pedido em um só lugar.",
+    availability: "Todos os planos",
+  },
+  {
+    icon: "kanban",
+    title: "Kanban",
+    description: "Pedidos separados por etapa, do recebimento à saída.",
+    availability: "Básico no Parceria e Start",
+  },
+  {
+    icon: "tables",
+    title: "Gestão de mesas",
+    description: "Pedidos do salão organizados junto com o delivery.",
+    availability: "Na plataforma",
+  },
+  {
+    icon: "whatsapp",
+    title: "WhatsApp",
+    description: "Notificações automáticas de status para o cliente.",
+    availability: "Pro e Elite",
+  },
+  {
+    icon: "ai",
+    title: "Agente de IA",
+    description: "Responde seus clientes no WhatsApp enquanto você opera.",
+    availability: "Pro e Elite",
+  },
+  {
+    icon: "delivery",
+    title: "Gestão de entregas",
+    description: "Taxa por bairro, cálculo por Google Maps e app para entregadores.",
+    availability: "Evolui por plano",
+  },
+  {
+    icon: "finance",
+    title: "Financeiro",
+    description: "Acompanhe o que entra por Pix e cartões.",
+    availability: "Na plataforma",
+  },
+  {
+    icon: "reports",
+    title: "Relatórios",
+    description: "Leitura do desempenho da operação para decidir melhor.",
+    availability: "Avançados no Elite",
+  },
+  {
+    icon: "loyalty",
+    title: "Cupons e fidelização",
+    description: "Cupons de desconto e programa de pontos para o cliente voltar.",
+    availability: "Cupons no Pro · pontos no Elite",
+  },
+] as const
+
+export const guarantees = [
+  { title: "0% de comissão", description: "Você paga só a mensalidade. A venda continua sendo do seu negócio." },
+  { title: "7 dias grátis", description: "Teste o plano Parceria na prática antes da primeira cobrança." },
+  { title: "Garantia de 7 dias", description: "Vale para todos os planos, inclusive Start, Pro e Elite." },
+  { title: "Cancele quando quiser", description: "Sem fidelidade e sem multa para sair." },
 ] as const
 
 export const featureGroups = [

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { ArrowRight } from "lucide-react"
-import { landingLinks } from "@/lib/landing-content"
+import { ctaLabel, landingLinks } from "@/lib/landing-content"
 
 export function MobileCtaBar() {
   const [visible, setVisible] = useState(false)
@@ -35,9 +35,12 @@ export function MobileCtaBar() {
     >
       <a
         href={landingLinks.partnership}
+        data-track="cta_click"
+        data-position="mobile_bar"
+        data-plan="parceria"
         className="btn-glow flex h-12 w-full items-center justify-center gap-2 rounded-full font-bold text-primary-foreground"
       >
-        Criar meu cardápio grátis
+        {ctaLabel}
         <ArrowRight className="size-5" aria-hidden="true" />
       </a>
     </div>

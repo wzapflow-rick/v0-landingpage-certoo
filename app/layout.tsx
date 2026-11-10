@@ -2,13 +2,12 @@ import type { Metadata, Viewport } from "next"
 import { Manrope, Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 
+import { ConversionTracker } from "@/components/zapflow/conversion-tracker"
+import { GoogleAnalytics } from "@/components/zapflow/google-analytics"
+import { siteUrl } from "@/lib/landing-content"
 import "./globals.css"
 
-const metadataBase = new URL(
-  process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000",
-)
+const metadataBase = new URL(process.env.NODE_ENV === "production" ? siteUrl : "http://localhost:3000")
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -24,14 +23,15 @@ const montserrat = Montserrat({
   display: "swap",
 })
 
-const title = "ZapFlash — Gestão de delivery sem comissão por pedido"
+const title = "ZapFlash — Venda pelo delivery sem pagar comissão por pedido"
 const description =
-  "Organize pedidos, cardápio e operação em um só lugar. Venda sem pagar comissão por pedido. 7 dias grátis no plano Parceria."
+  "Cardápio digital, pedidos e WhatsApp num só painel, com mensalidade fixa e zero comissão por pedido. Teste 7 dias grátis, sem cartão de crédito."
 
 export const metadata: Metadata = {
   metadataBase,
   title,
   description,
+  alternates: { canonical: "/" },
   keywords: [
     "gestão de delivery",
     "cardápio digital",
@@ -71,6 +71,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="pt-BR" className="bg-background">
       <body className={`${manrope.variable} ${montserrat.variable} font-sans antialiased`}>
         {children}
+        <ConversionTracker />
+        <GoogleAnalytics />
         {process.env.NODE_ENV === "production" ? <Analytics /> : null}
       </body>
     </html>

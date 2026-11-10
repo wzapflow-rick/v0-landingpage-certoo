@@ -6,9 +6,7 @@ import { landingLinks } from "@/lib/landing-content"
 import { Brand } from "./brand"
 
 const links = [
-  { label: "Como funciona", href: "#como-funciona" },
-  { label: "Recursos", href: "#recursos" },
-  { label: "Economia", href: "#economia" },
+  { label: "Plataforma", href: "#produto" },
   { label: "Planos", href: "#planos" },
   { label: "Dúvidas", href: "#duvidas" },
 ]

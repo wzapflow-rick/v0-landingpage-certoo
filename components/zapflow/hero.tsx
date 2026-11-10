@@ -26,10 +26,11 @@ export function Hero() {
           </p>
 
           <h1 className="rise hero-title mt-6 text-balance font-black" style={delay(0)}>
-            Seu delivery
+            Seu delivery.
+            <span className="block">Sob controle.</span>
             <span className="flex items-center gap-[0.18em]">
               <SpeedLines className="hidden w-[0.9em] sm:flex" />
-              <span className="text-flash italic">no ritmo certo.</span>
+              <span className="text-flash italic">Sem comissão.</span>
             </span>
           </h1>
 
@@ -37,7 +38,7 @@ export function Hero() {
             className="rise mt-7 max-w-[31rem] text-pretty text-lg leading-relaxed text-muted-foreground"
             style={delay(1)}
           >
-            Organize pedidos, cardápio e operação em um só lugar. Venda sem pagar comissão por pedido.
+            Cardápio digital, pedidos e gestão em um só lugar.
           </p>
 
           <div className="rise mt-9 flex flex-col gap-3 sm:flex-row" style={delay(2)}>
@@ -50,15 +51,15 @@ export function Hero() {
               <ArrowRight className="size-[1.125rem]" aria-hidden="true" />
             </a>
             <a
-              href="#como-funciona"
+              href="#produto"
               className="btn-quiet inline-flex h-13 items-center justify-center rounded-full px-7 text-[15px] font-semibold"
             >
-              Conhecer a plataforma
+              Ver a plataforma
             </a>
           </div>
 
           <p className="rise mt-6 max-w-md text-sm leading-relaxed text-muted-foreground" style={delay(3)}>
-            Plano Parceria: 7 dias grátis, depois R$ 29,90/mês. Cancele quando quiser.
+            <span className="font-semibold text-foreground">Plano Parceria:</span> 7 dias grátis. Depois R$ 29,90/mês.
           </p>
         </div>
 

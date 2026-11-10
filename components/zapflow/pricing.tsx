@@ -1,25 +1,7 @@
 import Image from "next/image"
-import { ArrowRight, Check, Minus } from "lucide-react"
+import { ArrowRight, Check } from "lucide-react"
 import { plans } from "@/lib/landing-content"
 import { cn } from "@/lib/utils"
-
-type Cell = boolean | string
-
-const comparison: { feature: string; values: [Cell, Cell, Cell, Cell] }[] = [
-  { feature: "Cardápio digital com link e QR Code", values: [true, true, true, true] },
-  { feature: "Kanban de pedidos", values: ["Básico", "Básico", true, true] },
-  { feature: "Pix e cartões", values: [true, true, true, true] },
-  { feature: "Taxa fixa por bairro", values: [true, true, true, true] },
-  { feature: "Notificações no WhatsApp", values: [false, false, true, true] },
-  { feature: "Agente de IA no WhatsApp", values: [false, false, true, true] },
-  { feature: "Taxa por Google Maps", values: [false, false, true, true] },
-  { feature: "Cupons de desconto", values: [false, false, true, true] },
-  { feature: "Customização total", values: [false, false, false, true] },
-  { feature: "App para entregadores", values: [false, false, false, true] },
-  { feature: "Programa de pontos", values: [false, false, false, true] },
-  { feature: "Relatórios avançados", values: [false, false, false, true] },
-  { feature: "Suporte", values: ["E-mail", "E-mail", "Prioritário", "Onboarding VIP e gerente de conta"] },
-]
 
 const chefs = {
   Start: { src: "/brand/chef-start.png", width: 330, height: 344, tone: "text-plan-start", alt: "Chef Start, personagem azul oficial da ZapFlash" },
@@ -27,31 +9,24 @@ const chefs = {
   Elite: { src: "/brand/chef-elite.png", width: 316, height: 352, tone: "text-plan-elite", alt: "Chef Elite, personagem dourado oficial da ZapFlash" },
 } as const
 
-function CellValue({ value }: { value: Cell }) {
-  if (value === true) return <Check className="mx-auto size-4 text-primary" aria-label="Incluído" />
-  if (value === false) return <Minus className="mx-auto size-4 text-muted-foreground/50" aria-label="Não incluído" />
-  return <span className="text-sm">{value}</span>
-}
-
 export function Pricing() {
   const [partnership, ...paid] = plans
 
   return (
     <section id="planos" aria-labelledby="planos-titulo" className="relative border-t border-border/60">
-      <div className="mx-auto max-w-7xl px-5 py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-5 py-20 md:py-24">
         <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
           <h2 id="planos-titulo" className="max-w-xl text-balance text-4xl font-extrabold tracking-[-0.035em] sm:text-5xl">
-            Comece pelo Parceria. <span className="text-flash italic">Cresça no seu ritmo.</span>
+            Planos sem comissão. <span className="text-flash italic">Preço fixo.</span>
           </h2>
           <p className="max-w-md text-pretty leading-relaxed text-muted-foreground lg:justify-self-end">
-            Mensalidade fixa e nenhuma comissão sobre suas vendas. Todos os planos têm garantia de 7 dias e cancelamento
-            quando quiser.
+            Comece grátis no Parceria e mude de plano quando a operação crescer.
           </p>
         </div>
 
         <article
           aria-labelledby="plano-parceria"
-          className="mt-14 grid gap-8 rounded-3xl bg-primary p-7 text-primary-foreground sm:p-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-14"
+          className="mt-10 grid gap-8 rounded-3xl bg-primary p-7 text-primary-foreground sm:p-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-14"
         >
           <div>
             <p className="text-sm font-bold uppercase tracking-widest opacity-70">Comece por aqui</p>
@@ -148,37 +123,9 @@ export function Pricing() {
           })}
         </div>
 
-        <div className="mt-4 hidden overflow-hidden rounded-3xl ring-1 ring-border/80 lg:block">
-          <table className="w-full table-fixed text-left">
-            <caption className="sr-only">Comparação de recursos por plano</caption>
-            <thead>
-              <tr className="border-b border-border/80 bg-card/60 text-sm">
-                <th scope="col" className="w-[28%] px-6 py-4 font-semibold">
-                  Recursos
-                </th>
-                {plans.map((plan) => (
-                  <th key={plan.name} scope="col" className="px-4 py-4 text-center font-semibold">
-                    {plan.name}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {comparison.map((row) => (
-                <tr key={row.feature} className="border-b border-border/60 last:border-b-0">
-                  <th scope="row" className="px-6 py-3.5 text-sm font-medium text-muted-foreground">
-                    {row.feature}
-                  </th>
-                  {row.values.map((value, index) => (
-                    <td key={plans[index].name} className="px-4 py-3.5 text-center">
-                      <CellValue value={value} />
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <p className="mt-6 text-center text-sm text-muted-foreground">
+          Todos os planos: 0% de comissão, garantia de 7 dias e cancelamento quando quiser.
+        </p>
       </div>
     </section>
   )

@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     "delivery sem comissão",
   ],
   icons: {
-    icon: "/brand/favicon.png",
-    shortcut: "/brand/favicon.png",
-    apple: "/brand/apple-icon.png",
+    icon: [{ url: "/brand/favicon.png?v=2", type: "image/png", sizes: "512x512" }],
+    shortcut: "/brand/favicon.png?v=2",
+    apple: "/brand/apple-icon.png?v=2",
   },
   openGraph: {
     title,

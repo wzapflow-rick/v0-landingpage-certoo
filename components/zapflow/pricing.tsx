@@ -18,7 +18,7 @@ const partnershipIncludes = [
   "Suporte por e-mail",
 ]
 
-const assurances = ["Sem comissão por pedido", "Cancele quando quiser", "Sem compromisso de permanência"]
+const assurances = ["Zero comissão por pedido", "Cancele quando quiser"]
 
 export function Pricing() {
   const paid = plans.slice(1)
@@ -26,59 +26,71 @@ export function Pricing() {
   return (
     <section id="planos" aria-labelledby="planos-titulo" className="scroll-mt-16 border-t border-border/60">
       <div className="mx-auto max-w-7xl px-5 py-20 md:py-24">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
-          <h2 id="planos-titulo" className="max-w-xl text-balance text-4xl font-extrabold tracking-[-0.035em] sm:text-5xl">
-            Comece grátis. <span className="text-flash italic">Cresça no seu ritmo.</span>
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center">
+          <h2 id="planos-titulo" className="text-balance text-3xl font-extrabold tracking-[-0.03em] sm:text-4xl">
+            Seu delivery pode começar hoje.
           </h2>
-          <p className="max-w-md text-pretty leading-relaxed text-muted-foreground">
-            Experimente a ZapFlash por 7 dias e descubra como é ter seu delivery organizado.
+          <p className="text-pretty leading-relaxed text-muted-foreground">
+            Experimente a ZapFlash por 7 dias e organize seus primeiros pedidos.
           </p>
         </div>
 
         <article
           aria-labelledby="plano-parceria"
-          className="mt-10 grid gap-8 rounded-3xl bg-primary p-7 text-primary-foreground sm:p-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center lg:gap-14"
+          className="mx-auto mt-10 grid max-w-4xl overflow-hidden rounded-3xl bg-card ring-1 ring-border md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
         >
-          <div>
-            <h3 id="plano-parceria" className="text-sm font-black uppercase tracking-[0.2em] opacity-75">
-              Plano Parceria
-            </h3>
-            <p className="mt-4 font-display text-5xl font-black italic uppercase leading-none tracking-tight sm:text-7xl">
-              7 dias grátis
+          <div className="flex flex-col p-6 sm:p-9">
+            <div className="flex flex-wrap items-center gap-3">
+              <h3 id="plano-parceria" className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                Plano Parceria
+              </h3>
+              <span className="rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-primary ring-1 ring-primary/30">
+                7 dias grátis
+              </span>
+            </div>
+
+            <p className="mt-6 flex items-baseline gap-2">
+              <span className="font-display text-5xl font-extrabold tracking-tight tabular-nums sm:text-6xl">R$ 0,00</span>
             </p>
-            <p className="mt-4 text-lg font-semibold">Depois, R$ 29,90/mês.</p>
+            <p className="mt-2 text-sm text-muted-foreground">durante os primeiros 7 dias.</p>
+            <p className="mt-4 text-sm">
+              Depois, <span className="font-semibold">R$ 29,90/mês</span>.
+            </p>
+
             <a
               href={landingLinks.partnership}
               data-hide-mobile-cta
-              className="mt-8 inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-primary-foreground px-8 text-base font-bold text-primary transition-transform duration-200 hover:-translate-y-0.5 sm:w-auto"
+              className="mt-8 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
             >
               Começar meus 7 dias grátis
-              <ArrowRight className="size-5" aria-hidden="true" />
+              <ArrowRight className="size-4" aria-hidden="true" />
             </a>
-            <ul className="mt-6 flex flex-col gap-2 text-sm font-semibold sm:flex-row sm:flex-wrap sm:gap-x-5">
+            <ul className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-xs text-muted-foreground">
               {assurances.map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <Check className="size-4 shrink-0" aria-hidden="true" />
+                <li key={item} className="flex items-center gap-1.5">
+                  <Check className="size-3.5 shrink-0 text-primary" aria-hidden="true" />
                   {item}
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="border-t border-primary-foreground/15 pt-8 lg:border-l lg:border-t-0 lg:pl-14 lg:pt-0">
-            <p className="text-sm font-bold uppercase tracking-widest opacity-75">Inclui</p>
-            <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+          <div className="flex flex-col border-t border-border bg-background/40 p-6 sm:p-9 md:border-l md:border-t-0">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">Recursos incluídos</p>
+            <ul className="mt-5 flex flex-col gap-3.5">
               {partnershipIncludes.map((feature) => (
-                <li key={feature} className="flex items-start gap-2.5 font-semibold">
-                  <Check className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-                  {feature}
+                <li key={feature} className="flex items-start gap-3 text-sm leading-relaxed">
+                  <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                    <Check className="size-3 text-primary" aria-hidden="true" />
+                  </span>
+                  {feature}.
                 </li>
               ))}
             </ul>
           </div>
         </article>
 
-        <div className="mt-12">
+        <div className="mx-auto mt-14 max-w-4xl">
           <h3 className="font-bold">Precisa de mais recursos?</h3>
           <div className="mt-4 grid gap-3 md:grid-cols-3">
             {paid.map((plan) => {

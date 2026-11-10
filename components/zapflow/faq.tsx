@@ -1,28 +1,20 @@
 import { ArrowRight, Plus } from "lucide-react"
 import { faqs, landingLinks } from "@/lib/landing-content"
 
-const productFaqs = [
+const items = [
   {
-    question: "Preciso ter um site?",
+    question: "Preciso ter um site ou aplicativo?",
     answer: "Não. Seu cardápio ganha um link próprio e um QR Code para compartilhar com os clientes.",
   },
-  {
-    question: "Como meus clientes fazem os pedidos?",
-    answer:
-      "Eles acessam o link ou QR Code, escolhem os produtos e finalizam. Você acompanha tudo no Kanban; nos planos Pro e Elite, o WhatsApp e o agente de IA automatizam a conversa.",
-  },
+  ...faqs.slice(0, 4),
 ]
 
 export function Faq() {
-  const items = [...productFaqs, ...faqs]
-
   return (
     <section id="duvidas" className="border-t border-border/60">
-      <div data-reveal className="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:py-28 lg:grid-cols-[0.8fr_1.2fr]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:py-24 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
-          <p className="text-sm font-semibold text-accent">Dúvidas</p>
-          <h2 data-wipe className="mt-3 text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">Perguntas frequentes</h2>
-          <p className="mt-4 leading-relaxed text-muted-foreground">Não encontrou o que procurava? Fale com a nossa equipe.</p>
+          <h2 className="text-balance text-3xl font-extrabold tracking-tight sm:text-4xl">Dúvidas frequentes</h2>
           <a
             href={landingLinks.whatsapp}
             target="_blank"

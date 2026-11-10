@@ -13,11 +13,8 @@ export function FinalCta() {
       <div className="relative mx-auto grid max-w-7xl gap-14 px-5 py-20 md:py-28 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center">
         <div>
           <h2 id="final-titulo" className="max-w-[14ch] text-balance text-5xl font-extrabold leading-[0.98] tracking-[-0.045em] sm:text-6xl">
-            Seu cardápio pode receber pedidos <span className="text-flash italic">ainda hoje.</span>
+            Comece hoje a <span className="text-flash italic">organizar seu delivery.</span>
           </h2>
-          <p className="mt-6 max-w-md text-pretty leading-relaxed text-muted-foreground">
-            Cadastre os produtos, compartilhe o link e acompanhe os pedidos no Kanban.
-          </p>
           <ul className="mt-6 flex flex-col gap-2 font-semibold sm:flex-row sm:flex-wrap sm:gap-x-6">
             {["Sem comissão por pedido", "7 dias grátis no Parceria", "Cancelamento quando quiser"].map((item) => (
               <li key={item} className="flex items-center gap-2">
@@ -76,7 +73,7 @@ export function SiteFooter() {
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between">
         <Brand />
         <nav aria-label="Links do rodapé" className="flex flex-wrap gap-6 text-sm text-muted-foreground">
-          <a href="#como-funciona" className="hover:text-foreground">Como funciona</a>
+          <a href="#produto" className="hover:text-foreground">Plataforma</a>
           <a href="#planos" className="hover:text-foreground">Planos</a>
           <a href={landingLinks.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
             Instagram

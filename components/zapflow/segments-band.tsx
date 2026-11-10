@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { cn } from "@/lib/utils"
 import { RotatingWord } from "./rotating-word"
 
 const segments = [
@@ -30,34 +29,6 @@ export function SegmentsBand() {
             Qualquer delivery que vende pelo WhatsApp monta o cardápio em minutos, sem precisar de técnico.
           </p>
         </div>
-
-        <ul className="flex flex-wrap justify-center gap-2 md:justify-start">
-          {segments.map((segment, index) => {
-            const isActive = index === active
-            return (
-              <li
-                key={segment.word}
-                aria-current={isActive ? "true" : undefined}
-                className={cn(
-                  "relative flex h-10 items-center overflow-hidden rounded-full px-4 text-sm font-semibold transition-[color,background-color,box-shadow] duration-500",
-                  isActive
-                    ? "bg-accent/12 text-foreground ring-1 ring-accent/45"
-                    : "text-muted-foreground ring-1 ring-foreground/10",
-                )}
-              >
-                {segment.label}
-                {isActive && (
-                  <span
-                    key={active}
-                    aria-hidden="true"
-                    className="segment-progress absolute inset-x-3 bottom-1 h-0.5 origin-left rounded-full bg-accent"
-                    style={{ animationDuration: `${ROTATE_MS}ms` }}
-                  />
-                )}
-              </li>
-            )
-          })}
-        </ul>
       </div>
     </section>
   )

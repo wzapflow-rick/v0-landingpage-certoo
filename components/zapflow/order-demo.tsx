@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react"
 import { ArrowRight, Check, Minus, Plus, RotateCcw } from "lucide-react"
 import { landingLinks } from "@/lib/landing-content"
 import { cn } from "@/lib/utils"
-import { brl, OrderTicket } from "./order-ticket"
+import { brl, OrderTicket, ZapFlashCommission } from "./order-ticket"
 
 type Addon = { name: string; price: number }
 type Segment = {
@@ -328,7 +328,7 @@ export function OrderDemo() {
                 { label: "Pagamento", value: "Pix ou cartão" },
               ]}
               total={brl(total)}
-              footer={<p className="ticket-muted text-xs">Comissão ZapFlash: R$ 0,00</p>}
+              footer={<ZapFlashCommission />}
             />
 
             <ol aria-label="Status do pedido" aria-live="polite" className="mt-2 flex flex-col gap-3">

@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react"
 import { ArrowRight, Check, LayoutGrid } from "lucide-react"
 import { ctaLabel, landingLinks } from "@/lib/landing-content"
-import { OrderTicket } from "./order-ticket"
+import { OrderTicket, ZapFlashCommission } from "./order-ticket"
 import { PhoneFrame } from "./phone-frame"
 import { SpeedLines } from "./speed-lines"
 
@@ -106,7 +106,7 @@ function HeroComposition() {
             { label: "Pagamento", value: "Pix" },
           ]}
           total="R$ 26,50"
-          footer={<p className="ticket-muted text-xs">Comissão ZapFlash: R$ 0,00</p>}
+          footer={<ZapFlashCommission />}
         />
       </div>
 

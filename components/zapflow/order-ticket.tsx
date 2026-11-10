@@ -1,5 +1,20 @@
 import type { ReactNode } from "react"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
+
+export function ZapFlashCommission() {
+  return (
+    <div className="flex items-center gap-3 rounded-lg bg-[var(--paper-foreground)] px-3 py-2.5 font-sans">
+      <Image src="/brand/logo-mark.png" alt="" width={652} height={404} className="h-auto w-9 shrink-0" />
+      <p className="flex flex-col leading-tight">
+        <span className="whitespace-nowrap text-[10px] font-bold uppercase tracking-wider text-[var(--paper)] opacity-75">
+          Comissão ZapFlash
+        </span>
+        <span className="whitespace-nowrap text-xl font-black tabular-nums text-primary">R$ 0,00</span>
+      </p>
+    </div>
+  )
+}
 
 export type TicketLine = { label: string; value: string; sub?: boolean }
 

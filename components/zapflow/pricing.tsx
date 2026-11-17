@@ -1,14 +1,8 @@
-import Image from "next/image"
-import { ArrowRight, Check, ChevronDown } from "lucide-react"
-import { ctaLabel, landingLinks, plans } from "@/lib/landing-content"
+import { ArrowRight, Check } from "lucide-react"
+import { ctaLabel, landingLinks } from "@/lib/landing-content"
 import { cn } from "@/lib/utils"
 import { CommissionCalculator } from "./commission-calculator"
-
-const chefs = {
-  Start: { src: "/brand/chef-start.png", width: 330, height: 344, tone: "text-plan-start", alt: "Chef Start, personagem azul oficial da ZapFlash" },
-  Pro: { src: "/brand/chef-pro.png", width: 300, height: 348, tone: "text-primary", alt: "Chef Pro, personagem verde oficial da ZapFlash" },
-  Elite: { src: "/brand/chef-elite.png", width: 316, height: 352, tone: "text-plan-elite", alt: "Chef Elite, personagem dourado oficial da ZapFlash" },
-} as const
+import { PlansCarousel } from "./plans-carousel"
 
 const timeline = [
   { when: "Hoje", price: "R$ 0", text: "Você cria a conta sem cartão de crédito e monta seu cardápio." },
@@ -25,8 +19,6 @@ const partnershipIncludes = [
 ]
 
 export function Pricing() {
-  const paid = plans.slice(1)
-
   return (
     <section id="planos" aria-labelledby="planos-titulo" className="scroll-mt-16 border-t border-border/60">
       <div className="mx-auto max-w-7xl px-5 py-20 md:py-24">
@@ -92,73 +84,15 @@ export function Pricing() {
           <CommissionCalculator />
         </div>
 
-        <details className="group mt-14 rounded-3xl bg-card ring-1 ring-border">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 sm:p-6 [&::-webkit-details-marker]:hidden">
-            <span>
-              <span className="block font-bold">Precisa de mais recursos?</span>
-              <span className="text-sm text-muted-foreground">
-                Start R$ 79,90 · Pro R$ 149,90 · Elite R$ 297,90 por mês
-              </span>
-            </span>
-            <span className="flex items-center gap-2 text-sm font-semibold text-primary">
-              <span className="hidden sm:inline">Ver planos</span>
-              <ChevronDown className="size-5 transition-transform group-open:rotate-180" aria-hidden="true" />
-            </span>
-          </summary>
-
-          <div className="grid gap-3 border-t border-border/60 p-5 sm:p-6 md:grid-cols-3">
-            {paid.map((plan) => {
-              const chef = chefs[plan.name as keyof typeof chefs]
-              const slug = plan.name.toLowerCase()
-              return (
-                <article
-                  key={plan.name}
-                  data-plan-view={slug}
-                  className="flex flex-col rounded-2xl bg-background/60 p-5 ring-1 ring-border/80"
-                >
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src={chef.src}
-                      alt={chef.alt}
-                      width={chef.width}
-                      height={chef.height}
-                      className="size-12 shrink-0 rounded-full bg-background object-cover object-[50%_15%]"
-                    />
-                    <div className="flex-1">
-                      <h3 className={cn("text-lg font-black italic tracking-tight", chef.tone)}>{plan.name}</h3>
-                      <p className="text-xs text-muted-foreground">{plan.stage}</p>
-                    </div>
-                    <p className="text-right">
-                      <span className="block font-display text-xl font-black tabular-nums">{plan.price}</span>
-                      <span className="text-xs text-muted-foreground">{plan.cadence}</span>
-                    </p>
-                  </div>
-
-                  <ul className="mt-4 flex flex-col gap-2 border-t border-border/60 pt-4 text-sm">
-                    {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2">
-                        <Check className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <a
-                    href={plan.href}
-                    data-track="cta_click"
-                    data-position="planos_pagos"
-                    data-plan={slug}
-                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline"
-                  >
-                    {plan.cta}
-                    <ArrowRight className="size-4" aria-hidden="true" />
-                  </a>
-                </article>
-              )
-            })}
-          </div>
-        </details>
       </div>
+
+      <div className="mx-auto max-w-7xl px-5 pb-8">
+        <h3 className="text-balance text-2xl font-extrabold tracking-[-0.03em] sm:text-3xl">Precisa de mais recursos?</h3>
+        <p className="mt-2 text-pretty leading-relaxed text-muted-foreground">
+          Conheça os chefs de cada plano. Use as setas ou clique em um personagem.
+        </p>
+      </div>
+      <PlansCarousel />
     </section>
   )
 }

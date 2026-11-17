@@ -86,23 +86,25 @@ export function PlansCarousel() {
   const current = items[active]
   const slug = current.plan.name.toLowerCase()
 
+  const center = isMobile ? "50%" : "64%"
+
   const figureStyle = (role: Role, ratio: number): CSSProperties => {
     const base: CSSProperties = {
       position: "absolute",
       aspectRatio: `${ratio}`,
-      height: isMobile ? "50%" : "82%",
-      bottom: isMobile ? "34%" : "0",
+      height: isMobile ? "44%" : "82%",
+      bottom: isMobile ? "40%" : "0",
       transformOrigin: "bottom center",
       transition: `transform ${DURATION}ms ${EASE}, filter ${DURATION}ms ${EASE}, opacity ${DURATION}ms ${EASE}, left ${DURATION}ms ${EASE}`,
       willChange: "transform, filter, opacity",
     }
     if (role === "center") {
-      return { ...base, left: "50%", transform: "translateX(-50%) scale(1)", filter: "blur(0px)", opacity: 1, zIndex: 20 }
+      return { ...base, left: center, transform: "translateX(-50%) scale(1)", filter: "blur(0px)", opacity: 1, zIndex: 20 }
     }
     if (role === "hidden") {
       return {
         ...base,
-        left: "50%",
+        left: center,
         transform: `translateX(-50%) translateY(${isMobile ? "-8%" : "-22%"}) scale(0.25)`,
         filter: "blur(4px)",
         opacity: 0,
@@ -110,7 +112,7 @@ export function PlansCarousel() {
         pointerEvents: "none",
       }
     }
-    const side = role === "left" ? (isMobile ? "16%" : "26%") : isMobile ? "84%" : "74%"
+    const side = role === "left" ? (isMobile ? "16%" : "42%") : isMobile ? "84%" : "84%"
     return {
       ...base,
       left: side,
@@ -228,18 +230,33 @@ export function PlansCarousel() {
         <div
           data-plan-view={slug}
           aria-live="polite"
-          className="absolute bottom-6 left-4 right-4 z-[60] sm:bottom-16 sm:left-10 sm:right-auto sm:max-w-sm lg:left-20"
+          className="absolute bottom-4 left-4 right-4 z-[60] rounded-3xl bg-paper-foreground/92 p-5 text-paper shadow-[0_24px_60px_rgba(9,11,13,0.35)] backdrop-blur-md sm:bottom-12 sm:left-8 sm:right-auto sm:w-[min(400px,34vw)] sm:p-7 lg:left-14"
         >
-          <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-80">Para {current.plan.stage.toLowerCase()}</p>
-          <p className="mt-1 flex items-baseline gap-2">
-            <span className="font-display text-3xl font-black tabular-nums sm:text-4xl">{current.plan.price}</span>
-            <span className="text-sm font-semibold opacity-80">{current.plan.cadence}</span>
+          <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-paper/75">
+            <span
+              aria-hidden="true"
+              className="size-2.5 rounded-full"
+              style={{ backgroundColor: current.figure.bg, transition: `background-color ${DURATION}ms ${EASE}` }}
+            />
+            Plano {current.plan.name} · para {current.plan.stage.toLowerCase()}
           </p>
-          <p className="mt-2 text-pretty text-sm leading-relaxed opacity-90">{current.plan.description}</p>
-          <ul className="mt-4 hidden flex-col gap-1.5 text-sm sm:flex" aria-label={`Incluso no plano ${current.plan.name}`}>
+          <p className="mt-2 flex items-baseline gap-2">
+            <span className="font-display text-3xl font-black tabular-nums sm:text-4xl">{current.plan.price}</span>
+            <span className="text-sm font-semibold text-paper/75">{current.plan.cadence}</span>
+          </p>
+          <p className="mt-2 text-pretty text-sm leading-relaxed text-paper/90 sm:text-base">{current.plan.description}</p>
+          <ul
+            className="mt-4 hidden flex-col gap-2 border-t border-paper/15 pt-4 text-sm text-paper/90 sm:flex"
+            aria-label={`Incluso no plano ${current.plan.name}`}
+          >
             {current.plan.features.map((feature) => (
-              <li key={feature} className="flex items-center gap-2">
-                <Check className="size-4 shrink-0" strokeWidth={2.75} aria-hidden="true" />
+              <li key={feature} className="flex items-start gap-2 leading-snug">
+                <Check
+                  className="mt-0.5 size-4 shrink-0"
+                  style={{ color: current.figure.bg, transition: `color ${DURATION}ms ${EASE}` }}
+                  strokeWidth={3}
+                  aria-hidden="true"
+                />
                 {feature}
               </li>
             ))}
@@ -257,25 +274,13 @@ export function PlansCarousel() {
               data-track="cta_click"
               data-position="planos_carrossel"
               data-plan={slug}
-              className="ml-auto inline-flex h-12 items-center gap-2 rounded-full bg-paper-foreground px-5 text-sm font-bold text-paper sm:hidden"
+              className="group ml-auto inline-flex h-12 items-center gap-2 rounded-full bg-paper px-5 text-sm font-bold text-paper-foreground transition-transform hover:scale-[1.03] sm:h-14 sm:px-6 sm:text-base"
             >
               {current.plan.cta}
-              <ArrowRight className="size-4" aria-hidden="true" />
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
             </a>
           </div>
         </div>
-
-        <a
-          href={current.plan.href}
-          data-track="cta_click"
-          data-position="planos_carrossel"
-          data-plan={slug}
-          className="group absolute bottom-16 right-10 z-[60] hidden items-center gap-3 font-display font-black uppercase italic leading-none opacity-95 transition-opacity hover:opacity-100 sm:flex"
-          style={{ fontSize: "clamp(24px, 3.6vw, 56px)", letterSpacing: "-0.03em" }}
-        >
-          {current.plan.cta}
-          <ArrowRight className="size-8 transition-transform group-hover:translate-x-1" strokeWidth={2.5} aria-hidden="true" />
-        </a>
       </div>
     </div>
   )
@@ -287,7 +292,7 @@ function NavButton({ label, onClick, children }: { label: string; onClick: () =>
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="flex size-12 items-center justify-center rounded-full border-2 border-paper-foreground transition-[transform,background-color] duration-150 hover:scale-105 hover:bg-paper-foreground/10 sm:size-14"
+      className="flex size-12 shrink-0 items-center justify-center rounded-full border-2 border-paper/40 text-paper transition-[transform,background-color,border-color] duration-150 hover:scale-105 hover:border-paper hover:bg-paper/10 sm:size-14"
     >
       {children}
     </button>

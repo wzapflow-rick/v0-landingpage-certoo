@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Manrope, Montserrat } from "next/font/google"
+import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 
 import { ConversionTracker } from "@/components/zapflow/conversion-tracker"
@@ -9,16 +9,24 @@ import "./globals.css"
 
 const metadataBase = new URL(process.env.NODE_ENV === "production" ? siteUrl : "http://localhost:3000")
 
-const manrope = Manrope({
-  subsets: ["latin"],
+// Self-hosted so builds never depend on downloading from Google Fonts.
+const manrope = localFont({
+  src: "./fonts/manrope-latin-wght-normal.woff2",
+  weight: "200 800",
+  style: "normal",
   variable: "--font-manrope",
   display: "swap",
 })
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["700", "800", "900"],
-  style: ["normal", "italic"],
+const montserrat = localFont({
+  src: [
+    { path: "./fonts/montserrat-latin-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/montserrat-latin-700-italic.woff2", weight: "700", style: "italic" },
+    { path: "./fonts/montserrat-latin-800-normal.woff2", weight: "800", style: "normal" },
+    { path: "./fonts/montserrat-latin-800-italic.woff2", weight: "800", style: "italic" },
+    { path: "./fonts/montserrat-latin-900-normal.woff2", weight: "900", style: "normal" },
+    { path: "./fonts/montserrat-latin-900-italic.woff2", weight: "900", style: "italic" },
+  ],
   variable: "--font-montserrat",
   display: "swap",
 })

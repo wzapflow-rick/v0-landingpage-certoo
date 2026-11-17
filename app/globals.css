@@ -31,6 +31,7 @@
   --radius: 0.75rem;
   --paper: var(--foreground);
   --paper-foreground: var(--background);
+  --plan-parceria: #a77bff;
   --plan-start: #4aa8ff;
   --plan-elite: #ffc53d;
 }

@@ -10,6 +10,13 @@ const EASE = "cubic-bezier(0.4,0,0.2,1)"
 const DURATION = 650
 
 const figures = {
+  Parceria: {
+    src: "/brand/figures/chef-parceria.png",
+    width: 245,
+    height: 729,
+    bg: "var(--plan-parceria)",
+    alt: "Chef Parceria, cozinheira de cabelo cacheado e avental roxo piscando e apontando para você",
+  },
   Start: {
     src: "/brand/figures/chef-start.png",
     width: 228,
@@ -33,21 +40,23 @@ const figures = {
   },
 } as const
 
-const items = plans.slice(1).map((plan) => ({ plan, figure: figures[plan.name as keyof typeof figures] }))
+const items = plans.map((plan) => ({ plan, figure: figures[plan.name as keyof typeof figures] }))
 const total = items.length
 
-type Role = "center" | "left" | "right"
+type Role = "center" | "left" | "right" | "hidden"
 
 function roleFor(index: number, active: number): Role {
   if (index === active) return "center"
-  return index === (active + total - 1) % total ? "left" : "right"
+  if (index === (active + total - 1) % total) return "left"
+  if (index === (active + 1) % total) return "right"
+  return "hidden"
 }
 
 const grain =
   "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/></svg>\")"
 
 export function PlansCarousel() {
-  const [active, setActive] = useState(1)
+  const [active, setActive] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
   const lock = useRef(false)
 
@@ -89,6 +98,17 @@ export function PlansCarousel() {
     if (role === "center") {
       return { ...base, left: "50%", transform: "translateX(-50%) scale(1)", filter: "blur(0px)", opacity: 1, zIndex: 20 }
     }
+    if (role === "hidden") {
+      return {
+        ...base,
+        left: "50%",
+        transform: `translateX(-50%) translateY(${isMobile ? "-8%" : "-22%"}) scale(0.25)`,
+        filter: "blur(4px)",
+        opacity: 0,
+        zIndex: 5,
+        pointerEvents: "none",
+      }
+    }
     const side = role === "left" ? (isMobile ? "16%" : "26%") : isMobile ? "84%" : "74%"
     return {
       ...base,
@@ -104,7 +124,7 @@ export function PlansCarousel() {
     <div
       role="region"
       aria-roledescription="carrossel"
-      aria-label="Planos pagos da ZapFlash"
+      aria-label="Planos da ZapFlash"
       tabIndex={0}
       onKeyDown={(event) => {
         if (event.key === "ArrowRight") navigate("next")
@@ -176,7 +196,7 @@ export function PlansCarousel() {
                   alt={role === "center" ? item.figure.alt : ""}
                   width={item.figure.width}
                   height={item.figure.height}
-                  priority={index === 1}
+                  priority={index === 0}
                   draggable={false}
                   sizes="(max-width: 640px) 60vw, 40vw"
                   className="h-full w-full select-none object-contain object-bottom drop-shadow-[0_30px_40px_rgba(9,11,13,0.35)]"

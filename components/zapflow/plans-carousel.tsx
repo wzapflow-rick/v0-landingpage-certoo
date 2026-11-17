@@ -176,8 +176,7 @@ export function PlansCarousel() {
           ))}
         </div>
 
-        <div className="absolute left-4 right-4 top-5 z-[60] flex items-center justify-between gap-4 sm:left-8 sm:right-8 sm:top-6">
-          <p className="hidden text-xs font-bold uppercase tracking-[0.18em] opacity-90 sm:block">ZapFlash · Planos</p>
+        <div className="absolute left-4 right-4 top-5 z-[60] flex items-center justify-end sm:left-8 sm:right-8 sm:top-6">
           <div
             role="tablist"
             aria-label="Escolha um plano"

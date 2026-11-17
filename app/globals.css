@@ -94,10 +94,6 @@
 }
 
 /* Official logo crops sit on pure black; lighten merges them into the page background */
-.logo-blend {
-  mix-blend-mode: lighten;
-}
-
 /* Signature: the speed dashes from the Z symbol */
 .speed-lines {
   display: flex;

@@ -10,7 +10,7 @@ export function Brand({ className }: { className?: string }) {
         width={374}
         height={90}
         priority
-        className="logo-blend h-9 w-auto sm:h-10"
+        className="h-9 w-auto sm:h-10"
       />
     </a>
   )

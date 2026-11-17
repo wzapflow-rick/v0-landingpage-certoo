@@ -59,6 +59,7 @@ export function PlansCarousel() {
   const [active, setActive] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
   const lock = useRef(false)
+  const touchStart = useRef<{ x: number; y: number } | null>(null)
 
   useEffect(() => {
     const query = window.matchMedia("(max-width: 639px)")
@@ -126,11 +127,25 @@ export function PlansCarousel() {
       aria-roledescription="carrossel"
       aria-label="Planos da ZapFlash"
       tabIndex={0}
+      data-hide-mobile-cta
       onKeyDown={(event) => {
         if (event.key === "ArrowRight") navigate("next")
         if (event.key === "ArrowLeft") navigate("prev")
       }}
-      className="relative w-full overflow-hidden text-paper-foreground outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-paper-foreground/40"
+      onTouchStart={(event) => {
+        const touch = event.touches[0]
+        touchStart.current = { x: touch.clientX, y: touch.clientY }
+      }}
+      onTouchEnd={(event) => {
+        const start = touchStart.current
+        touchStart.current = null
+        if (!start) return
+        const touch = event.changedTouches[0]
+        const dx = touch.clientX - start.x
+        const dy = touch.clientY - start.y
+        if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.4) navigate(dx < 0 ? "next" : "prev")
+      }}
+      className="relative w-full touch-pan-y overflow-hidden text-paper-foreground outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-paper-foreground/40"
       style={{ backgroundColor: current.figure.bg, transition: `background-color ${DURATION}ms ${EASE}` }}
     >
       <div className="relative h-[100svh] max-h-[980px] min-h-[680px] w-full overflow-hidden">
@@ -146,7 +161,7 @@ export function PlansCarousel() {
               key={item.plan.name}
               className="absolute inset-x-0 text-center font-display font-black uppercase italic leading-none text-paper"
               style={{
-                fontSize: "clamp(104px, 27vw, 400px)",
+                fontSize: `clamp(56px, ${Math.min(27, 150 / item.plan.name.length).toFixed(2)}vw, 400px)`,
                 letterSpacing: "-0.04em",
                 whiteSpace: "nowrap",
                 opacity: index === active ? 1 : 0,
@@ -159,9 +174,13 @@ export function PlansCarousel() {
           ))}
         </div>
 
-        <div className="absolute left-4 right-4 top-6 z-[60] flex items-center justify-between gap-4 sm:left-8 sm:right-8">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] opacity-90">ZapFlash · Planos</p>
-          <div role="tablist" aria-label="Escolha um plano" className="flex gap-1 rounded-full bg-paper-foreground/10 p-1">
+        <div className="absolute left-4 right-4 top-5 z-[60] flex items-center justify-between gap-4 sm:left-8 sm:right-8 sm:top-6">
+          <p className="hidden text-xs font-bold uppercase tracking-[0.18em] opacity-90 sm:block">ZapFlash · Planos</p>
+          <div
+            role="tablist"
+            aria-label="Escolha um plano"
+            className="flex w-full gap-1 rounded-full bg-paper-foreground/10 p-1 sm:w-auto"
+          >
             {items.map((item, index) => (
               <button
                 key={item.plan.name}
@@ -170,7 +189,7 @@ export function PlansCarousel() {
                 aria-selected={index === active}
                 onClick={() => goTo(index)}
                 className={cn(
-                  "rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors sm:px-4",
+                  "h-10 flex-1 rounded-full px-2 text-xs font-bold uppercase tracking-wider transition-colors sm:h-auto sm:flex-none sm:px-4 sm:py-1.5",
                   index === active ? "bg-paper-foreground text-paper" : "hover:bg-paper-foreground/10",
                 )}
               >

@@ -88,36 +88,48 @@ export function PlansCarousel() {
 
   const center = isMobile ? "50%" : "64%"
 
+  // Only transform and opacity animate (compositor-only). Animating `left` and `filter: blur()` on
+  // several large images forced repaints every frame and exhausted GPU memory on iOS Safari,
+  // which made the slides flicker and eventually crashed and reloaded the tab.
   const figureStyle = (role: Role, ratio: number): CSSProperties => {
+    const blurEnabled = !isMobile
     const base: CSSProperties = {
       position: "absolute",
       aspectRatio: `${ratio}`,
       height: isMobile ? "44%" : "82%",
       bottom: isMobile ? "40%" : "0",
+      left: center,
       transformOrigin: "bottom center",
-      transition: `transform ${DURATION}ms ${EASE}, filter ${DURATION}ms ${EASE}, opacity ${DURATION}ms ${EASE}, left ${DURATION}ms ${EASE}`,
-      willChange: "transform, filter, opacity",
+      transition: blurEnabled
+        ? `transform ${DURATION}ms ${EASE}, opacity ${DURATION}ms ${EASE}, filter ${DURATION}ms ${EASE}`
+        : `transform ${DURATION}ms ${EASE}, opacity ${DURATION}ms ${EASE}`,
+      willChange: "transform, opacity",
+      backfaceVisibility: "hidden",
     }
     if (role === "center") {
-      return { ...base, left: center, transform: "translateX(-50%) scale(1)", filter: "blur(0px)", opacity: 1, zIndex: 20 }
+      return {
+        ...base,
+        transform: "translate3d(-50%, 0, 0) scale(1)",
+        filter: blurEnabled ? "blur(0px)" : undefined,
+        opacity: 1,
+        zIndex: 20,
+      }
     }
     if (role === "hidden") {
       return {
         ...base,
-        left: center,
-        transform: `translateX(-50%) translateY(${isMobile ? "-8%" : "-22%"}) scale(0.25)`,
-        filter: "blur(4px)",
+        transform: `translate3d(-50%, ${isMobile ? "-8%" : "-22%"}, 0) scale(0.25)`,
+        filter: blurEnabled ? "blur(4px)" : undefined,
         opacity: 0,
         zIndex: 5,
         pointerEvents: "none",
       }
     }
-    const side = role === "left" ? (isMobile ? "16%" : "42%") : isMobile ? "84%" : "84%"
+    const offset = role === "left" ? (isMobile ? -34 : -22) : isMobile ? 34 : 20
     return {
       ...base,
-      left: side,
-      transform: `translateX(-50%) translateY(${isMobile ? "-4%" : "-14%"}) scale(${isMobile ? 0.42 : 0.4})`,
-      filter: "blur(2px)",
+      transform: `translate3d(calc(-50% + ${offset}vw), ${isMobile ? "-4%" : "-14%"}, 0) scale(${isMobile ? 0.42 : 0.4})`,
+      filter: blurEnabled ? "blur(2px)" : undefined,
       opacity: 0.85,
       zIndex: 10,
     }
@@ -153,7 +165,7 @@ export function PlansCarousel() {
       <div className="relative h-[100svh] max-h-[980px] min-h-[680px] w-full overflow-hidden">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-50 opacity-40"
+          className="pointer-events-none absolute inset-0 z-50 hidden opacity-40 sm:block"
           style={{ backgroundImage: grain, backgroundSize: "200px 200px", backgroundRepeat: "repeat" }}
         />
 
@@ -217,9 +229,10 @@ export function PlansCarousel() {
                   width={item.figure.width}
                   height={item.figure.height}
                   priority={index === 0}
+                  loading="eager"
                   draggable={false}
                   sizes="(max-width: 640px) 60vw, 40vw"
-                  className="h-full w-full select-none object-contain object-bottom drop-shadow-[0_30px_40px_rgba(9,11,13,0.35)]"
+                  className="h-full w-full select-none object-contain object-bottom sm:drop-shadow-[0_30px_40px_rgba(9,11,13,0.35)]"
                 />
               </div>
             )
@@ -229,7 +242,7 @@ export function PlansCarousel() {
         <div
           data-plan-view={slug}
           aria-live="polite"
-          className="absolute bottom-4 left-4 right-4 z-[60] rounded-3xl bg-paper-foreground/92 p-5 text-paper shadow-[0_24px_60px_rgba(9,11,13,0.35)] backdrop-blur-md sm:bottom-12 sm:left-8 sm:right-auto sm:w-[min(400px,34vw)] sm:p-7 lg:left-14"
+          className="absolute bottom-4 left-4 right-4 z-[60] rounded-3xl bg-paper-foreground/92 p-5 text-paper shadow-[0_24px_60px_rgba(9,11,13,0.35)] sm:bottom-12 sm:backdrop-blur-md sm:left-8 sm:right-auto sm:w-[min(400px,34vw)] sm:p-7 lg:left-14"
         >
           <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-paper/75">
             <span
